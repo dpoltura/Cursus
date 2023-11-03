@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 14:16:12 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/02 14:15:11 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:28:24 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char	*ft_strchr(const char *s, int c)
 	while (s[j] != c)
 	{
 		j++;
-		if (s[j] == '\0')
+		if (s[j] == '\0' && s[j] != c)
 			return (NULL);
 	}
 	return ((char *)s + j);

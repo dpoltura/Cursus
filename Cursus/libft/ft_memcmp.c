@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:32:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/02 15:26:27 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:08:35 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t		i;
-	const char	*s1_cpy;
-	const char	*s2_cpy;
+	size_t				i;
+	const unsigned char	*p1;
+	const unsigned char	*p2;
 
 	i = 0;
-	s1_cpy = s1;
-	s2_cpy = s2;
+	p1 = (const unsigned char *)s1;
+	p2 = (const unsigned char *)s2;
 	while (i < n)
 	{
-		while (s1_cpy[i] == s2_cpy[i])
+		while (p1[i] == p2[i])
 		{
-			if (s1_cpy[i] == '\0' || s2_cpy[i] == '\0')
-				return (0);
 			i++;
+			if (i == n)
+				return (0);
 		}
-		if ((s1_cpy[i] < s2_cpy[i] || s1_cpy[i] > s2_cpy[i]) && i < n)
-			return (s1_cpy[i] - s2_cpy[i]);
+		if ((p1[i] < p2[i] || p1[i] > p2[i]) && i < n)
+			return (p1[i] - p2[i]);
 	}
 	return (0);
 }

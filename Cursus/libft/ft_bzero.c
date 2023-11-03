@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:44:13 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/10/31 14:59:23 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/03 08:35:55 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	ft_bzero(void *s, size_t n)
 {
 	size_t	i;
-	int		*cpy;
+	char	*p;
 
 	i = 0;
-	cpy = s;
+	p = (char *)s;
 	while (i < n)
 	{
-		cpy[i] = '\0';
+		p[i] = '\0';
 		i++;
 	}
 }

@@ -6,15 +6,17 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 08:54:19 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/10/31 14:30:22 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/03 09:24:34 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+
 int	ft_isalpha(int c)
 {
-	if ((c >= 97 && c <= 122) || c == -1)
-		return (1);
-	if ((c >= 65 && c <= 90) || c == -1)
-		return (1);
+	if (c >= 'a' && c <= 'z')
+		return (c);
+	if (c >= 'A' && c <= 'Z')
+		return (c);
 	return (0);
 }
