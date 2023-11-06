@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:51:30 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/03 13:31:30 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/06 09:32:46 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	alloc = malloc(size * nmemb);
 	if (alloc == NULL)
 		return (NULL);
-	while (i < nmemb*size)
+	while (i < nmemb * size)
 	{
 		alloc[i] = 0;
 		i++;
