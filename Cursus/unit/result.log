@@ -24,7 +24,70 @@ ft_strdup:     [OK] [OK] [OK] [OK] [OK] [OK] [OK]
 ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}[OK] 
 ft_strjoin:    [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_strtrim:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
-ft_split:      [MISSING]
+ft_split:      [OK] [OK] [OK] [FAILED] [OK] [OK] [CRASH] [CRASH] [OK] [FAILED] {not protected}
+[fail]: your split does not work with one word
+Test code:
+	char *s = "olol                     ";
+	char **result = ft_split(s, ' ');
+
+	split_cmp_array(expected, result);
+
+Diffs:
+       split: |olol|
+    ft_split: |olol lit:      |
+
+[crash]: your split will segfault in case --> *str="\0aa\0bbb" c='\0' 
+Test code:
+	char **expected = ft_split("\0aa\0bbb", '\0');
+
+	for (int i = 0; expected[i]; i++)
+	{
+		if (expected[i] != ((void*)0))
+			exit(TEST_FAILED);
+	}
+	exit(TEST_SUCCESS);
+
+
+[crash]: your split does not work with basic input
+Test code:
+	char *s = "split  ||this|for|me|||||!|";
+	int i = 0;
+	char **result = ft_split(s, '|');
+
+	while (result[i])
+	{
+		if (strcmp(result[i], *expected))
+		{
+			exit(TEST_FAILED);
+		}
+		free(result[i]);
+		i++;
+		expected++;
+	}
+	free(result);
+	exit(TEST_SUCCESS);
+
+
+[fail]: your split does not work with basic input
+Test code:
+	char *s = "      split       this for   me  !       ";
+
+	char **result = ft_split(s, ' ');
+	while (*result)
+	{
+		if (strcmp(*result, *expected))
+		{
+			exit(TEST_FAILED);
+		}
+		result++;
+		expected++;
+	}
+	exit(TEST_SUCCESS);
+
+Diffs:
+       split: |split|
+    ft_split: |splitAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA|
+
 ft_itoa:       [MISSING]
 ft_strmapi:    [MISSING]
 ft_putchar_fd: [MISSING]
