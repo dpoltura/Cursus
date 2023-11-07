@@ -1,7 +1,7 @@
-OBJ = $(SRC:%.c=%.o)
-CFLAGS = -g -Wall -Werror -Wextra
-CC = clang
-NAME = libft
+OBJ= $(SRC:%.c=%.o)
+CFLAGS= -g -Wall -Werror -Wextra
+CC= clang
+NAME= libft
 SRC= $(wildcard *.c)
 
 all: $(NAME)
