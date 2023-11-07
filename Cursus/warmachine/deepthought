@@ -3,7 +3,7 @@ $> hostname; uname -msr
 2A4.42angouleme.fr
 Linux 5.15.0-88-generic x86_64
 $> date
-Tue Nov  7 11:46:10 AM CET 2023
+Tue Nov  7 04:20:59 PM CET 2023
 $> gcc --version
 gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -21,7 +21,7 @@ $> norminette libft.h | grep -E '(Error|Warning)'
 
 = Compiling libft ==============================================================
 $> make re
-rm -f ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_split.o ft_strchr.o ft_strdup.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o
+rm -f ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_split.o ft_strchr.o ft_strdup.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o
 rm -f libft
 clang -g -Wall -Werror -Wextra   -c -o ft_atoi.o ft_atoi.c
 clang -g -Wall -Werror -Wextra   -c -o ft_bzero.o ft_bzero.c
@@ -44,6 +44,7 @@ clang -g -Wall -Werror -Wextra   -c -o ft_strjoin.o ft_strjoin.c
 clang -g -Wall -Werror -Wextra   -c -o ft_strlcat.o ft_strlcat.c
 clang -g -Wall -Werror -Wextra   -c -o ft_strlcpy.o ft_strlcpy.c
 clang -g -Wall -Werror -Wextra   -c -o ft_strlen.o ft_strlen.c
+clang -g -Wall -Werror -Wextra   -c -o ft_strmapi.o ft_strmapi.c
 clang -g -Wall -Werror -Wextra   -c -o ft_strncmp.o ft_strncmp.c
 clang -g -Wall -Werror -Wextra   -c -o ft_strnstr.o ft_strnstr.c
 clang -g -Wall -Werror -Wextra   -c -o ft_strrchr.o ft_strrchr.c
@@ -52,14 +53,14 @@ clang -g -Wall -Werror -Wextra   -c -o ft_substr.o ft_substr.c
 clang -g -Wall -Werror -Wextra   -c -o ft_tolower.o ft_tolower.c
 clang -g -Wall -Werror -Wextra   -c -o ft_toupper.o ft_toupper.c
 clang -g -Wall -Werror -Wextra   -c -o main.o main.c
-clang -g -Wall -Werror -Wextra ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_split.o ft_strchr.o ft_strdup.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o -o libft
-ar -crs libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_split.o ft_strchr.o ft_strdup.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o 
+clang -g -Wall -Werror -Wextra ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_split.o ft_strchr.o ft_strdup.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o -o libft
+ar -crs libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_split.o ft_strchr.o ft_strdup.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o 
 
 $> make bonus
 make: *** No rule to make target 'bonus'.  Stop.
 
 $> ls -la libft.a
--rw-r--r-- 1 dpoltura 2023_angouleme 81102 Nov  7 11:46 /nfs/homes/dpoltura/Libft/Cursus/warmachine/dirlibft/libft.a
+-rw-r--r-- 1 dpoltura 2023_angouleme 84162 Nov  7 16:21 /nfs/homes/dpoltura/Libft/Cursus/warmachine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -320,8 +321,9 @@ Diff OK :D
 = Test 5 ===================================================
 $> ./user_exe 05
 $> diff -U 3 user_output_test05 test05.output
+Binary files /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strlcat/user_output_test05 and /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strlcat/test05.output differ$
 
-Diff OK :D
+Diff KO :(
 = Test 6 ===================================================
 $> ./user_exe 06
 $> diff -U 3 user_output_test06 test06.output
@@ -330,7 +332,7 @@ Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
 $> diff -U 3 user_output_test07 test07.output
---- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strlcat/user_output_test07	2023-11-07 11:46:16.946611201 +0100$
+--- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strlcat/user_output_test07	2023-11-07 16:17:30.201447163 +0100$
 +++ /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strlcat/test07.output	2023-11-03 17:08:59.234734471 +0100$
 @@ -0,0 +1,2 @@$
 +31$
@@ -486,7 +488,7 @@ Diff OK :D
 = Test 5 ===================================================
 $> ./user_exe 05
 $> diff -U 3 user_output_test05 test05.output
---- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strnstr/user_output_test05	2023-11-07 11:46:19.754565432 +0100$
+--- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strnstr/user_output_test05	2023-11-07 16:21:10.997918248 +0100$
 +++ /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strnstr/test05.output	2023-11-03 17:08:59.386732032 +0100$
 @@ -1 +1 @@$
 -sit amet$
@@ -503,7 +505,7 @@ Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
 $> diff -U 3 user_output_test07 test07.output
---- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strnstr/user_output_test07	2023-11-07 11:46:19.826564259 +0100$
+--- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strnstr/user_output_test07	2023-11-07 16:21:11.149915826 +0100$
 +++ /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_strnstr/test07.output	2023-11-03 17:08:59.394731904 +0100$
 @@ -0,0 +1 @@$
 +NULL$
@@ -623,7 +625,7 @@ Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
 $> diff -U 3 user_output_test07 test07.output
---- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/user_output_test07	2023-11-07 11:46:21.642534659 +0100$
+--- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/user_output_test07	2023-11-07 16:21:12.765890072 +0100$
 +++ /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/test07.output	2023-11-03 17:08:58.750742238 +0100$
 @@ -1 +1 @@$
 --54$
@@ -635,7 +637,7 @@ Diff KO :(
 = Test 8 ===================================================
 $> ./user_exe 08
 $> diff -U 3 user_output_test08 test08.output
---- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/user_output_test08	2023-11-07 11:46:21.670534202 +0100$
+--- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/user_output_test08	2023-11-07 16:21:12.853888669 +0100$
 +++ /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/test08.output	2023-11-03 17:08:58.754742173 +0100$
 @@ -1 +1 @@$
 --48$
@@ -647,7 +649,7 @@ Diff KO :(
 = Test 9 ===================================================
 $> ./user_exe 09
 $> diff -U 3 user_output_test09 test09.output
---- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/user_output_test09	2023-11-07 11:46:21.698533746 +0100$
+--- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/user_output_test09	2023-11-07 16:21:12.941887266 +0100$
 +++ /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/test09.output	2023-11-03 17:08:58.754742173 +0100$
 @@ -1 +1 @@$
 -47$
@@ -659,7 +661,7 @@ Diff KO :(
 = Test 10 ==================================================
 $> ./user_exe 10
 $> diff -U 3 user_output_test10 test10.output
---- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/user_output_test10	2023-11-07 11:46:21.734533159 +0100$
+--- /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/user_output_test10	2023-11-07 16:21:12.997886374 +0100$
 +++ /nfs/homes/dpoltura/Libft/Cursus/warmachine/tests/Part1_functions/ft_atoi/test10.output	2023-11-03 17:08:58.758742109 +0100$
 @@ -1 +1 @@$
 -47$
@@ -1005,7 +1007,11 @@ Diff OK :D
 $> norminette ft_strmapi.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strmapi.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Libft/Cursus/warmachine/dirlibft//ft_strmapi.c'
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_substr.c ==================================================================
 $> norminette ft_substr.c | grep -E '(Error|Warning)'

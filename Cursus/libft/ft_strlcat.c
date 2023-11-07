@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 11:37:54 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/06 09:36:01 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/07 16:20:33 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	j;
 	size_t	full_len;
 
-	if (size == 0 && dst == NULL)
+	if (size == 0 || dst == NULL)
 		return (0);
 	i = 0;
 	j = 0;
