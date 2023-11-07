@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:37:45 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/07 10:57:12 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:38:23 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_count(int n)
 	int	i;
 
 	i = 0;
-	if (n < 0)
+	if (n <= 0)
 		i = 1;
 	while (n != 0)
 	{
@@ -27,17 +27,12 @@ static int	ft_count(int n)
 	return (i);
 }
 
-static char	*ft_n_to_tab(int n, int count_n, char *s)
+static char	*ft_n_to_tab(long n, int count_n, char *s)
 {
 	int	i;
 
 	i = 0;
-	if (n == INT_MIN)
-	{
-		s = "-2147483648";
-		return (s);
-	}
-	else if (n < 0)
+	if (n < 0)
 	{
 		n *= -1;
 		s[0] = '-';
