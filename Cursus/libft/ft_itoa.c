@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:37:45 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/07 10:44:22 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/07 10:57:12 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,8 @@ static int	ft_count(int n)
 static char	*ft_n_to_tab(int n, int count_n, char *s)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 10;
 	if (n == INT_MIN)
 	{
 		s = "-2147483648";
@@ -60,7 +58,7 @@ static char	*ft_n_to_tab(int n, int count_n, char *s)
 char	*ft_itoa(int n)
 {
 	char	*res;
-	int	count_n;
+	int		count_n;
 
 	count_n = ft_count(n);
 	res = malloc(sizeof(char) * (count_n + 1));

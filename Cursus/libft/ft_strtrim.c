@@ -6,13 +6,13 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:30:18 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/06 09:32:08 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:04:23 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_in_set(char c, const char *set)
+static int	is_in_set(char c, const char *set)
 {
 	int	i;
 

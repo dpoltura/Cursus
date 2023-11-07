@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:33:08 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/06 09:33:12 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/07 11:01:42 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,3 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	str[j] = '\0';
 	return (str);
 }
-
-/*int	main(void)
-{
-	const char	*source;
-	char	*substr;
-
-	source = "Hello World !";
-	substr = ft_substr(source, 2, 5);
-	printf("%s\n", substr);
-	free (substr);
-	return (0);
-}*/
