@@ -25,7 +25,56 @@ ft_substr:     [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}[OK]
 ft_strjoin:    [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_strtrim:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
-ft_itoa:       [MISSING]
+ft_itoa:       [FAILED] [OK] [OK] [OK] [OK] [OK] [OK] [KO] [CRASH] 
+[fail]: your itoa does not work with basic input
+Test code:
+	char *i1 = ft_itoa(-623);
+	char *i2 = ft_itoa(156);
+	char *i3 = ft_itoa(-0);
+
+	if (strcmp(i1, "-623"))
+	{
+		exit(TEST_FAILED);
+	}
+	if (strcmp(i2, "156"))
+	{
+		exit(TEST_FAILED);
+	}
+	if (strcmp("0", i3))
+	{
+		exit(TEST_FAILED);
+	}
+	exit(TEST_SUCCESS);
+
+Diffs:
+        itoa: |0|
+     ft_itoa: ||
+
+[KO]: your itoa does not allocate the good size so the \0 test may be false
+Test code:
+	int size;
+
+	ft_itoa(0);
+	size = get_last_malloc_size();
+	if (size == 2)
+		exit(TEST_SUCCESS);
+	exit(TEST_KO);
+
+Diffs:
+        itoa: |2|
+     ft_itoa: |1|
+
+[crash]: your itoa did not allocate memory for the int min value
+Test code:
+	char *i1 = ft_itoa((-2147483647 -1));
+
+	fd_to_buffer(2);
+	free(i1);
+	write(2, "", 1);
+	get_fd_buffer(2, ((void*)0), 0);
+	exit(TEST_SUCCESS);
+
+
 ft_strmapi:    [MISSING]
 ft_putchar_fd: [MISSING]
 ft_putstr_fd:  [MISSING]
