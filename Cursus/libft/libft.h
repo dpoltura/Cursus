@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:19:41 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/07 10:44:44 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/07 13:24:59 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,6 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strtrim(const char *s1, const char *set);
 char	**ft_split(const char *s, char c);
 char	*ft_itoa(int n);
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 #endif
