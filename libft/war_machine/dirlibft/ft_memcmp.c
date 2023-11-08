@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 11:37:54 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/07 16:20:33 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/02 09:32:15 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/03 09:08:35 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t	i;
-	size_t	j;
-	size_t	dst_len;
-	size_t	src_len;
+	size_t				i;
+	const unsigned char	*p1;
+	const unsigned char	*p2;
 
-	if ((!dst || !src) && size == 0)
-		return (0);
-	dst_len = ft_strlen(dst);
-	src_len = ft_strlen(src);
-	i = dst_len;
-	j = 0;
-	if (dst_len < size - 1 && size > 0)
+	i = 0;
+	p1 = (const unsigned char *)s1;
+	p2 = (const unsigned char *)s2;
+	while (i < n)
 	{
-		while (src[j] && dst_len + j < size - 1)
+		while (p1[i] == p2[i])
 		{
-			dst[i] = src[j];
 			i++;
-			j++;
+			if (i == n)
+				return (0);
 		}
-		dst[i] = 0;
+		if ((p1[i] < p2[i] || p1[i] > p2[i]) && i < n)
+			return (p1[i] - p2[i]);
 	}
-	if (dst_len >= size)
-		dst_len = size;
-	return (dst_len + src_len);
+	return (0);
 }
