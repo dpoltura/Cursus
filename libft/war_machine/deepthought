@@ -3,7 +3,7 @@ $> hostname; uname -msr
 user-pc
 Linux 6.2.0-36-generic x86_64
 $> date
-mer. 08 nov. 2023 11:01:35 CET
+mer. 08 nov. 2023 17:40:15 CET
 $> gcc --version
 gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -61,7 +61,7 @@ $> make bonus
 make: *** No rule to make target 'bonus'.  Stop.
 
 $> ls -la libft.a
--rw-rw-r-- 1 user user 103994 nov.   8 11:01 /home/user/Cursus/libft/war_machine/dirlibft/libft.a
+-rw-rw-r-- 1 user user 104386 nov.   8 17:40 /home/user/Cursus/libft/war_machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
