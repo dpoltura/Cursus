@@ -15,6 +15,7 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <stdint.h>
 
 void	ft_bzero(void *s, size_t n);
 int		ft_isascii(int c);
