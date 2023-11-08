@@ -3,7 +3,7 @@ $> hostname; uname -msr
 user-pc
 Linux 6.2.0-36-generic x86_64
 $> date
-mer. 08 nov. 2023 09:46:18 CET
+mer. 08 nov. 2023 10:34:18 CET
 $> gcc --version
 gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -61,7 +61,7 @@ $> make bonus
 make: *** No rule to make target 'bonus'.  Stop.
 
 $> ls -la libft.a
--rw-rw-r-- 1 user user 103882 nov.   8 09:46 /home/user/Cursus/libft/war_machine/dirlibft/libft.a
+-rw-rw-r-- 1 user user 104026 nov.   8 10:34 /home/user/Cursus/libft/war_machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -524,15 +524,8 @@ Diff OK :D
 = Test 5 ===================================================
 $> ./user_exe 05
 $> diff -U 3 user_output_test05 test05.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/user_output_test05	2023-11-08 09:46:27.389021188 +0100$
-+++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/test05.output	2023-11-08 08:31:46.871442238 +0100$
-@@ -1 +1 @@$
--sit amet$
-\ No newline at end of file$
-+NULL$
-\ No newline at end of file$
 
-Diff KO :(
+Diff OK :D
 = Test 6 ===================================================
 $> ./user_exe 06
 $> diff -U 3 user_output_test06 test06.output
@@ -541,13 +534,8 @@ Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
 $> diff -U 3 user_output_test07 test07.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/user_output_test07	2023-11-08 09:46:27.437021733 +0100$
-+++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/test07.output	2023-11-08 08:31:46.871442238 +0100$
-@@ -0,0 +1 @@$
-+NULL$
-\ No newline at end of file$
 
-Diff KO :(
+Diff OK :D
 = Test 8 ===================================================
 $> ./user_exe 08
 $> diff -U 3 user_output_test08 test08.output
@@ -667,7 +655,7 @@ Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
 $> diff -U 3 user_output_test07 test07.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test07	2023-11-08 09:46:28.657035592 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test07	2023-11-08 10:34:28.236470628 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/test07.output	2023-11-08 08:31:46.867442174 +0100$
 @@ -1 +1 @@$
 --54$
@@ -679,7 +667,7 @@ Diff KO :(
 = Test 8 ===================================================
 $> ./user_exe 08
 $> diff -U 3 user_output_test08 test08.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test08	2023-11-08 09:46:28.681035865 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test08	2023-11-08 10:34:28.260470972 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/test08.output	2023-11-08 08:31:46.867442174 +0100$
 @@ -1 +1 @@$
 --48$
@@ -691,7 +679,7 @@ Diff KO :(
 = Test 9 ===================================================
 $> ./user_exe 09
 $> diff -U 3 user_output_test09 test09.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test09	2023-11-08 09:46:28.705036137 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test09	2023-11-08 10:34:28.284471314 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/test09.output	2023-11-08 08:31:46.867442174 +0100$
 @@ -1 +1 @@$
 -47$
@@ -703,7 +691,7 @@ Diff KO :(
 = Test 10 ==================================================
 $> ./user_exe 10
 $> diff -U 3 user_output_test10 test10.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test10	2023-11-08 09:46:28.733036456 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test10	2023-11-08 10:34:28.308471656 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/test10.output	2023-11-08 08:31:46.867442174 +0100$
 @@ -1 +1 @@$
 -47$
@@ -931,219 +919,3 @@ $> diff -U 3 user_output_test07 test07.output
 Diff OK :D
 = Test 8 ===================================================
 $> ./user_exe 08
-$> diff -U 3 user_output_test08 test08.output
-
-Diff OK :D
-
-= ft_isprint.c =================================================================
-$> norminette ft_isprint.c | grep -E '(Error|Warning)'
-
-norminette : command not found
-
-$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isprint.c main.c libft.a -o user_exe
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
-= Test 2 ===================================================
-$> ./user_exe 02
-$> diff -U 3 user_output_test02 test02.output
-
-Diff OK :D
-= Test 3 ===================================================
-$> ./user_exe 03
-$> diff -U 3 user_output_test03 test03.output
-
-Diff OK :D
-= Test 4 ===================================================
-$> ./user_exe 04
-$> diff -U 3 user_output_test04 test04.output
-
-Diff OK :D
-= Test 5 ===================================================
-$> ./user_exe 05
-$> diff -U 3 user_output_test05 test05.output
-
-Diff OK :D
-= Test 6 ===================================================
-$> ./user_exe 06
-$> diff -U 3 user_output_test06 test06.output
-
-Diff OK :D
-= Test 7 ===================================================
-$> ./user_exe 07
-$> diff -U 3 user_output_test07 test07.output
-
-Diff OK :D
-
-= ft_toupper.c =================================================================
-$> norminette ft_toupper.c | grep -E '(Error|Warning)'
-
-norminette : command not found
-
-$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_toupper.c main.c libft.a -o user_exe
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
-= Test 2 ===================================================
-$> ./user_exe 02
-$> diff -U 3 user_output_test02 test02.output
-
-Diff OK :D
-= Test 3 ===================================================
-$> ./user_exe 03
-$> diff -U 3 user_output_test03 test03.output
-
-Diff OK :D
-= Test 4 ===================================================
-$> ./user_exe 04
-$> diff -U 3 user_output_test04 test04.output
-
-Diff OK :D
-= Test 5 ===================================================
-$> ./user_exe 05
-$> diff -U 3 user_output_test05 test05.output
-
-Diff OK :D
-= Test 6 ===================================================
-$> ./user_exe 06
-$> diff -U 3 user_output_test06 test06.output
-
-Diff OK :D
-= Test 7 ===================================================
-$> ./user_exe 07
-$> diff -U 3 user_output_test07 test07.output
-
-Diff OK :D
-
-= ft_tolower.c =================================================================
-$> norminette ft_tolower.c | grep -E '(Error|Warning)'
-
-norminette : command not found
-
-$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_tolower.c main.c libft.a -o user_exe
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
-= Test 2 ===================================================
-$> ./user_exe 02
-$> diff -U 3 user_output_test02 test02.output
-
-Diff OK :D
-= Test 3 ===================================================
-$> ./user_exe 03
-$> diff -U 3 user_output_test03 test03.output
-
-Diff OK :D
-= Test 4 ===================================================
-$> ./user_exe 04
-$> diff -U 3 user_output_test04 test04.output
-
-Diff OK :D
-= Test 5 ===================================================
-$> ./user_exe 05
-$> diff -U 3 user_output_test05 test05.output
-
-Diff OK :D
-= Test 6 ===================================================
-$> ./user_exe 06
-$> diff -U 3 user_output_test06 test06.output
-
-Diff OK :D
-= Test 7 ===================================================
-$> ./user_exe 07
-$> diff -U 3 user_output_test07 test07.output
-
-Diff OK :D
-
-= Part2_functions ==============================================================
-
-= ft_strmapi.c =================================================================
-$> norminette ft_strmapi.c | grep -E '(Error|Warning)'
-
-norminette : command not found
-
-$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strmapi.c main.c libft.a -o user_exe
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
-
-= ft_substr.c ==================================================================
-$> norminette ft_substr.c | grep -E '(Error|Warning)'
-
-norminette : command not found
-
-$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_substr.c main.c libft.a -o user_exe
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
-= Test 2 ===================================================
-$> ./user_exe 02
-$> diff -U 3 user_output_test02 test02.output
-
-Diff OK :D
-= Test 3 ===================================================
-$> ./user_exe 03
-$> diff -U 3 user_output_test03 test03.output
-
-Diff OK :D
-= Test 4 ===================================================
-$> ./user_exe 04
-$> diff -U 3 user_output_test04 test04.output
-
-Diff OK :D
-= Test 5 ===================================================
-$> ./user_exe 05
-$> diff -U 3 user_output_test05 test05.output
-
-Diff OK :D
-
-= ft_strjoin.c =================================================================
-$> norminette ft_strjoin.c | grep -E '(Error|Warning)'
-
-norminette : command not found
-
-$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strjoin.c main.c libft.a -o user_exe
-
-= Test 1 ===================================================
-$> ./user_exe 01
-$> diff -U 3 user_output_test01 test01.output
-
-Diff OK :D
-= Test 2 ===================================================
-$> ./user_exe 02
-$> diff -U 3 user_output_test02 test02.output
-
-Diff OK :D
-= Test 3 ===================================================
-$> ./user_exe 03
-$> diff -U 3 user_output_test03 test03.output
-
-Diff OK :D
-= Test 4 ===================================================
-$> ./user_exe 04
-$> diff -U 3 user_output_test04 test04.output
-
-Diff OK :D
-
-= ft_strtrim.c =================================================================
-$> norminette ft_strtrim.c | grep -E '(Error|Warning)'
-
-norminette : command not found
-
-$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strtrim.c main.c libft.a -o user_exe
-
