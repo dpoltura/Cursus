@@ -3,7 +3,7 @@ $> hostname; uname -msr
 user-pc
 Linux 6.2.0-36-generic x86_64
 $> date
-mer. 08 nov. 2023 08:50:51 CET
+mer. 08 nov. 2023 09:28:15 CET
 $> gcc --version
 gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -61,7 +61,7 @@ $> make bonus
 make: *** No rule to make target 'bonus'.  Stop.
 
 $> ls -la libft.a
--rw-rw-r-- 1 user user 103770 nov.   8 08:50 /home/user/Cursus/libft/war_machine/dirlibft/libft.a
+-rw-rw-r-- 1 user user 103850 nov.   8 09:28 /home/user/Cursus/libft/war_machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -363,7 +363,7 @@ Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
 $> diff -U 3 user_output_test07 test07.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strlcat/user_output_test07	2023-11-08 08:50:58.139701730 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strlcat/user_output_test07	2023-11-08 09:28:22.014484291 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strlcat/test07.output	2023-11-08 08:31:46.871442238 +0100$
 @@ -0,0 +1,2 @@$
 +31$
@@ -531,7 +531,7 @@ Diff OK :D
 = Test 5 ===================================================
 $> ./user_exe 05
 $> diff -U 3 user_output_test05 test05.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/user_output_test05	2023-11-08 08:51:01.443751407 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/user_output_test05	2023-11-08 09:28:24.538528229 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/test05.output	2023-11-08 08:31:46.871442238 +0100$
 @@ -1 +1 @@$
 -sit amet$
@@ -548,7 +548,7 @@ Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
 $> diff -U 3 user_output_test07 test07.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/user_output_test07	2023-11-08 08:51:01.491752128 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/user_output_test07	2023-11-08 09:28:24.586529064 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_strnstr/test07.output	2023-11-08 08:31:46.871442238 +0100$
 @@ -0,0 +1 @@$
 +NULL$
@@ -674,7 +674,7 @@ Diff OK :D
 = Test 7 ===================================================
 $> ./user_exe 07
 $> diff -U 3 user_output_test07 test07.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test07	2023-11-08 08:51:02.823772119 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test07	2023-11-08 09:28:25.854551105 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/test07.output	2023-11-08 08:31:46.867442174 +0100$
 @@ -1 +1 @@$
 --54$
@@ -686,7 +686,7 @@ Diff KO :(
 = Test 8 ===================================================
 $> ./user_exe 08
 $> diff -U 3 user_output_test08 test08.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test08	2023-11-08 08:51:02.851772539 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test08	2023-11-08 09:28:25.882551592 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/test08.output	2023-11-08 08:31:46.867442174 +0100$
 @@ -1 +1 @@$
 --48$
@@ -698,7 +698,7 @@ Diff KO :(
 = Test 9 ===================================================
 $> ./user_exe 09
 $> diff -U 3 user_output_test09 test09.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test09	2023-11-08 08:51:02.875772899 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test09	2023-11-08 09:28:25.906552009 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/test09.output	2023-11-08 08:31:46.867442174 +0100$
 @@ -1 +1 @@$
 -47$
@@ -710,7 +710,7 @@ Diff KO :(
 = Test 10 ==================================================
 $> ./user_exe 10
 $> diff -U 3 user_output_test10 test10.output
---- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test10	2023-11-08 08:51:02.899773260 +0100$
+--- /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/user_output_test10	2023-11-08 09:28:25.930552426 +0100$
 +++ /home/user/Cursus/libft/war_machine/tests/Part1_functions/ft_atoi/test10.output	2023-11-08 08:31:46.867442174 +0100$
 @@ -1 +1 @@$
 -47$
