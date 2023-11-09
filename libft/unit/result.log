@@ -30,7 +30,7 @@ ft_strmapi:    [OK] [OK] [OK] [OK] [OK] {protected}
 ft_putchar_fd: [OK] [OK] 
 ft_putstr_fd:  [OK] [OK] {protected}
 ft_putendl_fd: [OK] [OK] {protected}
-ft_putnbr_fd:  [MISSING]
+ft_putnbr_fd:  [OK] [OK] [OK] [OK] [OK] 
 ft_lstnew:     [MISSING]
 ft_lstadd_front: [MISSING]
 ft_lstsize:    [MISSING]
