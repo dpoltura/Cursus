@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 15:51:30 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/06 09:32:46 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/09 11:49:32 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,8 @@ void	*ft_calloc(size_t count, size_t size)
 	char	*res;
 	size_t	alloc_value;
 
-	if (count >= INT_MAX || size >= INT_MAX \
-		|| (int)count == INT_MIN \
-		|| (int)size == INT_MIN \
-		|| (count < 0 && size != 0) \
-		|| (count != 0 && size < 0))
+	if (!count || !size)
 		return (NULL);
-	if ((!count && size < 0) \
-		|| (count < 0 && !size))
-	{
-		res = (char *)malloc(1);
-		if (!res)
-			return (NULL);
-		return ((void *)res);
-	}
 	alloc_value = count * size;
 	res = (char *)malloc(alloc_value);
 	if (!res)
