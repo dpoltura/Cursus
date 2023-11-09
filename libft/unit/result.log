@@ -26,7 +26,7 @@ ft_strjoin:    [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_strtrim:    [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_split:      [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] {not protected}
 ft_itoa:       [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] [OK] 
-ft_strmapi:    [OK] [OK] [OK] [OK] [OK] {not protected}
+ft_strmapi:    [OK] [OK] [OK] [OK] [OK] {protected}
 ft_putchar_fd: [MISSING]
 ft_putstr_fd:  [MISSING]
 ft_putendl_fd: [MISSING]

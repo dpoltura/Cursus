@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 12:10:04 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/07 13:25:13 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/09 13:57:21 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	char	*dest;
 
 	i = 0;
+	if (!s || !f)
+		return (NULL);
 	dest = malloc(sizeof(char) * ft_strlen(s) + 1);
 	if (!dest)
 		return (dest);

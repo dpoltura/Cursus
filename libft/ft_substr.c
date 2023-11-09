@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:33:08 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/09 13:54:01 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/09 14:07:40 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		str[0] = '\0';
 		return (str);
 	}
+	if (len + start > ft_strlen(s))
+		len = ft_strlen(s) - start;
 	str = (char *)malloc(sizeof(*s) * (len + 1));
 	if (str == NULL)
 		return (NULL);

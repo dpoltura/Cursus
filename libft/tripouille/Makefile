@@ -7,7 +7,7 @@ TESTS_PATH		= tests/
 				isascii isprint toupper tolower strchr strrchr strncmp strlcpy strlcat strnstr \
 				atoi calloc strdup substr strjoin strtrim split itoa strmapi putchar_fd putstr_fd \
 				putendl_fd putnbr_fd striteri
-MANDATORY		= substr \
+MANDATORY		= strjoin \
 BONUS			= lstnew lstadd_front lstsize lstlast lstadd_back lstdelone lstclear lstiter lstmap
 VSOPEN			= $(addprefix vs, $(MANDATORY)) $(addprefix vs, $(BONUS))
 
