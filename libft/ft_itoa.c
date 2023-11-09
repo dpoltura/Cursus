@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 08:37:45 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/07 11:38:23 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:16:28 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ char	*ft_itoa(int n)
 	int		count_n;
 
 	count_n = ft_count(n);
-	res = malloc(sizeof(char) * (count_n + 1));
+	res = ft_calloc(sizeof(char), count_n + 1);
 	if (!res)
 		return (res);
 	res = ft_n_to_tab(n, count_n, res);
