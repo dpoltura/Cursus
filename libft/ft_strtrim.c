@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:30:18 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/07 11:04:23 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/09 15:45:28 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ char	*ft_strtrim(const char *s1, const char *set)
 	i = 0;
 	j = ft_strlen(s1);
 	k = 0;
+	if (!s1 || !set)
+		return (NULL);
 	while (is_in_set(s1[i], set) == 0)
 		i++;
 	while (j > i && is_in_set(s1[j - 1], set) == 0)
