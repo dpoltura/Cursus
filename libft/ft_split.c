@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:55:02 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/09 15:43:31 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:03:16 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,18 @@ static char	*ft_word_dup(const char *s, int start, int end)
 	return (word);
 }
 
+static char	**ft_alloc_split(const char *s, char c)
+{
+	char	**split;
+
+	if (!s)
+		return (NULL);
+	split = malloc((ft_count_words(s, c) + 1) * sizeof(char *));
+	if (!split)
+		return (NULL);
+	return (split);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	size_t	i;
@@ -57,7 +69,8 @@ char	**ft_split(char const *s, char c)
 	int		index;
 	char	**split;
 
-	if (!s || !(split = malloc((ft_count_words(s, c) + 1) * sizeof(char *))))
+	split = ft_alloc_split(s, c);
+	if (!split)
 		return (NULL);
 	i = 0;
 	j = 0;
