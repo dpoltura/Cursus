@@ -3,7 +3,7 @@ $> hostname; uname -msr
 1A2.42angouleme.fr
 Linux 5.15.0-88-generic x86_64
 $> date
-Thu Nov  9 04:05:05 PM CET 2023
+Thu Nov  9 04:29:37 PM CET 2023
 $> gcc --version
 gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -60,7 +60,7 @@ $> make bonus
 make: *** No rule to make target 'bonus'.  Stop.
 
 $> ls -la libft.a
--rw-r--r-- 1 dpoltura 2023_angouleme 39842 Nov  9 16:05 /nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft/libft.a
+-rw-r--r-- 1 dpoltura 2023_angouleme 39890 Nov  9 16:29 /nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 

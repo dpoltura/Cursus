@@ -6,20 +6,20 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 09:30:18 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/09 15:45:28 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:12:01 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	is_in_set(char c, const char *set)
+static int	ft_is_in_set(char c, const char *set)
 {
 	int	i;
 
 	i = 0;
-	while (c != set[i] && set[i] != '\0')
+	while (c != set[i] && set[i])
 		i++;
-	if (set[i] == '\0')
+	if (!set[i])
 		return (1);
 	return (0);
 }
@@ -32,23 +32,21 @@ char	*ft_strtrim(const char *s1, const char *set)
 	int		k;
 
 	i = 0;
-	j = ft_strlen(s1);
 	k = 0;
-	if (!s1 || !set)
+	if (!s1)
 		return (NULL);
-	while (is_in_set(s1[i], set) == 0)
+	if (!set)
+		return ((char *)s1);
+	j = ft_strlen(s1);
+	while (!ft_is_in_set(s1[i], set))
 		i++;
-	while (j > i && is_in_set(s1[j - 1], set) == 0)
+	while (j > i && !ft_is_in_set(s1[j - 1], set))
 		j--;
-	str = malloc(sizeof(*s1) * (j - i + 1));
-	if (str == NULL)
+	str = malloc(sizeof(char) * (j - i + 1));
+	if (!str)
 		return (NULL);
 	while (i < j)
-	{
-		str[k] = s1[i];
-		k++;
-		i++;
-	}
+		str[k++] = s1[i++];
 	str[k] = '\0';
 	return (str);
 }

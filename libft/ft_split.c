@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:55:02 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/09 16:03:16 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/09 16:26:53 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_count_words(const char *s, char c)
 	trigger = 0;
 	while (*s)
 	{
-		if (*s != c && trigger == 0)
+		if (*s != c && !trigger)
 		{
 			trigger = 1;
 			i++;
@@ -40,6 +40,8 @@ static char	*ft_word_dup(const char *s, int start, int end)
 
 	i = 0;
 	word = malloc((end - start + 1) * sizeof(char));
+	if (!word)
+		return (NULL);
 	while (start < end)
 	{
 		word[i] = s[start];
