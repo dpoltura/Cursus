@@ -1,9 +1,9 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-1A2.42angouleme.fr
-Linux 5.15.0-88-generic x86_64
+user-pc
+Linux 6.2.0-36-generic x86_64
 $> date
-Thu Nov  9 06:18:52 PM CET 2023
+mar. 14 nov. 2023 13:21:15 CET
 $> gcc --version
 gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -11,7 +11,7 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 $> clang --version
-Ubuntu clang version 12.0.1-19ubuntu3
+Ubuntu clang version 14.0.0-1ubuntu1.1
 Target: x86_64-pc-linux-gnu
 Thread model: posix
 InstalledDir: /usr/bin
@@ -22,50 +22,49 @@ $> norminette libft.h | grep -E '(Error|Warning)'
 = Compiling libft ==============================================================
 $> make re
 rm -f ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_strchr.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o
-rm -f a.out libft.a libft.so libft
-cc -Wall -Werror -Wextra   -c -o ft_atoi.o ft_atoi.c
-cc -Wall -Werror -Wextra   -c -o ft_bzero.o ft_bzero.c
-cc -Wall -Werror -Wextra   -c -o ft_calloc.o ft_calloc.c
-cc -Wall -Werror -Wextra   -c -o ft_isalnum.o ft_isalnum.c
-cc -Wall -Werror -Wextra   -c -o ft_isalpha.o ft_isalpha.c
-cc -Wall -Werror -Wextra   -c -o ft_isascii.o ft_isascii.c
-cc -Wall -Werror -Wextra   -c -o ft_isdigit.o ft_isdigit.c
-cc -Wall -Werror -Wextra   -c -o ft_isprint.o ft_isprint.c
-cc -Wall -Werror -Wextra   -c -o ft_itoa.o ft_itoa.c
-cc -Wall -Werror -Wextra   -c -o ft_memchr.o ft_memchr.c
-cc -Wall -Werror -Wextra   -c -o ft_memcmp.o ft_memcmp.c
-cc -Wall -Werror -Wextra   -c -o ft_memcpy.o ft_memcpy.c
-cc -Wall -Werror -Wextra   -c -o ft_memmove.o ft_memmove.c
-cc -Wall -Werror -Wextra   -c -o ft_memset.o ft_memset.c
-cc -Wall -Werror -Wextra   -c -o ft_putchar_fd.o ft_putchar_fd.c
-cc -Wall -Werror -Wextra   -c -o ft_putendl_fd.o ft_putendl_fd.c
-cc -Wall -Werror -Wextra   -c -o ft_putnbr_fd.o ft_putnbr_fd.c
-cc -Wall -Werror -Wextra   -c -o ft_putstr_fd.o ft_putstr_fd.c
-cc -Wall -Werror -Wextra   -c -o ft_split.o ft_split.c
-cc -Wall -Werror -Wextra   -c -o ft_strchr.o ft_strchr.c
-cc -Wall -Werror -Wextra   -c -o ft_strdup.o ft_strdup.c
-cc -Wall -Werror -Wextra   -c -o ft_striteri.o ft_striteri.c
-cc -Wall -Werror -Wextra   -c -o ft_strjoin.o ft_strjoin.c
-cc -Wall -Werror -Wextra   -c -o ft_strlcat.o ft_strlcat.c
-cc -Wall -Werror -Wextra   -c -o ft_strlcpy.o ft_strlcpy.c
-cc -Wall -Werror -Wextra   -c -o ft_strlen.o ft_strlen.c
-cc -Wall -Werror -Wextra   -c -o ft_strmapi.o ft_strmapi.c
-cc -Wall -Werror -Wextra   -c -o ft_strncmp.o ft_strncmp.c
-cc -Wall -Werror -Wextra   -c -o ft_strnstr.o ft_strnstr.c
-cc -Wall -Werror -Wextra   -c -o ft_strrchr.o ft_strrchr.c
-cc -Wall -Werror -Wextra   -c -o ft_strtrim.o ft_strtrim.c
-cc -Wall -Werror -Wextra   -c -o ft_substr.o ft_substr.c
-cc -Wall -Werror -Wextra   -c -o ft_tolower.o ft_tolower.c
-cc -Wall -Werror -Wextra   -c -o ft_toupper.o ft_toupper.c
-cc -Wall -Werror -Wextra   -c -o main.o main.c
-cc -Wall -Werror -Wextra ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_strchr.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o -o libft
-ar -crs libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_strchr.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o 
+rm -f libft.a
+gcc -Wall -Werror -Wextra   -c -o ft_atoi.o ft_atoi.c
+gcc -Wall -Werror -Wextra   -c -o ft_bzero.o ft_bzero.c
+gcc -Wall -Werror -Wextra   -c -o ft_calloc.o ft_calloc.c
+gcc -Wall -Werror -Wextra   -c -o ft_isalnum.o ft_isalnum.c
+gcc -Wall -Werror -Wextra   -c -o ft_isalpha.o ft_isalpha.c
+gcc -Wall -Werror -Wextra   -c -o ft_isascii.o ft_isascii.c
+gcc -Wall -Werror -Wextra   -c -o ft_isdigit.o ft_isdigit.c
+gcc -Wall -Werror -Wextra   -c -o ft_isprint.o ft_isprint.c
+gcc -Wall -Werror -Wextra   -c -o ft_itoa.o ft_itoa.c
+gcc -Wall -Werror -Wextra   -c -o ft_memchr.o ft_memchr.c
+gcc -Wall -Werror -Wextra   -c -o ft_memcmp.o ft_memcmp.c
+gcc -Wall -Werror -Wextra   -c -o ft_memcpy.o ft_memcpy.c
+gcc -Wall -Werror -Wextra   -c -o ft_memmove.o ft_memmove.c
+gcc -Wall -Werror -Wextra   -c -o ft_memset.o ft_memset.c
+gcc -Wall -Werror -Wextra   -c -o ft_putchar_fd.o ft_putchar_fd.c
+gcc -Wall -Werror -Wextra   -c -o ft_putendl_fd.o ft_putendl_fd.c
+gcc -Wall -Werror -Wextra   -c -o ft_putnbr_fd.o ft_putnbr_fd.c
+gcc -Wall -Werror -Wextra   -c -o ft_putstr_fd.o ft_putstr_fd.c
+gcc -Wall -Werror -Wextra   -c -o ft_split.o ft_split.c
+gcc -Wall -Werror -Wextra   -c -o ft_strchr.o ft_strchr.c
+gcc -Wall -Werror -Wextra   -c -o ft_strdup.o ft_strdup.c
+gcc -Wall -Werror -Wextra   -c -o ft_striteri.o ft_striteri.c
+gcc -Wall -Werror -Wextra   -c -o ft_strjoin.o ft_strjoin.c
+gcc -Wall -Werror -Wextra   -c -o ft_strlcat.o ft_strlcat.c
+gcc -Wall -Werror -Wextra   -c -o ft_strlcpy.o ft_strlcpy.c
+gcc -Wall -Werror -Wextra   -c -o ft_strlen.o ft_strlen.c
+gcc -Wall -Werror -Wextra   -c -o ft_strmapi.o ft_strmapi.c
+gcc -Wall -Werror -Wextra   -c -o ft_strncmp.o ft_strncmp.c
+gcc -Wall -Werror -Wextra   -c -o ft_strnstr.o ft_strnstr.c
+gcc -Wall -Werror -Wextra   -c -o ft_strrchr.o ft_strrchr.c
+gcc -Wall -Werror -Wextra   -c -o ft_strtrim.o ft_strtrim.c
+gcc -Wall -Werror -Wextra   -c -o ft_substr.o ft_substr.c
+gcc -Wall -Werror -Wextra   -c -o ft_tolower.o ft_tolower.c
+gcc -Wall -Werror -Wextra   -c -o ft_toupper.o ft_toupper.c
+gcc -Wall -Werror -Wextra   -c -o main.o main.c
+ar -crs libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_strchr.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o
 
 $> make bonus
 make: *** No rule to make target 'bonus'.  Stop.
 
 $> ls -la libft.a
--rw-r--r-- 1 dpoltura 2023_angouleme 46572 Nov  9 18:18 /nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft/libft.a
+-rw-rw-r-- 1 user user 54556 nov.  14 13:21 /home/user/Cursus/libft/war_machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
@@ -1302,52 +1301,52 @@ Diff OK :D
 $> norminette ft_lstnew_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstnew.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft//ft_lstnew.c'
+clang: error: no such file or directory: '/home/user/Cursus/libft/war_machine/dirlibft//ft_lstnew.c'
 
 = ft_lstdelone_bonus.c =========================================================
 $> norminette ft_lstdelone_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstdelone.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft//ft_lstdelone.c'
+clang: error: no such file or directory: '/home/user/Cursus/libft/war_machine/dirlibft//ft_lstdelone.c'
 
 = ft_lstclear_bonus.c ==========================================================
 $> norminette ft_lstclear_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstclear.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft//ft_lstclear.c'
+clang: error: no such file or directory: '/home/user/Cursus/libft/war_machine/dirlibft//ft_lstclear.c'
 
 = ft_lstadd_front_bonus.c ======================================================
 $> norminette ft_lstadd_front_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstadd_front.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft//ft_lstadd_front.c'
+clang: error: no such file or directory: '/home/user/Cursus/libft/war_machine/dirlibft//ft_lstadd_front.c'
 
 = ft_lstadd_back_bonus.c =======================================================
 $> norminette ft_lstadd_back_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstadd_back.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft//ft_lstadd_back.c'
+clang: error: no such file or directory: '/home/user/Cursus/libft/war_machine/dirlibft//ft_lstadd_back.c'
 
 = ft_lstsize_bonus.c ===========================================================
 $> norminette ft_lstsize_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstsize.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft//ft_lstsize.c'
+clang: error: no such file or directory: '/home/user/Cursus/libft/war_machine/dirlibft//ft_lstsize.c'
 
 = ft_lstiter_bonus.c ===========================================================
 $> norminette ft_lstiter_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstiter.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft//ft_lstiter.c'
+clang: error: no such file or directory: '/home/user/Cursus/libft/war_machine/dirlibft//ft_lstiter.c'
 
 = ft_lstmap_bonus.c ============================================================
 $> norminette ft_lstmap_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstmap.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft//ft_lstmap.c'
+clang: error: no such file or directory: '/home/user/Cursus/libft/war_machine/dirlibft//ft_lstmap.c'
 
 = ft_lstlast_bonus.c ===========================================================
 $> norminette ft_lstlast_bonus.c | grep -E '(Error|Warning)'
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_lstlast.c main.c libft.a -o user_exe
 
-clang: error: no such file or directory: '/nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft//ft_lstlast.c'
+clang: error: no such file or directory: '/home/user/Cursus/libft/war_machine/dirlibft//ft_lstlast.c'

@@ -6,7 +6,7 @@
 #    By: alelievr <alelievr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created  2015/04/04 19:22:36 by alelievr          #+#    #+#              #
-#    Updated: 2023/11/07 16:56:20 by dpoltura         ###   ########.fr        #
+#    Updated: 2023/11/14 13:26:20 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 #################
 
 #	Libft Makefile path
-LIBFTDIR	=	$(shell dirname $(shell pwd))
+LIBFTDIR	=	../
 
 #	Sources
 SRCDIR		=	./
