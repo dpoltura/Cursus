@@ -6,7 +6,7 @@
 #    By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:23:33 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/14 14:42:13 by user             ###   ########.fr        #
+#    Updated: 2023/11/14 15:14:10 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,6 +53,8 @@ SRC= ft_atoi.c \
 BONUS= ft_lstnew.c \
        ft_lstadd_front.c \
        ft_lstsize.c \
+       ft_lstlast.c \
+       ft_lstadd_back.c
 
 OBJ= $(SRC:%.c=%.o)
 
