@@ -36,8 +36,8 @@ ft_lstadd_front: [OK] [OK] [OK]
 ft_lstsize:    [OK] [OK] 
 ft_lstlast:    [OK] [OK] 
 ft_lstadd_back:[OK] [OK] [OK] 
-ft_lstdelone:  [MISSING]
-ft_lstclear:   [MISSING]
+ft_lstdelone:  [OK] {protected}
+ft_lstclear:   [OK] [OK] [OK] {protected}
 ft_lstiter:    [MISSING]
 ft_lstmap:     [MISSING]
 ft_striteri:   [OK] [OK] {protected}
