@@ -6,7 +6,7 @@
 #    By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:23:33 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/14 16:08:56 by user             ###   ########.fr        #
+#    Updated: 2023/11/14 16:51:55 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,7 @@ BONUS= ft_lstnew.c \
        ft_lstdelone.c \
        ft_lstclear.c \
        ft_lstiter.c \
+       ft_lstmap.c
 
 OBJ= $(SRC:%.c=%.o)
 

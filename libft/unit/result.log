@@ -39,5 +39,5 @@ ft_lstadd_back:[OK] [OK] [OK]
 ft_lstdelone:  [OK] {protected}
 ft_lstclear:   [OK] [OK] [OK] {protected}
 ft_lstiter:    [OK] {protected}
-ft_lstmap:     [MISSING]
+ft_lstmap:     [OK] {protected}
 ft_striteri:   [OK] [OK] {protected}
