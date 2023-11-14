@@ -6,7 +6,7 @@
 #    By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:23:33 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/14 13:24:07 by user             ###   ########.fr        #
+#    Updated: 2023/11/14 14:42:13 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,13 @@ SRC= ft_atoi.c \
 	 ft_toupper.c \
 	 main.c
 
+BONUS= ft_lstnew.c \
+       ft_lstadd_front.c \
+       ft_lstsize.c \
+
 OBJ= $(SRC:%.c=%.o)
+
+BONUS_OBJ= $(BONUS:%.c=%.o)
 
 NAME= libft.a
 
@@ -59,16 +65,19 @@ all: $(NAME)
 $(NAME): $(OBJ)
 	ar -crs $(NAME) $(OBJ)
 
+bonus: $(OBJ) $(BONUS_OBJ)
+	ar -crs $(NAME) $(OBJ) $(BONUS_OBJ)
+
 clean:
-	rm -f $(OBJ)
+	rm -f $(OBJ) $(BONUS_OBJ)
 	
 fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
 
 so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ)
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) $(BONUS_SRC)
+	gcc -nostartfiles -shared -o libft.so $(OBJ) $(BONUS_OBJ)
