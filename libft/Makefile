@@ -6,7 +6,7 @@
 #    By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:23:33 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/15 08:44:37 by dpoltura         ###   ########.fr        #
+#    Updated: 2023/11/15 09:43:12 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,8 +47,7 @@ SRC= ft_atoi.c \
      ft_strtrim.c \
      ft_substr.c \
      ft_tolower.c \
-     ft_toupper.c \
-     main.c
+     ft_toupper.c
 
 BONUS= ft_lstnew.c \
        ft_lstadd_front.c \
@@ -83,7 +82,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all bonus clean fclean re
-
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRC) $(BONUS_SRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ) $(BONUS_OBJ)
