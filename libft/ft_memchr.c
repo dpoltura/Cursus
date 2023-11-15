@@ -6,7 +6,7 @@
 /*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 09:18:05 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/07 15:50:51 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/15 09:27:49 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	scpy = s;
 	if (c > 256)
 		c -= 256;
-	if ((!scpy || !c) && !n)
+	if (((!scpy || !c) && !n) \
+		|| !n)
 		return (NULL);
 	while (scpy[i] != c)
 	{
