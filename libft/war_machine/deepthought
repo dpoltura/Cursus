@@ -1,9 +1,9 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-user-pc
-Linux 6.2.0-36-generic x86_64
+2A1.42angouleme.fr
+Linux 5.15.0-88-generic x86_64
 $> date
-mar. 14 nov. 2023 16:57:57 CET
+Wed Nov 15 08:41:03 AM CET 2023
 $> gcc --version
 gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
 Copyright (C) 2021 Free Software Foundation, Inc.
@@ -11,7 +11,7 @@ This is free software; see the source for copying conditions.  There is NO
 warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 $> clang --version
-Ubuntu clang version 14.0.0-1ubuntu1.1
+Ubuntu clang version 12.0.1-19ubuntu3
 Target: x86_64-pc-linux-gnu
 Thread model: posix
 InstalledDir: /usr/bin
@@ -107,7 +107,7 @@ gcc -Wall -Werror -Wextra   -c -o ft_lstmap.o ft_lstmap.c
 ar -crs libft.a ft_atoi.o ft_bzero.o ft_calloc.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_itoa.o ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_putchar_fd.o ft_putendl_fd.o ft_putnbr_fd.o ft_putstr_fd.o ft_split.o ft_strchr.o ft_strdup.o ft_striteri.o ft_strjoin.o ft_strlcat.o ft_strlcpy.o ft_strlen.o ft_strmapi.o ft_strncmp.o ft_strnstr.o ft_strrchr.o ft_strtrim.o ft_substr.o ft_tolower.o ft_toupper.o main.o ft_lstnew.o ft_lstadd_front.o ft_lstsize.o ft_lstlast.o ft_lstadd_back.o ft_lstdelone.o ft_lstclear.o ft_lstiter.o ft_lstmap.o
 
 $> ls -la libft.a
--rw-rw-r-- 1 user user 68234 nov.  14 16:57 /home/user/Cursus/libft/war_machine/dirlibft/libft.a
+-rw-r--r-- 1 dpoltura 2023_angouleme 68234 Nov 15 08:41 /nfs/homes/dpoltura/Cursus/libft/war_machine/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
