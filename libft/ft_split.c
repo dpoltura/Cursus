@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:55:02 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/14 16:47:24 by user             ###   ########.fr       */
+/*   Updated: 2023/11/16 13:33:38 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	**ft_split(char const *s, char c)
 			index = i;
 		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
 		{
-			split[j++] = ft_word_dup(split, s, index, i);
+			if (!split[j++] = ft_word_dup(split, s, index, i);
 			index = -1;
 		}
 		i++;
