@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 08:59:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/16 11:19:52 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/16 11:18:18 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/16 11:19:28 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <limits.h>
+void	ft_putnbr(int n)
+{
+	int	r;
+	int	nbr;
 
-int ft_printf( const char *restrict format, ... );
-void    ft_putstr(char *str);
-void	ft_putnbr(int n);
-
-#endif
+	if (n == INT_MIN)
+		write(1, "-2147483648", 11);
+	if (n > INT_MIN && n <= INT_MAX)
+	{
+		if (n < 0)
+		{
+			write(1, "-", 1);
+			n = -n;
+		}
+		r = n % 10;
+		nbr = n / 10;
+		r += 48;
+		if (nbr > 0)
+			ft_putnbr(nbr);
+		write(1, &r, 1);
+	}
+}

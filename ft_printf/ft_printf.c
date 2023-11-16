@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 08:58:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/16 10:20:30 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/16 11:24:41 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,22 @@ int ft_printf(const char *restrict format, ... )
 {
     va_list args;
     va_start(args, format);
-    char    *str;
+    int i;
 
     while (*format)
     {
-        if (*format == '%' && *(format + 1) == 's')
+        if (*format == '%')
         {
-            str = va_arg(args, char *);
+            if (*(format + 1) == 's')
+                ft_putstr(va_arg(args, char *));
+            else if (*(format + 1) == 'd')
+                ft_putnbr(va_arg(args, int));
+            else if (*(format + 1) == 'c')
+            {
+                i = va_arg(args, int);
+                write(1, &i, 1);
+            }
             format += 2;
-            ft_putstr(str);
             if (!(*format))
                 break;
         }
