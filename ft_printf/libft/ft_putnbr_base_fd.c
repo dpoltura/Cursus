@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:34:48 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/17 13:29:12 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:54:02 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static char	*ft_reverse(char *res)
 	return (res);
 }
 
-void	ft_putnbr_base_fd(unsigned long n, char *base, int fd)
+void	ft_putnbr_base_fd(long n, char *base, int fd)
 {
 	char	*res;
 	int	i;
@@ -41,6 +41,16 @@ void	ft_putnbr_base_fd(unsigned long n, char *base, int fd)
 	res = malloc(sizeof(char) * 255);
 	if (!res)
 		return ;
+	if (n < 0)
+	{
+		ft_putchar_fd('-', 1);
+		if (n == INT_MIN)
+		{
+				ft_putstr_fd("2147483648", 1);
+				n = 0;
+		}
+		n *= -1;
+	}
 	while (n)
 	{
 		*(res + i) = *(base + (n % ft_strlen(base)));
