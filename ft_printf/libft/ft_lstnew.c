@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 08:59:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/17 11:17:24 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/15 08:47:46 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/15 08:47:50 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+t_list	*ft_lstnew(void *content)
+{
+	t_list	*obj;
 
-int ft_printf( const char *format, ... );
-
-#endif
+	obj = (t_list *)malloc(sizeof(t_list));
+	if (!obj)
+		return (NULL);
+	obj->content = content;
+	obj->next = NULL;
+	return (obj);
+}

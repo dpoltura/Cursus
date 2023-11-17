@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 08:59:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/17 11:17:24 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/10/31 09:44:13 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/03 08:35:55 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+void	ft_bzero(void *s, size_t n)
+{
+	size_t	i;
+	char	*p;
 
-int ft_printf( const char *format, ... );
-
-#endif
+	i = 0;
+	p = (char *)s;
+	while (i < n)
+	{
+		p[i] = '\0';
+		i++;
+	}
+}
