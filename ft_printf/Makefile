@@ -6,12 +6,13 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 10:02:00 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/17 11:13:41 by dpoltura         ###   ########.fr        #
+#    Updated: 2023/11/17 16:22:23 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT= libft
-CC= gcc
+LIBFT_DIR= ./libft
+LIBFT= $(LIBFT_DIR)/libft.a
+CC= clang
 CFLAGS= -Wall -Werror -Wextra
 SRC=	ft_printf.c \
 		main.c
@@ -19,18 +20,21 @@ OBJ= $(SRC:%.c=%.o)
 NAME= libftprintf.a
 
 all: $(NAME)
-	$(MAKE) -C $(LIBFT)
 
-$(NAME): $(OBJ)
-	ar -crs $(NAME) $(OBJ) -lft
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
+
+$(NAME): $(LIBFT) $(OBJ)
+	cp	$(LIBFT_DIR)/$(LIBFT) $(NAME)
+	ar -crs $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
-	$(MAKE) -C $(LIBFT) clean
+	$(MAKE) -C $(LIBFT_DIR) clean
 	
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C $(LIBFT) fclean
+	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
