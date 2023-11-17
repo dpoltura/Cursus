@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 09:34:14 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/17 13:21:27 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:27:29 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,7 @@ int main(void)
     printf("printf | c : %c %c %c\n", 'F', 'D', 'P');
     ft_printf("ft_printf | p : %p %p %p\n", "test 1", "test 2", "test 3");
     printf("printf | p : %p %p %p\n", "test 1", "test 2", "test 3");
+    ft_printf("ft_printf | i : %i %i %i\n", 42, INT_MIN, INT_MAX);
+    printf("printf | i : %i %i %i\n", 42, INT_MIN, INT_MAX);
     return (0);
 }

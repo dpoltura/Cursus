@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:34:48 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/17 13:19:02 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/17 13:29:12 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	ft_putnbr_base_fd(unsigned long n, char *base, int fd)
 	}
 	*(res + i) = 0;
 	res = ft_reverse(res);
-	ft_putstr_fd("0x", fd);
+	if (ft_strlen(base) == 16)
+		ft_putstr_fd("0x", fd);
 	ft_putstr_fd(res, fd);
 	free(res);
 }
