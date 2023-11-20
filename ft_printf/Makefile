@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 10:02:00 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/17 16:22:23 by dpoltura         ###   ########.fr        #
+#    Updated: 2023/11/20 11:13:58 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,7 @@ LIBFT_DIR= ./libft
 LIBFT= $(LIBFT_DIR)/libft.a
 CC= clang
 CFLAGS= -Wall -Werror -Wextra
-SRC=	ft_printf.c \
-		main.c
+SRC=	ft_printf.c
 OBJ= $(SRC:%.c=%.o)
 NAME= libftprintf.a
 
@@ -25,7 +24,7 @@ $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
 $(NAME): $(LIBFT) $(OBJ)
-	cp	$(LIBFT_DIR)/$(LIBFT) $(NAME)
+	cp	$(LIBFT) $(NAME)
 	ar -crs $(NAME) $(OBJ)
 
 clean:
