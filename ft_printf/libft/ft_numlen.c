@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base_fd.c                                :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/09 17:34:48 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/21 16:16:26 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/21 16:09:51 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/21 16:13:54 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_base_fd(long n, char *base, int fd)
+int	ft_numlen(int n)
 {
-	if (n < 0 && ft_strlen(base) == 10)
+	int	i;
+
+	i = 0;
+	while (n > 0)
 	{
-		ft_putchar_fd('-', 1);
-		if (n == INT_MIN)
-		{
-				ft_putstr_fd("2147483648", 1);
-				n = 0;
-		}
-		n *= -1;
+		n = n / 10;
+		i++;
 	}
-	if (n < 0 && ft_strlen(base) == 16)
-		n *= -1;
-	if (!n)
-		return ;
-	else if (n)
-		ft_putnbr_base_fd(n / ft_strlen(base), base, fd);
-	write(1, &base[n % ft_strlen(base)], 1);
+	return (i);
 }

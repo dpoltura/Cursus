@@ -6,24 +6,11 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:34:48 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/21 10:28:54 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/21 16:09:28 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_numlen(int n)
-{
-	int	i;
-
-	i = 0;
-	while (n > 0)
-	{
-		n = n / 10;
-		i++;
-	}
-	return (i);
-}
 
 int	ft_putnbr_fd(int n, int fd)
 {

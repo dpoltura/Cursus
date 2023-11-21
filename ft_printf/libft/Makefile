@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:23:33 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/17 12:23:11 by dpoltura         ###   ########.fr        #
+#    Updated: 2023/11/21 16:13:05 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,7 +48,8 @@ SRC= ft_atoi.c \
      ft_substr.c \
      ft_tolower.c \
      ft_toupper.c \
-     ft_putnbr_base_fd.c
+     ft_putnbr_base_fd.c \
+     ft_numlen.c
 
 BONUS= ft_lstnew.c \
        ft_lstadd_front.c \
