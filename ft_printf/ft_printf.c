@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 08:58:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/20 15:22:05 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:21:59 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ int ft_printf(const char *format, ... )
                 j += ft_putstr_fd(va_arg(args, char *), 1);
             }
             else if (*(format) == 'd')
-            {
-                ft_putnbr_fd(va_arg(args, int), 1);
-            }
+                j += ft_putnbr_fd(va_arg(args, int), 1);
             else if (*(format) == 'c')
             {
                 i = va_arg(args, int);
