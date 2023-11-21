@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 08:58:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/21 10:21:59 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/21 10:32:08 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int ft_printf(const char *format, ... )
             }
             else if (*(format) == 'p')
             {
-                ft_putstr_fd("0x", 1);
+                j += ft_putstr_fd("0x", 1);
                 ft_putnbr_base_fd(va_arg(args, unsigned long), "0123456789abcdef", 1);
             }
             else if (*(format) == 'i')

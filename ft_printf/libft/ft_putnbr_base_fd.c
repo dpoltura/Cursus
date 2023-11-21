@@ -6,11 +6,24 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:34:48 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/17 14:24:26 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/21 11:51:33 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static int	ft_numlen(long n)
+{
+	int	i;
+
+	i = 0;
+	while (n > 0)
+	{
+		n = n / 10;
+		i++;
+	}
+	return (i);
+}
 
 static char	*ft_reverse(char *res)
 {
@@ -28,8 +41,8 @@ static char	*ft_reverse(char *res)
 		tmp++;
 	}
 	*tmp = 0;
-	res = tmp - ft_strlen(res);
-	return (res);
+	free(res);
+	return (tmp);
 }
 
 void	ft_putnbr_base_fd(long n, char *base, int fd)
@@ -38,7 +51,7 @@ void	ft_putnbr_base_fd(long n, char *base, int fd)
 	int	i;
 
 	i = 0;
-	res = malloc(sizeof(char) * 255);
+	res = malloc(sizeof(char) * (ft_numlen(n) + 1));
 	if (!res)
 		return ;
 	if (n < 0 && ft_strlen(base) == 10)
@@ -53,6 +66,8 @@ void	ft_putnbr_base_fd(long n, char *base, int fd)
 	}
 	if (n < 0 && ft_strlen(base) == 16)
 		n *= -1;
+	if (!n)
+		n = 1;
 	while (n)
 	{
 		*(res + i) = *(base + (n % ft_strlen(base)));
@@ -60,7 +75,6 @@ void	ft_putnbr_base_fd(long n, char *base, int fd)
 		i++;
 	}
 	*(res + i) = 0;
-	res = ft_reverse(res);
-	ft_putstr_fd(res, fd);
+	ft_putstr_fd(ft_reverse(res), fd);
 	free(res);
 }
