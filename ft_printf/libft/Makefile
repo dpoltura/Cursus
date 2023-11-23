@@ -6,11 +6,11 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:23:33 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/23 12:41:20 by dpoltura         ###   ########.fr        #
+#    Updated: 2023/11/23 16:40:47 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC= gcc
+CC= clang
 
 CFLAGS= -Wall -Werror -Wextra
 

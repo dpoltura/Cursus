@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 10:02:00 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/23 15:28:14 by dpoltura         ###   ########.fr        #
+#    Updated: 2023/11/23 16:41:25 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,11 @@ LIBFT= $(LIBFT_DIR)/libft.a
 CC= clang
 CFLAGS= -Wall -Werror -Wextra
 SRC=	ft_printf.c \
-		ft_print_s.c \
-		ft_print_c.c \
-		ft_print_p.c \
-		ft_putnbr_x.c
+	ft_format.c \
+	ft_print_s.c \
+	ft_print_c.c \
+	ft_print_p.c \
+	ft_putnbr_x.c
 OBJ= $(SRC:%.c=%.o)
 NAME= libftprintf.a
 

@@ -6,17 +6,17 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:21:57 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/23 15:43:19 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/23 16:23:55 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int    ft_print_c(int args, int j)
+int	ft_print_c(int args, int j)
 {
-    int c;
+	int	c;
 
-    c = args;
-    j += write(1, &c, 1);
-    return (j);
+	c = args;
+	j += write(1, &c, 1);
+	return (j);
 }
