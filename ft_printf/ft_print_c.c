@@ -6,11 +6,11 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 15:21:57 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/23 15:23:39 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:43:19 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf.h"
 
 int    ft_print_c(int args, int j)
 {

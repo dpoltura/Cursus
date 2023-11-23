@@ -6,11 +6,11 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/23 13:43:53 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/23 15:00:07 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:42:39 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
+#include "ft_printf.h"
 
 int	ft_putnbr_x(unsigned int n, char *base, int fd)
 {

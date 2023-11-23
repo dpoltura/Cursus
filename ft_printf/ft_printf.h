@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 08:59:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/23 15:34:42 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:42:24 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFTPRINTF_H
 
 # include <stdarg.h>
-# include <unistd.h>
 # include "libft/libft.h"
 
 int ft_printf( const char *format, ... );

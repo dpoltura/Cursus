@@ -6,12 +6,11 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 09:34:14 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/21 15:13:51 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:42:49 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "libft/libft.h"
 #include <stdio.h>
 
 int main(void)
