@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:34:48 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/21 16:09:28 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/23 10:21:23 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,15 @@ int	ft_putnbr_fd(int n, int fd)
 	int	nbr;
 	int	i;
 
-	i = 0;
+	i = ft_numlen(n);
 	if (n == INT_MIN)
-	{
 		write(fd, "-2147483648", 11);
-		i += 11;
-	}
 	if (n > INT_MIN && n <= INT_MAX)
 	{
 		if (n < 0)
 		{
 			write(fd, "-", 1);
 			n = -n;
-			i++;
 		}
 		r = n % 10;
 		nbr = n / 10;
@@ -41,5 +37,5 @@ int	ft_putnbr_fd(int n, int fd)
 		if (n == 0)
 			n++;
 	}
-	return (ft_numlen(n) + i);
+	return (i);
 }

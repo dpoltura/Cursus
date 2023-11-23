@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:19:41 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/21 16:32:46 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/23 10:57:04 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-void	ft_putnbr_base_fd(long n, char *base, int fd);
+int	ft_putnbr_base_fd(long n, char *base, int fd);
 int	ft_numlen(long n);
 
 #endif
