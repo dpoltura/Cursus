@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_c.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 08:59:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/23 15:34:42 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/23 15:21:57 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/23 15:23:39 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft/libft.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include "libft/libft.h"
+int    ft_print_c(int args, int j)
+{
+    int c;
 
-int ft_printf( const char *format, ... );
-int	ft_putnbr_x(unsigned int n, char *base, int fd);
-int ft_print_s(char *tmp, char *args, int j);
-int ft_print_c(int args, int j);
-int ft_print_p(long tmp, int j, long args);
-
-#endif
+    c = args;
+    j += write(1, &c, 1);
+    return (j);
+}
