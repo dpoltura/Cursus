@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_x.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 08:59:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/23 14:57:49 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/23 13:43:53 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/23 15:00:07 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libft/libft.h"
 
-# include <stdarg.h>
-# include <unistd.h>
+int	ft_putnbr_x(unsigned int n, char *base, int fd)
+{
+	int	i;
 
-int ft_printf( const char *format, ... );
-int	ft_putnbr_x(unsigned int n, char *base, int fd);
-
-#endif
+	i = 0;
+    if (!n)
+    {
+        write(fd, "0", 1);
+        i = 1;
+        return (i);
+    }
+	if (n)
+	{
+		if (n / ft_strlen(base))
+			i += ft_putnbr_x(n / ft_strlen(base), base, fd);
+		i += write(fd, &base[n % ft_strlen(base)], 1);
+	}
+	return (i);
+}

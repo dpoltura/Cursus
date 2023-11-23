@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 08:58:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/23 13:41:51 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/23 15:00:54 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ int ft_printf(const char *format, ... )
             else if (*(format) == 'u')
                 j += ft_putnbr_base_fd(va_arg(args, unsigned int), "0123456789", 1);
             else if (*(format) == 'x')
-                ft_putnbr_base_fd(va_arg(args, long), "0123456789abcdef", 1);
+                j += ft_putnbr_x(va_arg(args, int), "0123456789abcdef", 1);
             else if (*(format) == 'X')
-                ft_putnbr_base_fd(va_arg(args, long), "0123456789ABCDEF", 1);
+                j += ft_putnbr_x(va_arg(args, int), "0123456789ABCDEF", 1);
             else if (*(format) == '%')
             {
                 ft_putchar_fd('%', 1);
