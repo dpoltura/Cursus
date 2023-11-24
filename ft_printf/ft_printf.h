@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 08:59:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/24 06:19:08 by user             ###   ########.fr       */
+/*   Updated: 2023/11/24 09:46:32 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <limits.h>
 
-int		ft_printf( const char *format, ...);
+int		ft_printf(const char *format, ...);
 int		ft_format(const char *format, int j, va_list args, va_list tmp);
 int		ft_putnbr_x(unsigned int n, char *base, int fd);
 int		ft_print_s(char *tmp, char *args, int j);

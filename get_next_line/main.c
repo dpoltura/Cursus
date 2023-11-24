@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/24 09:11:37 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/24 09:33:05 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/24 09:16:20 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/24 09:29:22 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char    *get_next_line(int fd)
+int    main(void)
 {
-    static char    buffer[6];
+    int    fd;
+    char    *res;
 
-    read(fd, buffer, 5);
-    return (buffer);
+    fd = open("test.txt", 'r');
+    res = get_next_line(fd);
+    printf("%s\n", res);
+    return (0);
 }
