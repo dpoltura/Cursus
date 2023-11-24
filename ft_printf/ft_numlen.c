@@ -1,28 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_numlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 09:44:13 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/03 08:34:38 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/21 16:09:51 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/24 06:14:34 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void	*ft_memset(void *s, int c, size_t n)
+int	ft_numlen(long n)
 {
-	size_t	i;
-	char	*p;
+	int	i;
 
 	i = 0;
-	p = (char *)s;
-	while (i < n)
+	if (n <= 0)
 	{
-		p[i] = c;
+		i++;
+		n *= -1;
+	}
+	while (n > 0)
+	{
+		n = n / 10;
 		i++;
 	}
-	return (s);
+	return (i);
 }

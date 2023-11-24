@@ -6,12 +6,10 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/16 10:02:00 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/23 16:41:25 by dpoltura         ###   ########.fr        #
+#    Updated: 2023/11/24 06:13:04 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-LIBFT_DIR= ./libft
-LIBFT= $(LIBFT_DIR)/libft.a
 CC= clang
 CFLAGS= -Wall -Werror -Wextra
 SRC=	ft_printf.c \
@@ -19,26 +17,26 @@ SRC=	ft_printf.c \
 	ft_print_s.c \
 	ft_print_c.c \
 	ft_print_p.c \
-	ft_putnbr_x.c
+	ft_putnbr_x.c \
+	ft_putnbr_base_fd.c \
+	ft_strlen.c \
+	ft_putchar_fd.c \
+	ft_putnbr_fd.c \
+	ft_putstr_fd.c \
+	ft_numlen.c
 OBJ= $(SRC:%.c=%.o)
 NAME= libftprintf.a
 
 all: $(NAME)
 
-$(LIBFT):
-	$(MAKE) -C $(LIBFT_DIR)
-
-$(NAME): $(LIBFT) $(OBJ)
-	cp	$(LIBFT) $(NAME)
+$(NAME): $(OBJ)
 	ar -crs $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
-	$(MAKE) -C $(LIBFT_DIR) clean
 	
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C $(LIBFT_DIR) fclean
 
 re: fclean all
 
