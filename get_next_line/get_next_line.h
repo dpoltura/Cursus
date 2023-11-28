@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:11:11 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/28 10:03:45 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:04:19 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 char    *get_next_line(int fd);
 char	*ft_strjoin(char *s1, const char *s2);
 size_t	ft_strlen(const char *s);
+size_t	ft_n_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 
 #endif

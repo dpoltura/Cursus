@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:16:20 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/28 10:13:08 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:00:49 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ int    main(void)
 
     i = 0;
     fd = open("test.txt", O_RDONLY);
-    while (i < 20)
+    while (i < 2)
     {
         line = get_next_line(fd);
+        printf("%s\n", line);
+        free(line);
         i++;
     }
-    printf("%s\n", line);
-    free(line);
     return (0);
 }
