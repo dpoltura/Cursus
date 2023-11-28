@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:11:37 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/24 15:19:10 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/28 10:12:31 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 
 char    *get_next_line(int fd)
 {
-    static char    *buffer;
-    static char    *res;
-    size_t size;
+    char    *buffer;
+    static char    *line;
+    static char    *n_line;
 
-
-    size = read(fd, buffer, 5);
-    buffer = malloc(sizeof(char) * (size + 1));
+    if (!line)
+    {
+        line = malloc(1);
+        if (!line)
+            return (NULL);
+    }
+    read(fd, buffer, BUFFER_SIZE + 1);
     if (!buffer)
         return (NULL);
-    res = ft_strjoin((const char *)res, (const char *)buffer);
-    free(buffer);
-    return (res);
+    //ft_strchr(buffer, '\n');
+    buffer[BUFFER_SIZE + 1] = 0;
+    line = ft_strjoin(line, buffer);
+    return (line);
 }
