@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:11:11 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/28 17:04:19 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/11/29 14:00:42 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
 # include <fcntl.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
+#ifndef BUFFER_SIZE
 # define BUFFER_SIZE 5
+#endif
 
 char    *get_next_line(int fd);
 char	*ft_strjoin(char *s1, const char *s2);
