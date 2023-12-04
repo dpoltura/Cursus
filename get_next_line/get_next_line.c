@@ -6,11 +6,29 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:11:37 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/12/04 14:01:20 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/12/04 14:21:00 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (str == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
 
 char    *get_next_line(int fd)
 {
@@ -59,12 +77,10 @@ char    *get_next_line(int fd)
             tmp = ft_substr(buffer, 0, ft_n_strlen(buffer));
 			stash = ft_strjoin(line, tmp);
 			free(tmp);
-			tmp = NULL;
 			line = ft_strdup(stash);
 			free(stash);
 			stash = ft_strchr(buffer, '\n');
 			free(buffer);
-			buffer = NULL;
             break ;
         }
     }
