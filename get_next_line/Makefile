@@ -6,13 +6,13 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/30 12:56:28 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/30 14:09:20 by dpoltura         ###   ########.fr        #
+#    Updated: 2023/12/04 10:08:10 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC= clang
 
-CFLAGS= -Wall -Werror -Wextra
+CFLAGS= -Wall -Werror -Wextra -g
 
 SRC=	get_next_line.c \
 		get_next_line_utils.c \

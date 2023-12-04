@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:12:55 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/29 14:09:55 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:46:29 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,19 +60,15 @@ size_t	ft_n_strlen(const char *s)
 
 char	*ft_strchr(const char *s, int c)
 {
-	int	i;
 	int	j;
 
-	i = 0;
 	j = 0;
 	if (c > 256)
 		c -= 256;
-	while (s[i] != '\0')
-		i++;
 	while (s[j] != c)
 	{
 		j++;
-		if (s[j] == '\0' && s[j] != c)
+		if (s[j] == '\0')
 			return (NULL);
 	}
 	return ((char *)s + j);

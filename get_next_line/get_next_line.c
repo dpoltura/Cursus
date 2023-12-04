@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:11:37 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/29 14:18:37 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/12/04 10:44:51 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,28 +16,41 @@ char    *get_next_line(int fd)
 {
     char    *buffer;
     static char    *line;
+	char	*stash;
     static char    *n_line;
-    char    *tmp;
+	int	bytes;
 
     line = NULL;
+	stash = "";
     while (1)
     {
         line = ft_strjoin(line, n_line);
         buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
         if (!buffer)
             return (NULL);
-        read(fd, buffer, BUFFER_SIZE);
-        buffer[BUFFER_SIZE] = 0;
+        bytes = (int)read(fd, buffer, BUFFER_SIZE);
+		if (!bytes || bytes == -1)
+		{
+			free(buffer);
+			return (NULL);
+		}
+        buffer[bytes] = '\0';
         if (!(n_line = ft_strchr(buffer, '\n')))
-            line = ft_strjoin(line, buffer);
+		{
+			stash = line;
+            line = ft_strjoin(stash, buffer);
+		}
         else
         {
             n_line++;
-            tmp = ft_substr(buffer, 0, ft_n_strlen(buffer));
-            line = ft_strjoin(line, tmp);
-            free(tmp);
+            stash = ft_substr(buffer, 0, ft_n_strlen(buffer));
+            line = ft_strjoin(line, stash);
+            free(stash);
+			stash = NULL;
             break ;
         }
     }
+	free(buffer);
+	buffer = NULL;
     return (line);
 }
