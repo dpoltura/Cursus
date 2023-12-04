@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:12:55 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/12/04 10:46:29 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:42:54 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 	while (s2[j] != '\0')
 		str[i++] = s2[j++];
 	str[i] = '\0';
+	free(s1);
 	return (str);
 }
 
@@ -71,7 +72,7 @@ char	*ft_strchr(const char *s, int c)
 		if (s[j] == '\0')
 			return (NULL);
 	}
-	return ((char *)s + j);
+	return ((char *)s + (j + 1));
 }
 
 char	*ft_substr(const char *s, unsigned int start, size_t len)
@@ -100,5 +101,23 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	while (s[i] && j < len)
 		str[j++] = s[i++];
 	str[j] = '\0';
+	return (str);
+}
+
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (str == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
 	return (str);
 }

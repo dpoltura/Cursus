@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:11:11 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/11/29 14:10:00 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/12/04 13:25:41 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ size_t	ft_strlen(const char *s);
 size_t	ft_n_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_strdup(const char *s);
 
 #endif
