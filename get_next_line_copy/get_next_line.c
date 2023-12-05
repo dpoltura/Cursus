@@ -6,21 +6,53 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/24 09:11:37 by dpoltura          #+#    #+#             */
-/*   Updated: 2023/12/04 16:31:39 by dpoltura         ###   ########.fr       */
+/*   Updated: 2023/12/05 10:03:15 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
+unsigned int	ft_strlen(const char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+
+char	*ft_strdup(const char *s)
+{
+	int		i;
+	char	*str;
+
+	i = 0;
+	str = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (str == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		str[i] = s[i];
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}
+
 char    *get_next_line(int fd)
 {
-	char	*buf;
+	static char	*buf = NULL;
 	int	bytes;
-	static char	*line = NULL;
+	char	*line;
 	char	*tmp;
 
+	line = NULL;
+	tmp = NULL;
 	while (1)
 	{
+		if (buf)
+			line = ft_strdup(buf);
 		buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		if (!buf)
 			return (NULL);
@@ -35,15 +67,15 @@ char    *get_next_line(int fd)
 		{
 			tmp = ft_strjoin(line, buf);
 			line = ft_realloc(tmp, BUFFER_SIZE);
+			buf = NULL;
 		}
 		else
 		{
-			tmp = ft_substr(buf, 0, ft_strnlen(buf));
+			tmp = ft_strjoin(line, ft_substr(buf, 0, ft_strnlen(buf)));
 			line = ft_realloc(tmp, 0);
-			tmp = ft_strchr(buf)
-			free(buf);
+			buf = ft_strchr(buf, '\n');
 			break ;
 		}
 	}
-    return (line);
+	return (line);
 }
