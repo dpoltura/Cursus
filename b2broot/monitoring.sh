@@ -1,6 +1,9 @@
 #!/bin/bash
+#
 echo "#Architecture: $(uname -a)"
+#
 echo "#CPU physical : $(nproc --all)"
+#
 echo "#vCPU : $(nproc)"
 #
 total_memory=$(free -h | awk '/^Mem:/ {print $2}')
