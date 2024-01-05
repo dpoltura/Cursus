@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   security.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/05 10:11:47 by dpoltura         ###   ########.fr       */
+/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
+/*   Updated: 2024/01/05 13:15:36 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
+#include "push_swap.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+int	is_digit(char *argv)
+{
+	int	nbr;
+	
+	nbr = ft_atoi(argv);
+	if (nbr == (-1))
+		return (-1);
+	return (nbr);
+}
 
-struct Node {
-    int data;            // champ de données
-    struct Node* next;   // pointeur vers le nœud suivant
-    struct Node* prev;   // pointeur vers le nœud précédent
-};
+int	check(char **argv)
+{
+	int	i;
 
-#endif
+	i = 1;
+	while (argv[i])
+	{
+		if (is_digit(argv[i]) == (-1))
+			return (0);
+		i++;
+	}
+	return (1);
+}

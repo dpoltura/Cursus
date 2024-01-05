@@ -6,73 +6,36 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/05 10:13:13 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/05 13:26:09 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
 
-struct Node* createNode(int data) {
-    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
-    if (newNode == NULL) {
-        printf("Erreur d'allocation de mémoire\n");
-        exit(EXIT_FAILURE);
+void	display(struct t_list *stack)
+{
+    struct t_list *tmp;
+	
+	tmp = stack;
+    while (tmp != NULL) 
+	{
+        putnbr(tmp->nbr);
+        tmp = tmp->next;
     }
-    newNode->data = data;
-    newNode->next = NULL;
-    newNode->prev = NULL;
-    return newNode;
 }
 
-void printForward(struct Node* head) {
-    struct Node* current = head;
-    while (current != NULL) {
-        printf("%d ", current->data);
-        current = current->next;
-    }
-    printf("\n");
-}
-
-void printBackward(struct Node* tail) {
-    struct Node* current = tail;
-    while (current != NULL) {
-        printf("%d ", current->data);
-        current = current->prev;
-    }
-    printf("\n");
-}
-
-int main() {
-    // Création des nœuds
-    struct Node* node1 = createNode(1);
-    struct Node* node2 = createNode(2);
-    struct Node* node3 = createNode(3);
-
-    // Liaisons entre les nœuds
-    node1->next = node2;
-    node2->prev = node1;
-    node2->next = node3;
-    node3->prev = node2;
-
-    // Tête de liste
-    struct Node* head = node1;
-
-    // Affichage vers l'avant
-    printf("Vers l'avant: ");
-    printForward(head);
-
-    // Queue de liste (pour la démonstration)
-    struct Node* tail = node3;
-
-    // Affichage vers l'arrière
-    printf("Vers l'arrière: ");
-    printBackward(tail);
-
-    // Libération de la mémoire
-    free(node1);
-    free(node2);
-    free(node3);
-
-    return 0;
+int main(int argc, char **argv)
+{
+	struct t_list *stack_a;
+	
+	stack_a = NULL;
+	if (argc < 2 || !check(argv))
+	{
+		putstr("Error\n");
+		return (1);
+	}
+	init_a(&stack_a, argv);
+	display(stack_a);
+	free(stack_a);
+	return (0);
 }
