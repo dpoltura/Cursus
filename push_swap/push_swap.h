@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/05 13:26:41 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/05 14:33:49 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ void	putnbr(int nbr);
 int	ft_atoi(const char *nptr);
 int	is_digit(char *argv);
 int	check(char **argv);
+void	swap(struct t_list **stack);
+void    swap_all(struct t_list **stack_a, struct t_list **stack_b);
 
 #endif
