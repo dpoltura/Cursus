@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/05 13:39:46 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/05 15:59:16 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,16 @@ int	ft_atoi(const char *nptr)
 	if (nptr[i - 1] < '0' || nptr[i - 1] > '9')
 		return (-1);
 	return (k * j);
+}
+
+void	free_list(struct t_list **stack)
+{
+	struct t_list	*tmp;
+	
+	while (*stack)
+	{
+		tmp = (*stack)->next;
+		free(*stack);
+		(*stack) = tmp;
+	}
 }
