@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/05 16:09:08 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/06 08:50:59 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 struct t_list {
     int nbr;
     struct t_list *next;
+    struct t_list *prev;
 };
 
 void	init(struct t_list **stack, char *argv);
@@ -32,6 +33,6 @@ int	check(char **argv);
 void	swap(struct t_list **stack);
 void    swap_all(struct t_list **stack_a, struct t_list **stack_b);
 void	free_list(struct t_list **stack);
-void	push_b(struct t_list **stack_a, struct t_list **stack_b);
+void	go_down(struct t_list **stack);
 
 #endif

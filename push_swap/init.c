@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:11:58 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/05 15:50:52 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/05 19:06:51 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init(struct t_list **stack, char *argv)
 	}
 	new_list->nbr = ft_atoi(argv);
 	new_list->next = NULL;
+	new_list->prev = NULL;
 	if (*stack == NULL)
         *stack = new_list;
 	else 

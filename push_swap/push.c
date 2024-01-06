@@ -5,18 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 16:01:44 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/05 16:22:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2024/01/06 08:50:26 by dpoltura          #+#    #+#             */
+/*   Updated: 2024/01/06 08:50:41 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(struct t_list **stack_a, struct t_list **stack_b)
+void	go_down(struct t_list **stack)
 {
-    struct t_list   *tmp;
+	struct t_list	*new_first;
 
-    tmp = (*stack_a);
-    (*stack_a)->next = (*stack_b);
-    (*stack_a)->next = tmp->next;
+	new_first = (struct t_list *)malloc(sizeof(struct t_list));
+	if (!new_first)
+	{
+		putstr("Error\n");
+		return ;
+	}
+	new_first->nbr = 0;
+	new_first->next = *stack;
+	new_first->prev = NULL;
+	*stack = new_first;
 }
