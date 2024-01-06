@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/06 09:23:11 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/06 09:29:54 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	init_a(&stack_a, argv);
-	push_b(&stack_a, &stack_b);
 	display(stack_a);
 	free_list(&stack_a);
 	free_list(&stack_b);
