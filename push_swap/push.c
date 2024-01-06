@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:50:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/06 08:50:41 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/06 09:03:34 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,13 @@ void	go_down(struct t_list **stack)
 	new_first->next = *stack;
 	new_first->prev = NULL;
 	*stack = new_first;
+}
+
+void	go_up(struct t_list **stack)
+{
+	struct t_list	*tmp;
+
+	tmp = (*stack)->next;
+    free(*stack);
+    *stack = tmp;
 }
