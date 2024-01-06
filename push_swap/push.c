@@ -6,13 +6,13 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 08:50:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/06 09:05:58 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/06 09:22:37 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	go_down(struct t_list **stack)
+void	push_b(struct t_list **stack_a, struct t_list **stack_b)
 {
 	struct t_list	*new_first;
 
@@ -22,17 +22,21 @@ void	go_down(struct t_list **stack)
 		putstr("Error\n");
 		return ;
 	}
-	new_first->nbr = 0;
-	new_first->next = *stack;
+	new_first->nbr = rm_first(stack_a);
+	new_first->next = *stack_b;
 	new_first->prev = NULL;
-	*stack = new_first;
+    free_list(&(*stack_b));
+	*stack_b = new_first;
 }
 
-void	rm_first(struct t_list **stack)
+int	rm_first(struct t_list **stack)
 {
 	struct t_list	*tmp;
+    int tmp_bis;
 
 	tmp = (*stack)->next;
+    tmp_bis = (*stack)->nbr;
     free(*stack);
     *stack = tmp;
+    return (tmp_bis);
 }
