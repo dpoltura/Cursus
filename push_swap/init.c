@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:11:58 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/05 19:06:51 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/06 11:54:17 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,27 @@ void	init_a(struct t_list **stack_a, char **argv)
 		init(stack_a, argv[i]);
 		i++;
 	}
+}
+
+void	init_prev(struct t_list **stack)
+{
+	struct t_list	*prev;
+	struct t_list	*current;
+
+	current = (*stack);
+	while (current)
+	{	
+		prev = current;
+		if (!current->next)
+			break ;
+		current = current->next;
+		current->prev = prev;
+	}
+	while (current)
+	{
+		if (!current->prev)
+			break ;
+		current = current->prev;
+	}
+	(*stack) = current;
 }

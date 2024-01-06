@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/06 09:26:21 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/06 11:54:27 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ void    swap_all(struct t_list **stack_a, struct t_list **stack_b);
 void	free_list(struct t_list **stack);
 void	push(struct t_list **sender, struct t_list **receiver);
 int	rm_first(struct t_list **stack);
+void	init_prev(struct t_list **stack);
 
 #endif
