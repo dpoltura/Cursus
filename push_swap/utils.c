@@ -6,11 +6,17 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/08 11:10:37 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/08 20:19:43 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	error(void)
+{
+	putstr("Error\n");
+	exit(EXIT_FAILURE);
+}
 
 void	putstr(char *str)
 {
