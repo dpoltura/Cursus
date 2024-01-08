@@ -6,24 +6,34 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/06 11:54:07 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:43:59 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	display(struct t_list *stack)
+void	display(struct t_list *stack_a, struct t_list *stack_b)
 {
-    struct t_list *tmp;
-	
-	tmp = stack;
-    while (tmp) 
+    while (stack_a) 
 	{
-        putnbr(tmp->nbr);
+        putnbr(stack_a->nbr);
 		putstr(" | ");
-        tmp = tmp->next;
+        stack_a = stack_a->next;
     }
-	putstr("END\n");
+	putstr("END OF STACK 'A'\n");
+	while (stack_b) 
+	{
+        putnbr(stack_b->nbr);
+		putstr(" | ");
+        stack_b = stack_b->next;
+    }
+	putstr("END OF STACK 'B'\n");
+}
+
+void	error(void)
+{
+	putstr("Error\n");
+	exit(EXIT_FAILURE);
 }
 
 int main(int argc, char **argv)
@@ -34,13 +44,10 @@ int main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2 || !check(argv))
-	{
-		putstr("Error\n");
-		return (1);
-	}
-	init_a(&stack_a, argv);
+		error();
+	init(&stack_a, argv);
 	
-	display(stack_a);
+	display(stack_a, stack_b);
 	free_list(&stack_a);
 	free_list(&stack_b);
 	return (0);

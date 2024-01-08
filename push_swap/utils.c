@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/05 15:59:16 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/08 11:10:37 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,6 @@ void	free_list(struct t_list **stack)
 	{
 		tmp = (*stack)->next;
 		free(*stack);
-		(*stack) = tmp;
+		*stack = tmp;
 	}
 }

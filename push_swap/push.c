@@ -5,40 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 08:50:26 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/06 09:27:31 by dpoltura         ###   ########.fr       */
+/*   Created: 2024/01/05 16:01:44 by dpoltura          #+#    #+#             */
+/*   Updated: 2024/01/08 12:21:47 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push(struct t_list **sender, struct t_list **receiver)
+void	push_b(struct t_list **stack_a, struct t_list **stack_b)
 {
-	struct t_list	*new_first;
+    struct t_list   *new_a;
+    struct t_list   *new_b;
 
-    if (!(*sender))
+    if (!(*stack_a))
         return ;
-	new_first = (struct t_list *)malloc(sizeof(struct t_list));
-	if (!new_first)
-	{
-		putstr("Error\n");
-		return ;
-	}
-	new_first->nbr = rm_first(sender);
-	new_first->next = *receiver;
-	new_first->prev = NULL;
-    free_list(&(*receiver));
-	*receiver = new_first;
+    new_b = (struct t_list *)malloc(sizeof(struct t_list));
+    if (!new_b)
+        error();
+    new_b->nbr = (*stack_a)->nbr;
+    new_b->next = *stack_b;
+    *stack_b = new_b;
+    new_a = (*stack_a)->next;
+    free(*stack_a);
+    *stack_a = new_a;
 }
 
-int	rm_first(struct t_list **stack)
+void	push_a(struct t_list **stack_b, struct t_list **stack_a)
 {
-	struct t_list	*tmp;
-    int tmp_bis;
+    struct t_list   *new_a;
+    struct t_list   *new_b;
 
-	tmp = (*stack)->next;
-    tmp_bis = (*stack)->nbr;
-    free(*stack);
-    *stack = tmp;
-    return (tmp_bis);
+    if (!(*stack_b))
+        return ;
+    new_a = (struct t_list *)malloc(sizeof(struct t_list));
+    if (!new_a)
+        error();
+    new_a->nbr = (*stack_b)->nbr;
+    new_a->next = *stack_a;
+    *stack_a = new_a;
+    new_b = (*stack_b)->next;
+    free(*stack_b);
+    *stack_b = new_b;
 }

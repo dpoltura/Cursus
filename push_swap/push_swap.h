@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/06 11:54:27 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/08 13:45:45 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,23 @@
 struct t_list {
     int nbr;
     struct t_list *next;
-    struct t_list *prev;
 };
 
-void	init(struct t_list **stack, char *argv);
-void	init_a(struct t_list **stack_a, char **argv);
+void	error(void);
+int     is_digit(char *argv);
+int     check(char **argv);
 void	putstr(char *str);
 void	putnbr(int nbr);
-int	ft_atoi(const char *nptr);
-int	is_digit(char *argv);
-int	check(char **argv);
-void	swap(struct t_list **stack);
-void    swap_all(struct t_list **stack_a, struct t_list **stack_b);
+int     ft_atoi(const char *nptr);
 void	free_list(struct t_list **stack);
-void	push(struct t_list **sender, struct t_list **receiver);
-int	rm_first(struct t_list **stack);
-void	init_prev(struct t_list **stack);
+void    init(struct t_list **stack, char **argv);
+void	swap(struct t_list **stack);
+void    swap_all(struct t_list *stack_a, struct t_list *stack_b);
+void	push_a(struct t_list **stack_b, struct t_list **stack_a);
+void	push_b(struct t_list **stack_a, struct t_list **stack_b);
+void    rotate(struct t_list **stack);
+void    rotate_all(struct t_list **stack_a, struct t_list **stack_b);
+void    reverse_rotate(struct t_list **stack);
+void    reverse_rotate_all(struct t_list **stack_a, struct t_list **stack_b);
 
 #endif
