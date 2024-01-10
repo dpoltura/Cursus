@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/09/20 12:48:59 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/09/21 09:59:23 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <unistd.h>
 
-int	is_digit(char *argv)
+void	ft_print_alphabet(void);
+
+void	ft_print_alphabet(void)
 {
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
+	char	c;
 
-int	check(char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (argv[i])
+	c = 'a';
+	while (c <= 'z')
 	{
-		if (!is_digit(argv[i]))
-			return (0);
-		i++;
+		write(1, &c, 1);
+		c++;
 	}
-	return (1);
 }

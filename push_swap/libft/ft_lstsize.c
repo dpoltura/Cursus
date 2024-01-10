@@ -1,37 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/15 08:47:58 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/16 13:33:43 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	is_digit(char *argv)
-{
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
-
-int	check(char **argv)
+int	ft_lstsize(t_list *lst)
 {
 	int	i;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	while (lst)
 	{
-		if (!is_digit(argv[i]))
-			return (0);
+		lst = lst->next;
 		i++;
 	}
-	return (1);
+	return (i);
 }

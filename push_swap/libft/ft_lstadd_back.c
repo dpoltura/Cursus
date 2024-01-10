@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/15 08:45:21 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/15 08:45:24 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	is_digit(char *argv)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
+	t_list	*last;
 
-int	check(char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (argv[i])
+	if (lst)
 	{
-		if (!is_digit(argv[i]))
-			return (0);
-		i++;
+		if (*lst)
+		{
+			last = ft_lstlast(*lst);
+			last->next = new;
+		}
+		else
+			*lst = new;
 	}
-	return (1);
 }

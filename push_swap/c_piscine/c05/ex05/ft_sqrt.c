@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/10/04 07:26:04 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/10/04 13:33:25 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <limits.h>
 
-int	is_digit(char *argv)
+int	ft_sqrt(int nb)
 {
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
-
-int	check(char **argv)
-{
+	int	sqrt;
 	int	i;
 
-	i = 1;
-	while (argv[i])
+	sqrt = 0;
+	i = 0;
+	while (sqrt < nb && nb <= INT_MAX - 6)
 	{
-		if (!is_digit(argv[i]))
-			return (0);
+		sqrt = i * i;
+		if (sqrt == nb)
+			return (i);
 		i++;
 	}
-	return (1);
+	return (0);
 }

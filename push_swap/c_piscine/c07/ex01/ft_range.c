@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/10/03 14:16:55 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/10/11 11:58:53 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stdlib.h>
 
-int	is_digit(char *argv)
+int	*ft_range(int min, int max)
 {
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
-
-int	check(char **argv)
-{
+	int	*tab;
 	int	i;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	if (min >= max)
+		return (NULL);
+	tab = malloc(sizeof(int) * (max - min));
+	while (max > min)
 	{
-		if (!is_digit(argv[i]))
-			return (0);
+		tab [i] = min;
 		i++;
+		min++;
 	}
-	return (1);
+	return (tab);
 }

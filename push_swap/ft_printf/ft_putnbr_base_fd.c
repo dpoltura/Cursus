@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_putnbr_base_fd.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/09 17:34:48 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/24 06:10:33 by user             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	is_digit(char *argv)
-{
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
-
-int	check(char **argv)
+int	ft_putnbr_base_fd(long n, char *base, int fd)
 {
 	int	i;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	if (!n)
 	{
-		if (!is_digit(argv[i]))
-			return (0);
+		if (ft_strlen(base) == 10 && !i)
+		{
+			ft_putchar_fd('0', fd);
+			i++;
+		}
+		return (i);
+	}
+	if (n < 0 && ft_strlen(base) == 10)
+	{
+		ft_putchar_fd('-', fd);
+		n *= -1;
 		i++;
 	}
-	return (1);
+	if (n || n < 0)
+	{
+		if (n / ft_strlen(base))
+			i += ft_putnbr_base_fd(n / ft_strlen(base), base, fd);
+		i += write(fd, &base[n % ft_strlen(base)], 1);
+	}
+	return (i);
 }

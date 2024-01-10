@@ -1,37 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/11/16 08:58:56 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/23 16:33:49 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-int	is_digit(char *argv)
+int	ft_printf(const char *format, ...)
 {
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
+	va_list	args;
+	va_list	tmp;
+	int		j;
 
-int	check(char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (argv[i])
+	va_start(args, format);
+	va_copy(tmp, args);
+	j = 0;
+	while (*format)
 	{
-		if (!is_digit(argv[i]))
-			return (0);
-		i++;
+		while (*format == '%')
+		{
+			format++;
+			j = ft_format(format, j, args, tmp);
+			format++;
+		}
+		if (*(format))
+		{
+			write(1, &(*format), 1);
+			format++;
+			j++;
+		}
 	}
-	return (1);
+	va_end(args);
+	va_end(tmp);
+	return (j);
 }

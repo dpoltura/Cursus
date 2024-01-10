@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/09/25 16:04:57 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/09/27 16:40:04 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	is_digit(char *argv)
-{
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
-
-int	check(char **argv)
+char	*ft_strcat(char *dest, char *src)
 {
 	int	i;
+	int	j;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	j = 0;
+	while (dest [i] != '\0')
 	{
-		if (!is_digit(argv[i]))
-			return (0);
 		i++;
 	}
-	return (1);
+	while (src [j] != '\0')
+	{
+		dest [i] = src [j];
+		i++;
+		j++;
+	}
+	dest [i] = '\0';
+	return (dest);
 }

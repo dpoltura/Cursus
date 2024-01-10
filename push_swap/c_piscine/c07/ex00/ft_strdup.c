@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/10/03 12:04:31 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/10/03 14:11:20 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <stdlib.h>
 
-int	is_digit(char *argv)
+char	*ft_strdup(char *src)
 {
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
+	char	*n_str;
+	int		i;
 
-int	check(char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (argv[i])
+	n_str = NULL;
+	i = 0;
+	n_str = malloc(sizeof(char) * *src);
+	if (n_str == NULL)
+		return (NULL);
+	while (src [i] != '\0')
 	{
-		if (!is_digit(argv[i]))
-			return (0);
+		n_str [i] = src [i];
 		i++;
 	}
-	return (1);
+	n_str [i] = '\0';
+	return (n_str);
 }

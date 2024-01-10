@@ -1,37 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/10/03 10:38:41 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/10/03 10:55:30 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include <unistd.h>
 
-int	is_digit(char *argv)
-{
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
-
-int	check(char **argv)
+int	main(int argc, char **argv)
 {
 	int	i;
+	int	j;
 
 	i = 1;
-	while (argv[i])
+	j = 0;
+	while (argc > 1)
 	{
-		if (!is_digit(argv[i]))
-			return (0);
-		i++;
+		write(1, &argv [i][j], 1);
+		j++;
+		if (argv [i][j] == '\0')
+		{
+			write(1, "\n", 1);
+			i++;
+			j = 0;
+			argc--;
+		}
 	}
-	return (1);
+	return (0);
 }

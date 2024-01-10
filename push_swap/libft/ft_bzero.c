@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/10/31 09:44:13 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/11/03 08:35:55 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-int	is_digit(char *argv)
+void	ft_bzero(void *s, size_t n)
 {
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
+	size_t	i;
+	char	*p;
 
-int	check(char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (argv[i])
+	i = 0;
+	p = (char *)s;
+	while (i < n)
 	{
-		if (!is_digit(argv[i]))
-			return (0);
+		p[i] = '\0';
 		i++;
 	}
-	return (1);
 }

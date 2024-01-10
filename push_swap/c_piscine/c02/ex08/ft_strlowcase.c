@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   ft_strlowcase.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Created: 2023/09/25 09:12:38 by dpoltura          #+#    #+#             */
+/*   Updated: 2023/09/26 11:40:27 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
-
-int	is_digit(char *argv)
-{
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
-
-int	check(char **argv)
+char	*ft_strlowcase(char *str)
 {
 	int	i;
 
-	i = 1;
-	while (argv[i])
+	i = 0;
+	while (str [i] != '\0')
 	{
-		if (!is_digit(argv[i]))
-			return (0);
+		while (str [i] >= 'A' && str [i] <= 'Z')
+		{
+			str [i] += 32;
+		}
 		i++;
 	}
-	return (1);
+	return (str);
 }
