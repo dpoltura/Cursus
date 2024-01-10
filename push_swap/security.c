@@ -6,11 +6,17 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:17 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:14:11 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	error(void)
+{
+	putstr("Error\n");
+	exit(EXIT_FAILURE);
+}
 
 int	is_digit(char *argv)
 {

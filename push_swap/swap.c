@@ -6,20 +6,20 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:09:21 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/08 11:30:31 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:31:14 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap(struct t_list **stack)
+int	swap(struct t_list **stack)
 {
     struct t_list   *first;
     int a;
     int b;
     
     if (!(*stack) || !(*stack)->next)
-        return ;
+        return (0);
     first = *stack;
     a = first->nbr;
     *stack = (*stack)->next;
@@ -27,10 +27,16 @@ void	swap(struct t_list **stack)
     first->nbr = b;
     (*stack)->nbr = a;
     *stack = first;
+    putstr("sa/b\n");
+    return (1);
 }
 
-void    swap_all(struct t_list *stack_a, struct t_list *stack_b)
+int    swap_all(struct t_list *stack_a, struct t_list *stack_b)
 {
-    swap(&stack_a);
-    swap(&stack_b);
+    if (!swap(&stack_a))
+        return (0);
+    if (!swap(&stack_b))
+        return (0);
+    putstr("sAll\n");
+    return (1);
 }

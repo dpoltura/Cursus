@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/08 13:45:45 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:44:32 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ void	putnbr(int nbr);
 int     ft_atoi(const char *nptr);
 void	free_list(struct t_list **stack);
 void    init(struct t_list **stack, char **argv);
-void	swap(struct t_list **stack);
-void    swap_all(struct t_list *stack_a, struct t_list *stack_b);
-void	push_a(struct t_list **stack_b, struct t_list **stack_a);
-void	push_b(struct t_list **stack_a, struct t_list **stack_b);
-void    rotate(struct t_list **stack);
-void    rotate_all(struct t_list **stack_a, struct t_list **stack_b);
-void    reverse_rotate(struct t_list **stack);
-void    reverse_rotate_all(struct t_list **stack_a, struct t_list **stack_b);
+int	swap(struct t_list **stack);
+int    swap_all(struct t_list *stack_a, struct t_list *stack_b);
+int	push_a(struct t_list **stack_b, struct t_list **stack_a);
+int	push_b(struct t_list **stack_a, struct t_list **stack_b);
+int    rotate(struct t_list **stack);
+int    rotate_all(struct t_list **stack_a, struct t_list **stack_b);
+int    reverse_rotate(struct t_list **stack);
+int    reverse_rotate_all(struct t_list **stack_a, struct t_list **stack_b);
+int	pivot_three(struct t_list **stack);
+int	pivot_two(struct t_list **stack);
 
 #endif

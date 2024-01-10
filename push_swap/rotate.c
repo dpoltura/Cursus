@@ -6,20 +6,20 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:23:11 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/08 13:36:55 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:30:00 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    reverse_rotate(struct t_list **stack)
+int    reverse_rotate(struct t_list **stack)
 {
     struct t_list   *current;
     struct t_list   *last;
     struct t_list   *first;
 
     if (!(*stack) || !(*stack)->next)
-        return ;
+        return (0);
     current = *stack;
     last = *stack;
     while ((*stack)->next)
@@ -34,15 +34,17 @@ void    reverse_rotate(struct t_list **stack)
     first->next = current;
     free(*stack);
     *stack = first;
+    putstr("rra/b\n");
+    return (1);
 }
 
-void    rotate(struct t_list **stack)
+int    rotate(struct t_list **stack)
 {
     struct t_list   *first;
     struct t_list   *current;
 
     if (!(*stack) || !(*stack)->next)
-        return ;
+        return (0);
     first = (*stack)->next;
     current = (*stack)->next;
     while (current->next)
@@ -55,16 +57,26 @@ void    rotate(struct t_list **stack)
     current->next = NULL;
     free(*stack);
     *stack = first;
+    putstr("ra/b\n");
+    return (1);
 }
 
-void    reverse_rotate_all(struct t_list **stack_a, struct t_list **stack_b)
+int    reverse_rotate_all(struct t_list **stack_a, struct t_list **stack_b)
 {
-    reverse_rotate(stack_a);
-    reverse_rotate(stack_b);
+    if (!reverse_rotate(stack_a))
+        return (0);
+    if (!reverse_rotate(stack_b))
+        return (0);
+    putstr("rrAll\n");
+    return (1);
 }
 
-void    rotate_all(struct t_list **stack_a, struct t_list **stack_b)
+int    rotate_all(struct t_list **stack_a, struct t_list **stack_b)
 {
-    rotate(stack_a);
-    rotate(stack_b);
+    if (!rotate(stack_a))
+        return (0);
+    if (!rotate(stack_b))
+        return (0);
+    putstr("rAll\n");
+    return (1);
 }

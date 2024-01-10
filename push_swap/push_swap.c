@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:48:31 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:44:17 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,22 @@ void	display(struct t_list *stack_a, struct t_list *stack_b)
 	putstr("END OF STACK 'B'\n");
 }
 
-void	error(void)
-{
-	putstr("Error\n");
-	exit(EXIT_FAILURE);
-}
-
 int main(int argc, char **argv)
 {
 	struct t_list *stack_a;
 	struct t_list *stack_b;
+	int	op;
 	
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2 || !check(argv))
 		error();
 	init(&stack_a, argv);
-	
+	display(stack_a, NULL);
+	op = pivot_two(&stack_a);
+	putstr("op : ");
+	putnbr(op);
+	putstr("\n");
 	display(stack_a, stack_b);
 	free_list(&stack_a);
 	free_list(&stack_b);

@@ -6,19 +6,19 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:01:44 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/08 17:02:15 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/10 11:26:17 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_b(struct t_list **stack_a, struct t_list **stack_b)
+int	push_b(struct t_list **stack_a, struct t_list **stack_b)
 {
     struct t_list   *new_a;
     struct t_list   *new_b;
 
     if (!(*stack_a))
-        return ;
+        return (0);
     new_b = (struct t_list *)malloc(sizeof(struct t_list));
     if (!new_b)
         error();
@@ -28,15 +28,17 @@ void	push_b(struct t_list **stack_a, struct t_list **stack_b)
     new_a = (*stack_a)->next;
     free(*stack_a);
     *stack_a = new_a;
+    putstr("pb\n");
+    return (1);
 }
 
-void	push_a(struct t_list **stack_b, struct t_list **stack_a)
+int	push_a(struct t_list **stack_b, struct t_list **stack_a)
 {
     struct t_list   *new_a;
     struct t_list   *new_b;
 
     if (!(*stack_b))
-        return ;
+        return (0);
     new_a = (struct t_list *)malloc(sizeof(struct t_list));
     if (!new_a)
         error();
@@ -46,4 +48,6 @@ void	push_a(struct t_list **stack_b, struct t_list **stack_a)
     new_b = (*stack_b)->next;
     free(*stack_b);
     *stack_b = new_b;
+    putstr("pa\n");
+    return (1);
 }
