@@ -5,30 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/11 11:59:26 by dpoltura          #+#    #+#              #
-#    Updated: 2024/01/11 14:44:28 by dpoltura         ###   ########.fr        #
+#    Created: 2024/01/16 08:46:25 by dpoltura          #+#    #+#              #
+#    Updated: 2024/01/16 08:56:29 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
 
-CFLAG = -Wall -Werror -Wextra
+CFLAGS = -Wextra -Werror -Wall
 
-SRC = main.c
+SRCS = 	init.c \
+		push_swap.c \
+		push.c \
+		rotate.c \
+		security.c \
+		swap.c \
+		utils.c
 
-OBJ = $(SRC:%.c=%.o)
+OBJS = $(SRCS:%.c=%.o)
 
-INCLUDE = -Lminilibx-linux -lmlx -lX11 -lXext
+NAME = push_swap
 
-NAME = so_long
+all : $(OBJS) $(NAME)
 
-$(NAME) : $(OBJ)
-	$(CC) $(CFLAG) $(OBJ) $(INCLUDE) -o $(NAME)
-
-all : $(NAME)
+$(NAME) :
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean :
-	rm -r $(OBJ)
+	rm -r $(OBJS)
 
 fclean : clean
 	rm -r $(NAME)

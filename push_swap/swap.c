@@ -6,37 +6,48 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:09:21 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 11:31:14 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/16 09:53:30 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	swap(struct t_list **stack)
+int	swap(t_list **stack, int choice)
 {
-    struct t_list   *first;
-    int a;
-    int b;
+    t_list  *first;
+    t_list  *second;
+    t_list  *third;
     
     if (!(*stack) || !(*stack)->next)
         return (0);
     first = *stack;
-    a = first->nbr;
-    *stack = (*stack)->next;
-    b = (*stack)->nbr;
-    first->nbr = b;
-    (*stack)->nbr = a;
-    *stack = first;
-    putstr("sa/b\n");
+    second = (*stack)->next;
+    third = NULL;
+    if (second->next)
+    {
+        third = second->next;
+        third->prev = first;
+    }
+    if (third)
+        first->next = third;
+    else
+        first->next = NULL;
+    first->prev = second;
+    second->next = first;
+    second->prev = NULL;
+    if (choice == 1)
+        putstr("sa\n");
+    else if (choice == 2)
+        putstr("sb\n");
+    *stack = second;
+    index_list(stack);
     return (1);
 }
 
-int    swap_all(struct t_list *stack_a, struct t_list *stack_b)
+int    swap_all(t_list **stack_a, t_list **stack_b)
 {
-    if (!swap(&stack_a))
+    if (!swap(stack_a, 0) && !swap(stack_b, 0))
         return (0);
-    if (!swap(&stack_b))
-        return (0);
-    putstr("sAll\n");
+    putstr("ss\n");
     return (1);
 }

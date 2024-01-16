@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 08:49:43 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/16 09:52:10 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,32 @@ int	ft_atoi(const char *nptr)
 	return (k * j);
 }
 
-void	free_list(struct t_list **stack)
+void	free_list(t_list **stack)
 {
-	struct t_list	*tmp;
+	t_list	*current;
 	
-	while (*stack)
+	current = *stack;
+	while (current)
 	{
-		tmp = (*stack)->next;
+		current = current->next;
 		free(*stack);
-		*stack = tmp;
+		*stack = current;	
+	}
+}
+
+void	index_list(t_list **stack)
+{
+	t_list	*current;
+	int	i;
+
+	if (!(*stack))
+		return ;
+	current = *stack;
+	i = 1;
+	while (current)
+	{
+		current->index = i;
+		current = current->next;
+		i++;
 	}
 }

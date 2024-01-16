@@ -6,77 +6,76 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:23:11 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/10 11:30:00 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/16 09:54:01 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int    reverse_rotate(struct t_list **stack)
+int    reverse_rotate(t_list **stack, int choice)
 {
-    struct t_list   *current;
-    struct t_list   *last;
-    struct t_list   *first;
+    t_list   *last;
+    t_list   *first;
+    t_list   *new_last;
 
     if (!(*stack) || !(*stack)->next)
         return (0);
-    current = *stack;
     last = *stack;
-    while ((*stack)->next)
-        *stack = (*stack)->next;
-    first = (struct t_list *)malloc(sizeof(struct t_list));
-    if (!first)
-        error();
-    first->nbr = (*stack)->nbr;
-    while (last->next != *stack)
+    first = *stack;
+    while (last->next)
         last = last->next;
-    last->next = NULL;
-    first->next = current;
-    free(*stack);
-    *stack = first;
-    putstr("rra/b\n");
+    new_last = last->prev;
+    new_last->next = NULL;
+    first->prev = last;
+    last->prev = NULL;
+    last->next = first;
+    *stack = last;
+    index_list(stack);
+    if (choice == 1)
+        putstr("rra\n");
+    else if (choice == 2)
+        putstr("rrb\n");
     return (1);
 }
 
-int    rotate(struct t_list **stack)
+int    rotate(t_list **stack, int choice)
 {
-    struct t_list   *first;
-    struct t_list   *current;
+    t_list   *first;
+    t_list   *new_first;
+    t_list   *last;
 
     if (!(*stack) || !(*stack)->next)
         return (0);
-    first = (*stack)->next;
-    current = (*stack)->next;
-    while (current->next)
-        current = current->next;
-    current->next = (struct t_list *)malloc(sizeof(struct t_list));
-    if (!current->next)
-        error();
-    current = current->next;
-    current->nbr = (*stack)->nbr;
-    current->next = NULL;
-    free(*stack);
-    *stack = first;
-    putstr("ra/b\n");
+    first = *stack;
+    new_first = (*stack)->next;
+    new_first->prev = NULL;
+    last = *stack;
+    while (last->next)
+        last = last->next;
+    first->prev = last;
+    first->next = NULL;
+    last->next = first;
+    *stack = new_first;
+    index_list(stack);
+    if (choice == 1)
+        putstr("ra\n");
+    else if (choice == 2)
+        putstr("rb\n");
     return (1);
 }
 
-int    reverse_rotate_all(struct t_list **stack_a, struct t_list **stack_b)
+int    reverse_rotate_all(t_list **stack_a, t_list **stack_b)
 {
-    if (!reverse_rotate(stack_a))
+    if (!reverse_rotate(stack_a, 0) && !reverse_rotate(stack_b, 0))
         return (0);
-    if (!reverse_rotate(stack_b))
-        return (0);
-    putstr("rrAll\n");
+    putstr("rrr\n");
     return (1);
 }
 
-int    rotate_all(struct t_list **stack_a, struct t_list **stack_b)
+int    rotate_all(t_list **stack_a, t_list **stack_b)
 {
-    if (!rotate(stack_a))
+    if (!rotate(stack_a, 0) && !rotate(stack_b, 0))
         return (0);
-    if (!rotate(stack_b))
-        return (0);
-    putstr("rAll\n");
+    putstr("rr\n");
     return (1);
 }
