@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 16:01:44 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/16 09:54:44 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:31:11 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,7 @@ int	push_b(t_list **stack_a, t_list **stack_b)
     else
         new_b->next = NULL;
     *stack_a = new_a;
-    index_list(stack_a);
     *stack_b = new_b;
-    index_list(stack_b);
     putstr("pb\n");
     return (1);
 }
@@ -69,9 +67,7 @@ int	push_a(t_list **stack_b, t_list **stack_a)
     else
         new_a->next = NULL;
     *stack_a = new_a;
-    index_list(stack_a);
     *stack_b = new_b;
-    index_list(stack_b);
     putstr("pa\n");
     return (1);
 }

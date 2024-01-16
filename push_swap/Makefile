@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/16 08:46:25 by dpoltura          #+#    #+#              #
-#    Updated: 2024/01/16 08:56:29 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/01/16 13:27:46 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS = 	init.c \
 		rotate.c \
 		security.c \
 		swap.c \
-		utils.c
+		utils.c \
+		algo.c
 
 OBJS = $(SRCS:%.c=%.o)
 

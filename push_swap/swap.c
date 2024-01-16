@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:09:21 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/16 09:53:30 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:30:43 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	swap(t_list **stack, int choice)
     else if (choice == 2)
         putstr("sb\n");
     *stack = second;
-    index_list(stack);
     return (1);
 }
 

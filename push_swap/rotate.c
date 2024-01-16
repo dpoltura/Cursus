@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:23:11 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/16 09:54:01 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:30:58 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ int    reverse_rotate(t_list **stack, int choice)
     last->prev = NULL;
     last->next = first;
     *stack = last;
-    index_list(stack);
     if (choice == 1)
         putstr("rra\n");
     else if (choice == 2)
@@ -56,7 +55,6 @@ int    rotate(t_list **stack, int choice)
     first->next = NULL;
     last->next = first;
     *stack = new_first;
-    index_list(stack);
     if (choice == 1)
         putstr("ra\n");
     else if (choice == 2)
