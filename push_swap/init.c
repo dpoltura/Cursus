@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:11:58 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/16 11:31:23 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:26:18 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	init(t_list **stack, char **argv)
 	while (argv[i])
 	{
 		(*stack)->nbr = ft_atoi(argv[i]);
-		(*stack)->index = i;
+		(*stack)->index = 0;
 		if (argv[i + 1])
 		{
 			(*stack)->next = (t_list *)malloc(sizeof(t_list));

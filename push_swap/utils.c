@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/16 13:10:55 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/17 10:06:58 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,22 +84,4 @@ void	free_list(t_list **stack)
 		free(*stack);
 		*stack = current;	
 	}
-}
-
-int	index_list(t_list **stack)
-{
-	t_list	*current;
-	int	i;
-
-	if (!(*stack))
-		return (0);
-	current = *stack;
-	i = 1;
-	while (current)
-	{
-		current->index = i;
-		current = current->next;
-		i++;
-	}
-	return (i - 1);
 }

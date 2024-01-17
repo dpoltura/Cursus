@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/16 15:30:50 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/17 13:02:47 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int main(int argc, char **argv)
 {
 	t_list *stack_a;
 	t_list *stack_b;
-	
+
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc < 2 || !check(argv))
 		error();
 	init(&stack_a, argv);
-	r_or_rr(&stack_a, &stack_b);
+	printf("%d\n", algo(&stack_a, &stack_b, 1));
 	display(stack_a, stack_b);
 	free_list(&stack_a);
 	free_list(&stack_b);
