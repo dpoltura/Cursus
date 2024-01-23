@@ -6,36 +6,33 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:57:33 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/11 16:35:21 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:23:18 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# define TILE_SIZE 16
-
 # include "minilibx-linux/mlx.h"
+# include "../libft/libft.h"
 # include <stdlib.h>
+# include <unistd.h>
+# include <fcntl.h>
+# include <stdio.h>
 
 typedef struct  s_data
 {
     void    *mlx;
     void    *window;
-}   t_data;
-
-typedef struct  s_size
-{
-    int width;
-    int height;
-}   t_size;
-
-typedef struct  s_image {
+    int     window_width;
+    int     window_height;
     void    *image;
-    char    *address;
-    int bits_per_pixel;
-    int size_line;
-    int endian;
-} t_image;
+    char    *image_address;
+    int     image_width;
+    int     image_height;
+    int     x;
+    int     y;
+    
+}   t_data;
 
 #endif

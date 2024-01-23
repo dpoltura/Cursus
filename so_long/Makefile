@@ -6,33 +6,34 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 11:59:26 by dpoltura          #+#    #+#              #
-#    Updated: 2024/01/11 14:44:28 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/01/23 13:26:31 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
-
-CFLAG = -Wall -Werror -Wextra
-
+CFLAGS = -Wall -Werror -Wextra
 SRC = main.c
-
 OBJ = $(SRC:%.c=%.o)
-
-INCLUDE = -Lminilibx-linux -lmlx -lX11 -lXext
-
+INCLUDE = -L minilibx-linux -lmlx -lX11 -lXext -L ../libft -lft
+LIBFT = libft.a
 NAME = so_long
 
-$(NAME) : $(OBJ)
-	$(CC) $(CFLAG) $(OBJ) $(INCLUDE) -o $(NAME)
+$(NAME): $(LIBFT) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(INCLUDE)
 
-all : $(NAME)
+$(LIBFT):
+	$(MAKE) -C ../libft
 
-clean :
-	rm -r $(OBJ)
+all: $(LIBFT) $(NAME)
 
-fclean : clean
-	rm -r $(NAME)
+clean:
+	rm -f $(OBJ)
+	$(MAKE) -C ../libft/ clean
 
-re : fclean all
+fclean: clean
+	rm -f $(NAME)
+	$(MAKE) -C ../libft/ fclean
 
-.PHONY : all clean fclean re
+re: fclean all
+
+.PHONY: all clean fclean re
