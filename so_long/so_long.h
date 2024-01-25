@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:57:33 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/23 14:20:09 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/25 15:05:22 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ typedef struct  s_data
     int     image_height;
     int     x;
     int     y;
-    
+    int     char_x;
+    int     char_y;
 }   t_data;
 
 #endif
