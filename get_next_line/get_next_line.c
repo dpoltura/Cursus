@@ -46,7 +46,7 @@ char	*ft_buftostr(char *str, int fd)
 			return (NULL);
 		}
 		buf[chrd] = '\0';
-		str = ft_strjoin(str, buf);
+		str = ft_strjoin_gnl(str, buf);
 	}
 	free(buf);
 	return (str);

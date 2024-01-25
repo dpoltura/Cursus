@@ -56,7 +56,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	return ((void *)res);
 }
 
-char	*ft_strjoin(char *s1, const char *s2)
+char	*ft_strjoin_gnl(char *s1, const char *s2)
 {
 	char	*str;
 	int		i;

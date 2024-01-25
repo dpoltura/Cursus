@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:51:41 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/23 13:20:15 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/25 09:29:13 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,55 +18,75 @@ int close_window(t_data *data)
     exit(0);
 }
 
-void    window_size(char *map, t_data *data)
+void    window_width(char *map, t_data *data)
 {
     int fd;
-    char    buffer[1];
-    int window_width;
-    int window_height;
-
+    char    *line;
+    int width;
+    int i;
+    
     fd = open(map, O_RDONLY);
-    if (fd == -1)
+    line = get_next_line(fd);
+    i = 0;
+    while (line[i] != '\n')
+        i++;
+    width = i * 32;
+    data->window_width = width;
+    close(fd);
+}
+
+void    window_height(char *map, t_data *data)
+{
+    int fd;
+    char    *line;
+    int height;
+    
+    fd = open(map, O_RDONLY);
+    line = get_next_line(fd);
+    height = 0;
+    while (line)
     {
-        perror("\033[1;31m[MAP ERROR]");
-        exit(EXIT_FAILURE);
+        height += 32;
+        line = get_next_line(fd);
     }
-    window_width = 0;
-    window_height = 0;
-    read(fd, buffer, sizeof(buffer));
-    while (fd)
-    {
-        while (buffer[0] != '\n')
-        {
-            read(fd, buffer, sizeof(buffer));
-            if (!window_height)
-                window_width += 32;
-        }
-        window_height += 32;
-        break ;
-    }
-    data->window_height = window_height;
-    data->window_width = window_width;
+    data->window_height = height;
     close(fd);
 }
 
 void    draw_map(char *map, t_data *data)
 {
     int fd;
-    char    buffer[1];
+    char    *line;
+    int i;
 
     fd = open(map, O_RDONLY);
     data->x = 0;
     data->y = 0;
-    while (fd)
+    data->image_address = mlx_xpm_file_to_image(data->mlx, "New-Piskel.xpm", &data->image_width, &data->image_height);
+    line = get_next_line(fd);
+    i = 0;
+    while (line)
     {
-        read(fd, buffer, sizeof(buffer));
-        if (buffer[0] == '1')
-            data->image_address = mlx_xpm_file_to_image(data->mlx, "New-Piskel.xpm", &data->image_width, &data->image_height);
+        while (line[i] == '1')
+        {
+            mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->x, data->y);
+            data->x += 32;
+            i++;
+        }
+        if (line[i] == '\n')
+        {
+            data->y += 32;
+            line = get_next_line(fd);
+            i = 0;
+            data->x = 0;
+        }
+        else if (line[i] == 'E' || line[i] == '0' || line[i] == 'C' || line[i] == 'P')
+        {
+            data->x += 32;
+            i++;
+        }
         else
             break ;
-        mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->x, data->y);
-        data->x += 32;
     }
     close(fd);
 }
@@ -79,7 +99,8 @@ int main(int argc, char **argv)
     if (argc != 2)
         return (0);
     map = ft_strjoin(argv[1], ".ber");
-    window_size(map, &data);
+    window_width(map, &data);
+    window_height(map, &data);
     data.mlx = mlx_init();
     data.window = mlx_new_window(data.mlx, data.window_width, data.window_height, "so_long");
     draw_map(map, &data);
