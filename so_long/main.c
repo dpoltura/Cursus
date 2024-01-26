@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:51:41 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/25 15:05:29 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:19:12 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,19 @@ void    window_width(char *map, t_data *data)
     
     fd = open(map, O_RDONLY);
     line = get_next_line(fd);
+    data->tab = malloc(sizeof(char *) * 100);
     i = 0;
     while (line[i] != '\n')
         i++;
     width = i * 32;
     data->window_width = width;
+    i = 0;
+    while (line)
+    {
+        data->tab[i] = line;
+        line = get_next_line(fd);
+        i++;
+    }
     close(fd);
 }
 
@@ -116,37 +124,49 @@ void    draw_map(char *map, t_data *data)
 
 int	key_hook(int keycode, t_data *data)
 {
-    if (keycode == 119)
+    if (keycode == 119 && data->tab[data->char_y / 32 - 1][data->char_x / 32] != '1')
     {
         data->image_address = mlx_xpm_file_to_image(data->mlx, "black.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
         data->char_y -= 32;
         data->image_address = mlx_xpm_file_to_image(data->mlx, "char.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+        data->moves += 1;
+        ft_printf("Moves : %d\n", data->moves);
     }
-    else if (keycode == 97)
+    else if (keycode == 97 && data->tab[data->char_y / 32][data->char_x / 32 - 1] != '1')
     {
         data->image_address = mlx_xpm_file_to_image(data->mlx, "black.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
         data->char_x -= 32;
         data->image_address = mlx_xpm_file_to_image(data->mlx, "char.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+        data->moves += 1;
+        ft_printf("Moves : %d\n", data->moves);
     }
-    else if (keycode == 115)
+    else if (keycode == 115 && data->tab[data->char_y / 32 + 1][data->char_x / 32] != '1')
     {
         data->image_address = mlx_xpm_file_to_image(data->mlx, "black.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
         data->char_y += 32;
         data->image_address = mlx_xpm_file_to_image(data->mlx, "char.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+        data->moves += 1;
+        ft_printf("Moves : %d\n", data->moves);
     }
-    else if (keycode == 100)
+    else if (keycode == 100 && data->tab[data->char_y / 32][data->char_x / 32 + 1] != '1')
     {
         data->image_address = mlx_xpm_file_to_image(data->mlx, "black.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
         data->char_x += 32;
         data->image_address = mlx_xpm_file_to_image(data->mlx, "char.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+        data->moves += 1;
+        ft_printf("Moves : %d\n", data->moves);
+    }
+    if (data->tab[data->char_y / 32][data->char_x / 32] == 'E')
+    {
+        exit (0);
     }
 	return (0);
 }

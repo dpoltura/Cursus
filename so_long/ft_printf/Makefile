@@ -5,42 +5,42 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/01/11 11:59:26 by dpoltura          #+#    #+#              #
-#    Updated: 2024/01/26 17:12:08 by dpoltura         ###   ########.fr        #
+#    Created: 2023/11/16 10:02:00 by dpoltura          #+#    #+#              #
+#    Updated: 2023/11/24 08:41:10 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang
-CFLAGS = -Wall -Werror -Wextra
-SRC =	main.c \
-		get_next_line/get_next_line.c \
-		get_next_line/get_next_line_utils.c
-OBJ = $(SRC:%.c=%.o)
-INCLUDE = -L minilibx-linux -lmlx -lX11 -lXext -L libft -lft -L ft_printf -lftprintf
-LIBFT = libft.a
-FT_PRINTF = libftprintf.a
-NAME = so_long
+CC= clang
 
-$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(INCLUDE)
+CFLAGS= -Wall -Werror -Wextra
 
-$(LIBFT):
-	$(MAKE) -C libft
+SRC=	ft_printf.c \
+	ft_format.c \
+	ft_print_s.c \
+	ft_print_c.c \
+	ft_print_p.c \
+	ft_putnbr_x.c \
+	ft_putnbr_base_fd.c \
+	ft_strlen.c \
+	ft_putchar_fd.c \
+	ft_putnbr_fd.c \
+	ft_putstr_fd.c \
+	ft_numlen.c
 
-$(FT_PRINTF):
-	$(MAKE) -C ft_printf
+OBJ= $(SRC:%.c=%.o)
 
-all: $(LIBFT) $(FT_PRINTF) $(NAME)
+NAME= libftprintf.a
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	ar -crs $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
-	$(MAKE) -C libft clean
-	$(MAKE) -C ft_printf clean
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C libft fclean
-	$(MAKE) -C ft_printf fclean
 
 re: fclean all
 

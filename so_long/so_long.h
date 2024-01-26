@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:57:33 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/25 15:05:22 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:17:20 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 # define SO_LONG_H
 
 # include "minilibx-linux/mlx.h"
-# include "../libft/libft.h"
-# include "../get_next_line/get_next_line.h"
+# include "libft/libft.h"
+# include "get_next_line/get_next_line.h"
+# include "ft_printf/ft_printf.h"
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -35,6 +36,8 @@ typedef struct  s_data
     int     y;
     int     char_x;
     int     char_y;
+    char    **tab;
+    int     moves;
 }   t_data;
 
 #endif
