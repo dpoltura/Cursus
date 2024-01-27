@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:51:41 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/27 12:56:57 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/27 13:30:45 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,20 @@ int close_window(t_data *data)
     exit(0);
 }
 
+int    fd_map_error(char *map)
+{
+    int     fd;
+
+    fd = open(map, O_RDONLY);
+    if (!fd || fd == -1)
+    {
+        perror(map);
+        free(map);
+        exit (0);
+    }
+    return (fd);
+}
+
 void    window_width(char *map, t_data *data)
 {
     int fd;
@@ -25,7 +39,7 @@ void    window_width(char *map, t_data *data)
     int width;
     int i;
     
-    fd = open(map, O_RDONLY);
+    fd = fd_map_error(map);
     line = get_next_line(fd);
     data->tab = malloc(sizeof(char *) * 100);
     i = 0;
@@ -49,7 +63,7 @@ void    window_height(char *map, t_data *data)
     char    *line;
     int height;
     
-    fd = open(map, O_RDONLY);
+    fd = fd_map_error(map);
     line = get_next_line(fd);
     height = 0;
     while (line)
@@ -67,7 +81,7 @@ void    draw_map(char *map, t_data *data)
     char    *line;
     int i;
 
-    fd = open(map, O_RDONLY);
+    fd = fd_map_error(map);
     line = get_next_line(fd);
     i = 0;
     while (line)
@@ -199,8 +213,8 @@ int main(int argc, char **argv)
 
     if (argc != 2)
         return (0);
-    init_data(&data);
     map = ft_strjoin(argv[1], ".ber");
+    init_data(&data);
     window_width(map, &data);
     window_height(map, &data);
     data.mlx = mlx_init();
