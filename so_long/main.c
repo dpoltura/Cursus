@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:51:41 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/26 17:19:12 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/27 11:58:41 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int	key_hook(int keycode, t_data *data)
         data->char_y -= 32;
         data->image_address = mlx_xpm_file_to_image(data->mlx, "char.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->moves += 1;
+        data->moves++;
         ft_printf("Moves : %d\n", data->moves);
     }
     else if (keycode == 97 && data->tab[data->char_y / 32][data->char_x / 32 - 1] != '1')
