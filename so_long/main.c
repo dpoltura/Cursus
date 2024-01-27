@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:51:41 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/27 11:58:41 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/01/27 12:56:57 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ void    draw_map(char *map, t_data *data)
     int i;
 
     fd = open(map, O_RDONLY);
-    data->x = 0;
-    data->y = 0;
     line = get_next_line(fd);
     i = 0;
     while (line)
@@ -131,7 +129,7 @@ int	key_hook(int keycode, t_data *data)
         data->char_y -= 32;
         data->image_address = mlx_xpm_file_to_image(data->mlx, "char.xpm", &data->image_width, &data->image_height);
         mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->moves++;
+        data->moves += 1;
         ft_printf("Moves : %d\n", data->moves);
     }
     else if (keycode == 97 && data->tab[data->char_y / 32][data->char_x / 32 - 1] != '1')
@@ -164,11 +162,34 @@ int	key_hook(int keycode, t_data *data)
         data->moves += 1;
         ft_printf("Moves : %d\n", data->moves);
     }
+    else if (keycode == 65307 || keycode == 17)
+    {
+        close_window(data);
+        exit (0);
+    }
     if (data->tab[data->char_y / 32][data->char_x / 32] == 'E')
     {
         exit (0);
     }
 	return (0);
+}
+
+void    init_data(t_data *data)
+{
+    data->mlx = NULL;
+    data->window = NULL;
+    data->window_width = 0;
+    data->window_height = 0;
+    data->image = NULL;
+    data->image_address = NULL;
+    data->image_width = 0;
+    data->image_height = 0;
+    data->x = 0;
+    data->y = 0;
+    data->char_x = 0;
+    data->char_y = 0;
+    data->tab = NULL;
+    data->moves = 0;
 }
 
 int main(int argc, char **argv)
@@ -178,6 +199,7 @@ int main(int argc, char **argv)
 
     if (argc != 2)
         return (0);
+    init_data(&data);
     map = ft_strjoin(argv[1], ".ber");
     window_width(map, &data);
     window_height(map, &data);
