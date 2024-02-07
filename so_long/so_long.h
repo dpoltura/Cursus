@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:57:33 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/07 09:43:26 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:08:56 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,24 @@ typedef struct  s_data
     int     char_y;
     char    **tab;
     int     moves;
+    int     i;
+    int     fd;
+    char    *line;
+    char    *map;
+    char    *path;
+    int     items;
 }   t_data;
+
+void    key_w(t_data *data);
+void    key_a(t_data *data);
+void    key_s(t_data *data);
+void    key_d(t_data *data);
+int	key_hook(int keycode, t_data *data);
+int close_window(t_data *data);
+void    put_obey(t_data *data);
+void    put_bomb(t_data *data);
+void    put_char(t_data *data);
+void    put_exit(t_data *data);
+void    new_line(t_data *data);
 
 #endif

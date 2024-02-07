@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:51:41 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/07 09:45:57 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/07 11:07:56 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,174 +18,86 @@ int close_window(t_data *data)
     exit(0);
 }
 
-int    fd_map_error(char *map)
+void    fd_map_error(t_data *data)
 {
-    int     fd;
-
-    fd = open(map, O_RDONLY);
-    if (!fd || fd == -1)
+    data->fd = open(data->map, O_RDONLY);
+    if (!data->fd || data->fd == -1)
     {
-        perror(map);
-        free(map);
+        perror(data->map);
+        free(data->map);
+        free(data->path);
         exit (0);
     }
-    return (fd);
 }
 
-void    window_width(char *map, t_data *data)
+void    window_width(t_data *data)
 {
-    int fd;
-    char    *line;
     int width;
     int i;
     
-    fd = fd_map_error(map);
-    line = get_next_line(fd);
+    fd_map_error(data);
+    data->line = get_next_line(data->fd);
     data->tab = malloc(sizeof(char *) * 100);
     i = 0;
-    while (line[i] != '\n')
+    while (data->line[i] != '\n')
         i++;
     width = i * 32;
     data->window_width = width;
     i = 0;
-    while (line)
+    while (data->line)
     {
-        data->tab[i] = line;
-        line = get_next_line(fd);
+        data->tab[i] = data->line;
+        data->line = get_next_line(data->fd);
         i++;
     }
-    close(fd);
+    free(data->line);
+    close(data->fd);
 }
 
-void    window_height(char *map, t_data *data)
+void    window_height(t_data *data)
 {
-    int fd;
-    char    *line;
     int height;
     
-    fd = fd_map_error(map);
-    line = get_next_line(fd);
+    fd_map_error(data);
+    data->line = get_next_line(data->fd);
     height = 0;
-    while (line)
+    while (data->line)
     {
         height += 32;
-        line = get_next_line(fd);
+        free(data->line);
+        data->line = get_next_line(data->fd);
     }
     data->window_height = height;
-    close(fd);
+    free(data->line);
+    close(data->fd);
 }
 
-void    draw_map(char *map, t_data *data)
+void    draw_map(t_data *data)
 {
-    int fd;
-    char    *line;
-    int i;
-
-    fd = fd_map_error(map);
-    line = get_next_line(fd);
-    i = 0;
-    while (line)
+    fd_map_error(data);
+    data->line = get_next_line(data->fd);
+    while (data->line)
     {
-        while (line[i] == '1')
-        {
-            data->image_address = mlx_xpm_file_to_image(data->mlx, "src/obey.xpm", &data->image_width, &data->image_height);
-            mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->x, data->y);
-            data->x += 32;
-            i++;
-        }
-        if (line[i] == 'C')
-        {
-            data->image_address = mlx_xpm_file_to_image(data->mlx, "src/bomb.xpm", &data->image_width, &data->image_height);
-            mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->x, data->y);
-            data->x += 32;
-            i++;
-        }
-        else if (line[i] == 'P')
-        {
-            data->image_address = mlx_xpm_file_to_image(data->mlx, "src/char.xpm", &data->image_width, &data->image_height);
-            mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->x, data->y);
-            data->char_x = data->x;
-            data->char_y = data->y;
-            data->x += 32;
-            i++;
-        }
-        else if (line[i] == 'E')
-        {
-            data->image_address = mlx_xpm_file_to_image(data->mlx, "src/exit.xpm", &data->image_width, &data->image_height);
-            mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->x, data->y);
-            data->x += 32;
-            i++;
-        }
-        else if (line[i] == '\n')
-        {
-            data->y += 32;
-            line = get_next_line(fd);
-            i = 0;
-            data->x = 0;
-        }
-        else if (line[i] == 'E' || line[i] == '0' || line[i] == 'P')
+        while (data->line[data->i] == '1')
+            put_obey(data);
+        if (data->line[data->i] == 'C')
+            put_bomb(data);
+        else if (data->line[data->i] == 'P')
+            put_char(data);
+        else if (data->line[data->i] == 'E')
+            put_exit(data);
+        else if (data->line[data->i] == '\n')
+            new_line(data);
+        else if (data->line[data->i] == 'E' || data->line[data->i] == '0' || data->line[data->i] == 'P')
         {
             data->x += 32;
-            i++;
+            data->i += 1;
         }
         else
             break ;
     }
-    close(fd);
-}
-
-int	key_hook(int keycode, t_data *data)
-{
-    if (keycode == 119 && data->tab[data->char_y / 32 - 1][data->char_x / 32] != '1')
-    {
-        data->image_address = mlx_xpm_file_to_image(data->mlx, "src/black.xpm", &data->image_width, &data->image_height);
-        mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->char_y -= 32;
-        data->image_address = mlx_xpm_file_to_image(data->mlx, "src/char.xpm", &data->image_width, &data->image_height);
-        mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->moves += 1;
-        ft_printf("Moves : %d\n", data->moves);
-    }
-    else if (keycode == 97 && data->tab[data->char_y / 32][data->char_x / 32 - 1] != '1')
-    {
-        data->image_address = mlx_xpm_file_to_image(data->mlx, "src/black.xpm", &data->image_width, &data->image_height);
-        mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->char_x -= 32;
-        data->image_address = mlx_xpm_file_to_image(data->mlx, "src/char.xpm", &data->image_width, &data->image_height);
-        mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->moves += 1;
-        ft_printf("Moves : %d\n", data->moves);
-    }
-    else if (keycode == 115 && data->tab[data->char_y / 32 + 1][data->char_x / 32] != '1')
-    {
-        data->image_address = mlx_xpm_file_to_image(data->mlx, "src/black.xpm", &data->image_width, &data->image_height);
-        mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->char_y += 32;
-        data->image_address = mlx_xpm_file_to_image(data->mlx, "src/char.xpm", &data->image_width, &data->image_height);
-        mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->moves += 1;
-        ft_printf("Moves : %d\n", data->moves);
-    }
-    else if (keycode == 100 && data->tab[data->char_y / 32][data->char_x / 32 + 1] != '1')
-    {
-        data->image_address = mlx_xpm_file_to_image(data->mlx, "src/black.xpm", &data->image_width, &data->image_height);
-        mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->char_x += 32;
-        data->image_address = mlx_xpm_file_to_image(data->mlx, "src/char.xpm", &data->image_width, &data->image_height);
-        mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
-        data->moves += 1;
-        ft_printf("Moves : %d\n", data->moves);
-    }
-    else if (keycode == 65307 || keycode == 17)
-    {
-        close_window(data);
-        exit (0);
-    }
-    if (data->tab[data->char_y / 32][data->char_x / 32] == 'E')
-    {
-        exit (0);
-    }
-	return (0);
+    free(data->line);
+    close(data->fd);
 }
 
 void    init_data(t_data *data)
@@ -204,28 +116,27 @@ void    init_data(t_data *data)
     data->char_y = 0;
     data->tab = NULL;
     data->moves = 0;
+    data->i = 0;
 }
 
 int main(int argc, char **argv)
 {
     t_data  data;
-    char    *map;
-    char    *path;
 
     if (argc != 2)
         return (0);
-    path = ft_strjoin(argv[1], ".ber");
-    map = ft_strjoin("map/", path);
+    data.path = ft_strjoin(argv[1], ".ber");
+    data.map = ft_strjoin("map/", data.path);
     init_data(&data);
-    window_width(map, &data);
-    window_height(map, &data);
+    window_width(&data);
+    window_height(&data);
     data.mlx = mlx_init();
     data.window = mlx_new_window(data.mlx, data.window_width, data.window_height, "so_long");
-    draw_map(map, &data);
+    draw_map(&data);
     mlx_key_hook(data.window, key_hook, &data);
     mlx_hook(data.window, 17, 1L << 17, close_window, &data);
     mlx_loop(data.mlx);
-    free(path);
-    free(map);
+    free(data.path);
+    free(data.map);
     return (0);
 }
