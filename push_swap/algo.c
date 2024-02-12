@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:25:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 14:09:31 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:31:09 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,47 +46,6 @@ void	index_list(t_list **stack, int index)
 	current->index = index;
 }
 
-/*int		algo(t_list **stack_a, t_list **stack_b, int index)
-{
-	t_list	*current;
-	int		size;
-	int		i;
-	int		j;
-	int		op;
-
-	op = 0;
-	size = list_size(stack_a);
-	i = index;
-	while (i <= size)
-	{
-		index_list(stack_a, i);
-		i++;
-	}
-	while (*stack_a)
-	{
-		current = *stack_a;
-		i = index;
-		j = 1;
-		while (current->index != i)
-		{
-			current = current->next;
-			j++;
-		}
-		while ((*stack_a)->index != i)
-		{
-			if (j > size / 2)
-				op += reverse_rotate(stack_a, 1);
-			else
-				op += rotate(stack_a, 1);
-		}
-		op += push_b(stack_a, stack_b);
-		index++;
-	}
-	while (*stack_b)
-		op += push_a(stack_b, stack_a);
-	return (op);
-}*/
-
 int		check_if_sorted(t_list **stack)
 {
 	t_list	*first;
@@ -104,45 +63,12 @@ int		check_if_sorted(t_list **stack)
 	return (0);
 }
 
-int    find_max_bit_nb(int nb)
-{
-    int        count;
-
-    count = 0;
-    if (nb == 0)
-        return (1);
-    while (nb > 0)
-    {
-        nb >>= 1;
-        count++;
-    }
-    return (count);
-}
-
-int    get_max_bit(t_list **stack_a)
-{
-    int        max;
-	t_list	*next;
-
-	max = 0;
-	next = *stack_a;
-    while (next)
-    {
-        if (max < find_max_bit_nb(next->index))
-            max = find_max_bit_nb(next->index);
-        next = next->next;
-    }
-    return (max);
-}
-
 void    radix_sort(t_list **stack_a, t_list **stack_b)
 {
    	int        bit;
 	int        max_nb;
-  	int        max_bit;
 	int		i;
 
-	max_bit = get_max_bit(stack_a);
     max_nb = list_size(stack_a);
     bit = 0;
 	i = 1;

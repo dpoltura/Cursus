@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 13:50:06 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/12 14:31:32 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ int main(int argc, char **argv)
 	if (argc < 2 || !check(argv))
 		error();
 	init(&stack_a, argv);
-	//printf("%d\n", algo(&stack_a, &stack_b, 1));
 	radix_sort(&stack_a, &stack_b);
 	display(stack_a, stack_b);
 	free_list(&stack_a);
