@@ -6,11 +6,11 @@
 #    By: dpoltura <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:23:33 by dpoltura          #+#    #+#              #
-#    Updated: 2023/11/15 09:43:12 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/02/12 14:41:48 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC= gcc
+CC= cc
 
 CFLAGS= -Wall -Werror -Wextra
 
