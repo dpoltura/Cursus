@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 11:59:26 by dpoltura          #+#    #+#              #
-#    Updated: 2024/02/12 10:01:25 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/02/12 11:49:25 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,11 @@ CC = clang
 CFLAGS = -Wall -Werror -Wextra -g
 SRC =	main.c \
 		key_hook.c \
+		draw_map.c \
 		draw_map_utils.c \
+		items.c \
+		data.c \
+		close_and_free.c \
 		lib/get_next_line/get_next_line.c \
 		lib/get_next_line/get_next_line_utils.c
 OBJ = $(SRC:%.c=%.o)

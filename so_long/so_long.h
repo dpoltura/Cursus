@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:57:33 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 09:07:15 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:49:11 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,14 @@ void    put_char(t_data *data);
 void    put_exit(t_data *data);
 void    new_line(t_data *data);
 void    count_items(t_data *data);
+void    items(t_data *data);
+void    count_items(t_data *data);
+void    draw_map(t_data *data);
+void    window_width(t_data *data);
+void    window_height(t_data *data);
+void    init_data(t_data *data);
+void    free_tab(t_data *data);
+int close_window(t_data *data);
+void    fd_map_error(t_data *data);
 
 #endif
