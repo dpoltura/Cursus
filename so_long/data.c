@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:45:27 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 11:45:37 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/12 17:13:20 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,7 @@ void    init_data(t_data *data)
     data->i = 0;
     data->items = 0;
     data->count_items = 0;
+    data->epc[0] = 0;
+    data->epc[1] = 0;
+    data->epc[2] = 0;
 }

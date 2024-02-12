@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:48:23 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 11:48:42 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/12 16:13:31 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,12 @@ void    free_tab(t_data *data)
 
 int close_window(t_data *data)
 {
-    mlx_destroy_window(data->mlx, data->window);
-    mlx_destroy_display(data->mlx);
-    free(data->mlx);
+    if (data->mlx && data->window)
+    {
+        mlx_destroy_window(data->mlx, data->window);
+        mlx_destroy_display(data->mlx);
+        free(data->mlx);
+    }
     free(data->path);
     free(data->map);
     free_tab(data);

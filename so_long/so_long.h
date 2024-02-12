@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:57:33 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 11:49:11 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/12 19:46:22 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct  s_data
     char    *path;
     int     items;
     int     count_items;
+    int     epc[3];
 }   t_data;
 
 void    key_w(t_data *data);
