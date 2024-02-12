@@ -6,15 +6,33 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:51:41 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/07 11:07:56 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/12 11:36:46 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
+void    free_tab(t_data *data)
+{
+    int     y;
+
+    y = 0;
+    while (data->tab[y])
+    {
+        free(data->tab[y]);
+        y++;
+    }
+    free(data->tab);
+}
+
 int close_window(t_data *data)
 {
     mlx_destroy_window(data->mlx, data->window);
+    mlx_destroy_display(data->mlx);
+    free(data->mlx);
+    free(data->path);
+    free(data->map);
+    free_tab(data);
     exit(0);
 }
 
@@ -36,21 +54,19 @@ void    window_width(t_data *data)
     int i;
     
     fd_map_error(data);
-    data->line = get_next_line(data->fd);
-    data->tab = malloc(sizeof(char *) * 100);
+    data->tab = ft_calloc(sizeof(char *), 100);
+    data->tab[0] = get_next_line(data->fd);
     i = 0;
-    while (data->line[i] != '\n')
+    while (data->tab[0][i] != '\n')
         i++;
     width = i * 32;
     data->window_width = width;
     i = 0;
-    while (data->line)
+    while (data->tab[i])
     {
-        data->tab[i] = data->line;
-        data->line = get_next_line(data->fd);
+        data->tab[i + 1] = get_next_line(data->fd);
         i++;
     }
-    free(data->line);
     close(data->fd);
 }
 
@@ -117,6 +133,37 @@ void    init_data(t_data *data)
     data->tab = NULL;
     data->moves = 0;
     data->i = 0;
+    data->items = 0;
+    data->count_items = 0;
+}
+
+void    items(t_data *data)
+{
+    int     y;
+    int     x;
+
+    y = 0;
+    x = 0;
+    while (data->tab[y])
+    {
+        while (data->tab[y][x])
+        {
+            if (data->tab[y][x] == 'C')
+                data->items += 1;
+            x++;
+        }
+        x = 0;
+        y++;
+    }
+}
+
+void    count_items(t_data *data)
+{
+    if (data->tab[data->char_y / 32][data->char_x / 32] == 'C')
+    {
+        data->tab[data->char_y / 32][data->char_x / 32] = '0';
+        data->count_items += 1;
+    }
 }
 
 int main(int argc, char **argv)
@@ -133,10 +180,9 @@ int main(int argc, char **argv)
     data.mlx = mlx_init();
     data.window = mlx_new_window(data.mlx, data.window_width, data.window_height, "so_long");
     draw_map(&data);
+    items(&data);
     mlx_key_hook(data.window, key_hook, &data);
     mlx_hook(data.window, 17, 1L << 17, close_window, &data);
     mlx_loop(data.mlx);
-    free(data.path);
-    free(data.map);
     return (0);
 }

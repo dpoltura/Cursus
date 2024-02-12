@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:57:33 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/07 11:08:56 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/12 09:07:15 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct  s_data
     char    *map;
     char    *path;
     int     items;
+    int     count_items;
 }   t_data;
 
 void    key_w(t_data *data);
@@ -57,5 +58,6 @@ void    put_bomb(t_data *data);
 void    put_char(t_data *data);
 void    put_exit(t_data *data);
 void    new_line(t_data *data);
+void    count_items(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 10:24:21 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/07 10:26:33 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/12 10:26:32 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,44 +16,68 @@ void    key_w(t_data *data)
 {
     data->image_address = mlx_xpm_file_to_image(data->mlx, "src/black.xpm", &data->image_width, &data->image_height);
     mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+    mlx_destroy_image(data->mlx, data->image_address);
     data->char_y -= 32;
     data->image_address = mlx_xpm_file_to_image(data->mlx, "src/char.xpm", &data->image_width, &data->image_height);
     mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+    mlx_destroy_image(data->mlx, data->image_address);
     data->moves += 1;
-    ft_printf("Moves : %d\n", data->moves);
+    count_items(data);
+    if (data->count_items == data->items)
+        ft_printf("Moves : %d || Items : 😁\n", data->moves);
+    else
+        ft_printf("Moves : %d || Items : %d / %d\n", data->moves, data->count_items, data->items);
 }
 
 void    key_a(t_data *data)
 {
     data->image_address = mlx_xpm_file_to_image(data->mlx, "src/black.xpm", &data->image_width, &data->image_height);
     mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+    mlx_destroy_image(data->mlx, data->image_address);
     data->char_x -= 32;
     data->image_address = mlx_xpm_file_to_image(data->mlx, "src/char.xpm", &data->image_width, &data->image_height);
     mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+    mlx_destroy_image(data->mlx, data->image_address);
     data->moves += 1;
-    ft_printf("Moves : %d\n", data->moves);
+    count_items(data);
+    if (data->count_items == data->items)
+        ft_printf("Moves : %d || Items : 😁\n", data->moves);
+    else
+        ft_printf("Moves : %d || Items : %d / %d\n", data->moves, data->count_items, data->items);
 }
 
 void    key_s(t_data *data)
 {
     data->image_address = mlx_xpm_file_to_image(data->mlx, "src/black.xpm", &data->image_width, &data->image_height);
     mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+    mlx_destroy_image(data->mlx, data->image_address);
     data->char_y += 32;
     data->image_address = mlx_xpm_file_to_image(data->mlx, "src/char.xpm", &data->image_width, &data->image_height);
     mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+    mlx_destroy_image(data->mlx, data->image_address);
     data->moves += 1;
-    ft_printf("Moves : %d\n", data->moves);
+    count_items(data);
+    if (data->count_items == data->items)
+        ft_printf("Moves : %d || Items : 😁\n", data->moves);
+    else
+        ft_printf("Moves : %d || Items : %d / %d\n", data->moves, data->count_items, data->items);
 }
 
 void    key_d(t_data *data)
 {
     data->image_address = mlx_xpm_file_to_image(data->mlx, "src/black.xpm", &data->image_width, &data->image_height);
     mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+    mlx_destroy_image(data->mlx, data->image_address);
     data->char_x += 32;
     data->image_address = mlx_xpm_file_to_image(data->mlx, "src/char.xpm", &data->image_width, &data->image_height);
     mlx_put_image_to_window(data->mlx, data->window, data->image_address, data->char_x, data->char_y);
+    mlx_destroy_image(data->mlx, data->image_address);
     data->moves += 1;
-    ft_printf("Moves : %d\n", data->moves);
+    count_items(data);
+    if (data->count_items == data->items)
+        ft_printf("Moves : %d || Items : 😁\n", data->moves);
+    else
+        ft_printf("Moves : %d || Items : %d / %d\n", data->moves, data->count_items, data->items);
 }
 
 int	key_hook(int keycode, t_data *data)
@@ -67,13 +91,14 @@ int	key_hook(int keycode, t_data *data)
     else if (keycode == 100 && data->tab[data->char_y / 32][data->char_x / 32 + 1] != '1')
         key_d(data);
     else if (keycode == 65307 || keycode == 17)
-    {
         close_window(data);
-        exit (0);
-    }
     if (data->tab[data->char_y / 32][data->char_x / 32] == 'E')
     {
-        exit (0);
+        if (data->items == data->count_items)
+            ft_printf("All items are collected, congratulations !!!\n");
+        else
+            ft_printf("All items are not collected, that's a shame... 😢\n");
+        close_window(data);
     }
 	return (0);
 }

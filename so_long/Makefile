@@ -6,12 +6,12 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 11:59:26 by dpoltura          #+#    #+#              #
-#    Updated: 2024/02/07 10:29:53 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/02/12 10:01:25 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 SRC =	main.c \
 		key_hook.c \
 		draw_map_utils.c \

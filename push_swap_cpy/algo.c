@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:25:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/07 16:12:33 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/08 16:14:32 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,11 @@ void	index_list(t_list **stack, int index)
 	current->index = index;
 }
 
-int		algo(t_list **stack_a, t_list **stack_b, int index)
+void		algo(t_list **stack_a, int index)
 {
-	t_list	*current;
 	int		size;
 	int		i;
-	int		j;
-	int		op;
 
-	op = 0;
 	size = list_size(stack_a);
 	i = index;
 	while (i <= size)
@@ -62,27 +58,47 @@ int		algo(t_list **stack_a, t_list **stack_b, int index)
 		index_list(stack_a, i);
 		i++;
 	}
-	while (*stack_a)
-	{
-		current = *stack_a;
-		i = index;
-		j = 1;
-		while (current->index != i)
-		{
-			current = current->next;
-			j++;
-		}
-		while ((*stack_a)->index != i)
-		{
-			if (j > size / 2)
-				op += reverse_rotate(stack_a, 1);
-			else
-				op += rotate(stack_a, 1);
-		}
-		op += push_b(stack_a, stack_b);
-		index++;
-	}
-	while (*stack_b)
-		op += push_a(stack_b, stack_a);
-	return (op);
+}
+
+int is_sorted_test(t_list *head) {
+    if (head == NULL || head->next == NULL)
+        return 1;
+
+    t_list *current = head;
+    while (current->next != NULL) {
+        if (current->index > current->next->index)
+            return 0;
+        current = current->next;
+    }
+    return 1;
+}
+
+void radix_sort(t_list *a, t_list *b)
+{
+    int            i;
+    int            j;
+    int            num;
+    t_list    *temp;
+    t_list *head;
+
+    i = 0;
+    head = a;
+    while (!is_sorted_test(a))
+    {
+        temp = head;
+        j = list_size(&head);
+        while (j > 0)
+        {
+            num = head->index;
+            temp = temp->next;
+            if ((num >> i) & 1)
+                rotate(&a, 1);
+            else
+                push_b(&a, &b);
+            j--;
+        }
+        i++;
+        while (b)
+            push_a(&b, &a);
+    }
 }
