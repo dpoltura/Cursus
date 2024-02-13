@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 11:48:23 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 16:13:31 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/13 22:53:47 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,23 @@ void    fd_map_error(t_data *data)
         free(data->path);
         exit (0);
     }
+}
+
+void    error(t_data *data)
+{
+    ft_printf("Error\n");
+    close_window(data);
+}
+
+void    free_map(char **map)
+{
+    int     y;
+    
+    y = 0;
+    while (map[y])
+    {
+        free(map[y]);
+        y++;
+    }
+    free(map);
 }

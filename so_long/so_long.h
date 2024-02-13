@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:57:33 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 19:46:22 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/13 23:00:12 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@
 # include "lib/libft/libft.h"
 # include "lib/get_next_line/get_next_line.h"
 # include "lib/ft_printf/ft_printf.h"
-# include <stdlib.h>
-# include <unistd.h>
-# include <fcntl.h>
-# include <stdio.h>
 
 typedef struct  s_data
 {
@@ -69,5 +65,16 @@ void    init_data(t_data *data);
 void    free_tab(t_data *data);
 int close_window(t_data *data);
 void    fd_map_error(t_data *data);
+void    error(t_data *data);
+void    free_map(char **map);
+void    check_rectangle(char **map, t_data *data);
+void    check_wall(char **map, t_data *data);
+void    check_epc(char **map, t_data *data);
+void    check_characters(char **map, t_data *data);
+void    check_all(t_data *data);
+void    char_pos(t_data *data);
+void    floodfill(int x, int y, char **map, t_data *data);
+void    check_after_floodfill(char **map, t_data *data);
+char    **clone_map(t_data *data);
 
 #endif

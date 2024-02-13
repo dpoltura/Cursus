@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 11:59:26 by dpoltura          #+#    #+#              #
-#    Updated: 2024/02/12 14:42:05 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/02/13 22:58:49 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRC =	main.c \
 		items.c \
 		data.c \
 		close_and_free.c \
+		check.c \
+		floodfill.c \
 		lib/get_next_line/get_next_line.c \
 		lib/get_next_line/get_next_line_utils.c
 OBJ = $(SRC:%.c=%.o)
