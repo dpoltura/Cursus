@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/07 10:55:02 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/23 12:43:01 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/14 00:04:06 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,8 @@ char	**ft_split(char const *s, char c)
 			index = i;
 		else if ((s[i] == c || i == ft_strlen(s)) && index >= 0)
 		{
-			if (!(split[j++] = ft_word_dup(split, s, index, i)))
+			split[j] = ft_word_dup(split, s, index, i);
+			if (!(split[j++]))
 				index = -1;
 		}
 		i++;

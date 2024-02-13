@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/11 11:59:26 by dpoltura          #+#    #+#              #
-#    Updated: 2024/02/13 22:58:49 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/02/13 23:53:51 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRC =	main.c \
 		close_and_free.c \
 		check.c \
 		floodfill.c \
+		error.c \
 		lib/get_next_line/get_next_line.c \
 		lib/get_next_line/get_next_line_utils.c
 OBJ = $(SRC:%.c=%.o)
@@ -29,16 +30,12 @@ LIBFT = libft.a
 FT_PRINTF = libftprintf.a
 NAME = so_long
 
-$(NAME): $(LIBFT) $(FT_PRINTF) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(INCLUDE)
+all: $(NAME)
 
-$(LIBFT):
+$(NAME): $(OBJ)
 	$(MAKE) -C lib/libft
-
-$(FT_PRINTF):
 	$(MAKE) -C lib/ft_printf
-
-all: $(LIBFT) $(FT_PRINTF) $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(INCLUDE)
 
 clean:
 	rm -f $(OBJ)
