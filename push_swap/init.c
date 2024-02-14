@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:11:58 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/01/17 10:26:18 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:48:42 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ void	init(t_list **stack, char **argv)
 	int	i;
 
 	if (*stack)
-		error();
+		error(stack);
 	*stack = (t_list *)malloc(sizeof(t_list));
 	if (!(*stack))
-		error();
+		error(stack);
 	first = *stack;
 	prev = NULL;
 	i = 1;
@@ -34,7 +34,7 @@ void	init(t_list **stack, char **argv)
 		{
 			(*stack)->next = (t_list *)malloc(sizeof(t_list));
 			if (!(*stack)->next)
-				error();
+				error(stack);
 		}
 		(*stack)->prev = prev;
 		prev = *stack;

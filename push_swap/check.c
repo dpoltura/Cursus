@@ -1,44 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   security.c                                         :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/14 17:51:53 by dpoltura         ###   ########.fr       */
+/*   Created: 2024/02/14 17:41:51 by dpoltura          #+#    #+#             */
+/*   Updated: 2024/02/14 17:56:33 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	error(t_list **stack_a)
+void	check_double(t_list **stack_a)
 {
-	free_list(stack_a);
-	putstr("Error\n");
-	exit(EXIT_FAILURE);
-}
+	t_list	*current;
+	t_list	*cursor;
 
-int	is_digit(char *argv)
-{
-	int	nbr;
-	
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
-
-int	check(char **argv)
-{
-	int	i;
-
-	i = 1;
-	while (argv[i])
+	current = *stack_a;
+	cursor = (*stack_a)->next;
+	while (current)
 	{
-		if (!is_digit(argv[i]))
-			return (0);
-		i++;
+		while (cursor)
+		{
+			if (cursor->nbr == current->nbr)
+				error(stack_a);
+			cursor = cursor->next;
+		}
+		current = current->next;
+		if (current)
+			cursor = current->next;
 	}
-	return (1);
 }
