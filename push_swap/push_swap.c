@@ -6,11 +6,26 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/14 00:25:43 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:48:08 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	display(t_list **stack)
+{
+	t_list *current;
+
+	current = *stack;
+	while (current)
+	{
+		putnbr(current->nbr);
+		if (current->next)
+			putstr(" ");
+		current = current->next;
+	}
+	putstr("\n");
+}
 
 int main(int argc, char **argv)
 {
@@ -22,7 +37,8 @@ int main(int argc, char **argv)
 	if (argc < 2 || !check(argv))
 		error();
 	init(&stack_a, argv);
-	radix_sort(&stack_a, &stack_b);
+	algo(&stack_a, &stack_b);
+	display(&stack_a);
 	free_list(&stack_a);
 	free_list(&stack_b);
 	return (0);

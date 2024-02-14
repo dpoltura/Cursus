@@ -6,61 +6,77 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:25:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 14:31:09 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/14 17:15:13 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		list_size(t_list **stack)
+void	sort_two(t_list **stack, int choice)
 {
-	t_list	*current;
+	if ((*stack)->nbr < (*stack)->next->nbr)
+		return ;
+	else if (choice == 1)
+		swap(stack, 1);
+	else if (choice == 2)
+		swap(stack, 2);
+}
+
+void	sort_three(t_list **stack_a)
+{
+	int		size;
+
+	size = list_size(stack_a);
+	if ((*stack_a)->nbr > (*stack_a)->next->nbr
+		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr)
+	{
+		swap(stack_a, 1);
+		reverse_rotate(stack_a, 1);
+	}
+	else if ((*stack_a)->nbr > (*stack_a)->next->nbr
+		&& (*stack_a)->next->nbr < (*stack_a)->next->next->nbr
+		&& (*stack_a)->next->next->nbr < (*stack_a)->nbr)
+		rotate(stack_a, 1);
+	else if ((*stack_a)->nbr > (*stack_a)->next->nbr
+		&& (*stack_a)->next->nbr < (*stack_a)->next->next->nbr
+		&& (*stack_a)->next->next->nbr > (*stack_a)->nbr)
+		swap(stack_a, 1);
+	else if ((*stack_a)->nbr < (*stack_a)->next->nbr
+		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr)
+	{
+		rotate(stack_a, 1);
+		swap(stack_a, 1);
+		reverse_rotate(stack_a, 1);
+	}
+	else if ((*stack_a)->nbr < (*stack_a)->next->nbr
+		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr
+		&& (*stack_a)->next->next->nbr > (*stack_a)->nbr)
+		reverse_rotate(stack_a, 1);
+	else
+		return ;	
+}
+
+void	sort_five(t_list **stack_a, t_list **stack_b)
+{
+	int		size;
 	int		i;
 
-	current = *stack;
-	i = 0;
-	while (current)
+	size = list_size(stack_a);
+	i = 1;
+	while (i <= size)
 	{
-		current = current->next;
+		index_list(stack_a, i);
 		i++;
 	}
-	return (i);
-}
-
-void	index_list(t_list **stack, int index)
-{
-	t_list	*current;
-	int		smallest;
-
-	current = *stack;
-	smallest = INT_MAX;
-	while (current)
-	{
-		if (smallest >= current->nbr && current->index == 0)
-			smallest = current->nbr;
-		current = current->next;
-	}
-	current = *stack;
-	while (current->nbr != smallest)
-		current = current->next;
-	current->index = index;
-}
-
-int		check_if_sorted(t_list **stack)
-{
-	t_list	*first;
-	t_list	*next;
-	
-	first = *stack;
-	next = (*stack)->next;
-	while (next)
-	{
-		if (first->index > next->index)
-			return (1);
-		first = first->next;
-		next = next->next;
-	}
-	return (0);
+	while ((*stack_a)->index != 1)
+		rotate(stack_a, 1);
+	push_b(stack_a, stack_b);
+	while ((*stack_a)->index != 2)
+		rotate(stack_a, 1);
+	push_b(stack_a, stack_b);
+	sort_three(stack_a);
+	push_a(stack_b, stack_a);
+	push_a(stack_b, stack_a);
 }
 
 void    radix_sort(t_list **stack_a, t_list **stack_b)
@@ -92,4 +108,16 @@ void    radix_sort(t_list **stack_a, t_list **stack_b)
             push_a(stack_b, stack_a);
         bit++;
     }
+}
+
+void	algo(t_list **stack_a, t_list **stack_b)
+{
+	if (list_size(stack_a) == 2)
+		sort_two(stack_a, 1);
+	else if (list_size(stack_a) == 3)
+		sort_three(stack_a);
+	else if (list_size(stack_a) == 5)
+		sort_five(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
 }

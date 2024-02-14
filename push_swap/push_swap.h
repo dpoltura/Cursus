@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/12 14:31:44 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:42:33 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ int    rotate(t_list **stack, int choice);
 int    rotate_all(t_list **stack_a, t_list **stack_b);
 int    reverse_rotate(t_list **stack, int choice);
 int    reverse_rotate_all(t_list **stack_a, t_list **stack_b);
-
-// ALGO :
 int		list_size(t_list **stack);
 void	index_list(t_list **stack, int index);
 int		check_if_sorted(t_list **stack);
+void	sort_two(t_list **stack_a, int choice);
+void	sort_three(t_list **stack_a);
+void	sort_five(t_list **stack_a, t_list **stack_b);
 void    radix_sort(t_list **stack_a, t_list **stack_b);
-void	display(t_list *stack_a, t_list *stack_b);
+void	algo(t_list **stack_a, t_list **stack_b);
 
 #endif
