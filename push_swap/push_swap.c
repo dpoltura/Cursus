@@ -6,13 +6,13 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/15 16:57:24 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/15 17:11:38 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	display(t_list **stack)
+/*void	display(t_list **stack)
 {
 	t_list *current;
 
@@ -25,7 +25,7 @@ void	display(t_list **stack)
 		current = current->next;
 	}
 	putstr("\n");
-}
+}*/
 
 int main(int argc, char **argv)
 {
@@ -39,7 +39,7 @@ int main(int argc, char **argv)
 	init(&stack_a, argv);
 	check_double(&stack_a);
 	algo(&stack_a, &stack_b);
-	display(&stack_a);
+	//display(&stack_a);
 	free_list(&stack_a);
 	free_list(&stack_b);
 	return (0);
