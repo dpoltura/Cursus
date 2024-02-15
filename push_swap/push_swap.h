@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/14 18:18:55 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:57:48 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,5 @@ void	sort_five(t_list **stack_a, t_list **stack_b);
 void    radix_sort(t_list **stack_a, t_list **stack_b);
 void	algo(t_list **stack_a, t_list **stack_b);
 void	check_double(t_list **stack_a);
-size_t	ft_strlen(const char *s);
-char	**ft_split(char const *s, char c);
 
 #endif
