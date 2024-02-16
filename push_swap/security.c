@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 14:54:44 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:16:53 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	error(t_list **stack_a, t_bool *boolean, char **argv)
 int	is_digit(char *argv)
 {
 	int	nbr;
-	
+
 	nbr = ft_atoi(argv);
 	if (nbr == (0))
 		return (0);

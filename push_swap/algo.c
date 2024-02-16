@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:25:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 14:46:02 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:02:18 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sort_two(t_list **stack, int choice)
 
 void	sort_three(t_list **stack_a)
 {
-	int		size;
+	int	size;
 
 	size = list_size(stack_a);
 	if ((*stack_a)->nbr > (*stack_a)->next->nbr
@@ -52,13 +52,13 @@ void	sort_three(t_list **stack_a)
 		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr)
 		reverse_rotate(stack_a, 1);
 	else
-		return ;	
+		return ;
 }
 
 void	sort_five(t_list **stack_a, t_list **stack_b)
 {
-	int		size;
-	int		i;
+	int	size;
+	int	i;
 
 	size = list_size(stack_a);
 	i = 1;
@@ -78,35 +78,35 @@ void	sort_five(t_list **stack_a, t_list **stack_b)
 	push_a(stack_b, stack_a);
 }
 
-void    radix_sort(t_list **stack_a, t_list **stack_b)
+void	radix_sort(t_list **stack_a, t_list **stack_b)
 {
-   	int        bit;
-	int        max_nb;
-	int		i;
+	int	bit;
+	int	max_nb;
+	int	i;
 
-    max_nb = list_size(stack_a);
-    bit = 0;
+	max_nb = list_size(stack_a);
+	bit = 0;
 	i = 1;
 	while (i <= max_nb)
 	{
 		index_list(stack_a, i);
 		i++;
 	}
-    while (check_if_sorted(stack_a) == 1)
-    {
+	while (check_if_sorted(stack_a) == 1)
+	{
 		i = 0;
-        while (i < max_nb && (*stack_a))
-        {
-            if ((((*stack_a)->index >> bit) & 1) == 1)
-                rotate(stack_a, 1);
-            else
-                push_b(stack_a, stack_b);
+		while (i < max_nb && (*stack_a))
+		{
+			if ((((*stack_a)->index >> bit) & 1) == 1)
+				rotate(stack_a, 1);
+			else
+				push_b(stack_a, stack_b);
 			i++;
-        }
-        while (list_size(stack_b))
-            push_a(stack_b, stack_a);
-        bit++;
-    }
+		}
+		while (list_size(stack_b))
+			push_a(stack_b, stack_a);
+		bit++;
+	}
 }
 
 void	algo(t_list **stack_a, t_list **stack_b)

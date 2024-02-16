@@ -6,17 +6,17 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 15:06:03 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:10:02 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_list *stack_a;
-	t_list *stack_b;
-	t_bool *boolean;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	t_bool	*boolean;
 
 	stack_a = NULL;
 	stack_b = NULL;

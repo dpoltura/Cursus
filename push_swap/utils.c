@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 15:22:18 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/16 16:21:20 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	putnbr(int nbr)
 {
 	char	c;
 	long	n;
-	
+
 	n = nbr;
 	if (n < 0)
 	{
@@ -45,8 +45,8 @@ void	putnbr(int nbr)
 
 int	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	long	k;
 
 	i = 0;
@@ -76,12 +76,12 @@ int	ft_atoi(const char *nptr)
 void	free_list(t_list **stack)
 {
 	t_list	*current;
-	
+
 	current = *stack;
 	while (current)
 	{
 		current = current->next;
 		free(*stack);
-		*stack = current;	
+		*stack = current;
 	}
 }
