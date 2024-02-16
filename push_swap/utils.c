@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/15 17:03:38 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:22:18 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	ft_atoi(const char *nptr)
 		k += nptr[i] - '0';
 		i++;
 	}
-	if (nptr[i] == ' ' || nptr[i - 1] < '0' || nptr[i - 1] > '9')
+	if (nptr[i] != '\0')
 		return (0);
 	return (k * j);
 }
