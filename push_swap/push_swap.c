@@ -6,41 +6,37 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/15 17:11:38 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:06:03 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-/*void	display(t_list **stack)
-{
-	t_list *current;
-
-	current = *stack;
-	while (current)
-	{
-		putnbr(current->nbr);
-		if (current->next)
-			putstr(" ");
-		current = current->next;
-	}
-	putstr("\n");
-}*/
-
 int main(int argc, char **argv)
 {
 	t_list *stack_a;
 	t_list *stack_b;
+	t_bool *boolean;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	if (argc < 2 || !check(argv))
-		error(&stack_a);
-	init(&stack_a, argv);
-	check_double(&stack_a);
+	boolean = malloc(sizeof(t_bool));
+	if (!boolean)
+		error(&stack_a, NULL, NULL);
+	boolean->boolean = 1;
+	if (argc == 2)
+	{
+		boolean->boolean = 0;
+		argv = ft_split(argv[1], ' ');
+	}
+	if (argc < 2 || !check(argv, boolean))
+		error(&stack_a, boolean, argv);
+	init(&stack_a, argv, boolean);
+	check_double(&stack_a, boolean, argv);
 	algo(&stack_a, &stack_b);
-	//display(&stack_a);
 	free_list(&stack_a);
-	free_list(&stack_b);
+	if (boolean->boolean == 0)
+		free_argv(argv);
+	free(boolean);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:25:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/14 17:15:13 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:46:02 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,14 @@ void	sort_three(t_list **stack_a)
 		&& (*stack_a)->next->next->nbr > (*stack_a)->nbr)
 		swap(stack_a, 1);
 	else if ((*stack_a)->nbr < (*stack_a)->next->nbr
-		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr)
-	{
-		rotate(stack_a, 1);
-		swap(stack_a, 1);
-		reverse_rotate(stack_a, 1);
-	}
-	else if ((*stack_a)->nbr < (*stack_a)->next->nbr
 		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr
 		&& (*stack_a)->next->next->nbr > (*stack_a)->nbr)
+	{
+		reverse_rotate(stack_a, 1);
+		swap(stack_a, 1);
+	}
+	else if ((*stack_a)->nbr < (*stack_a)->next->nbr
+		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr)
 		reverse_rotate(stack_a, 1);
 	else
 		return ;	

@@ -6,13 +6,13 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:41:51 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/14 17:56:33 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:56:28 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_double(t_list **stack_a)
+void	check_double(t_list **stack_a, t_bool *boolean, char **argv)
 {
 	t_list	*current;
 	t_list	*cursor;
@@ -24,7 +24,7 @@ void	check_double(t_list **stack_a)
 		while (cursor)
 		{
 			if (cursor->nbr == current->nbr)
-				error(stack_a);
+				error(stack_a, boolean, argv);
 			cursor = cursor->next;
 		}
 		current = current->next;
