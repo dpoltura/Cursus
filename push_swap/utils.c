@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 18:33:01 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:05:33 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ void	putnbr(int nbr)
 	}
 }
 
+void	error_atoi(t_list *first, t_list **stack_a, t_bool *boolean, char **argv)
+{
+	*stack_a = first;
+	error(stack_a, boolean, argv);
+}
+
 int	ft_atoi(const char *nptr, t_list *first, t_list **stack_a, t_bool *boolean, char **argv)
 {
 	int		i;
@@ -61,28 +67,19 @@ int	ft_atoi(const char *nptr, t_list *first, t_list **stack_a, t_bool *boolean, 
 		i++;
 	}
 	if (nptr[i] == '\0')
-	{
-		*stack_a = first;
-		error(stack_a, boolean, argv);
-	}
+		error_atoi(first, stack_a, boolean, argv);
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		k = k * 10;
 		k += nptr[i] - '0';
 		if ((k * j) < INT_MIN || (k * j) > INT_MAX)
-		{
-			*stack_a = first;
-			error(stack_a, boolean, argv);
-		}
+			error_atoi(first, stack_a, boolean, argv);
 		i++;
 	}
 	while (nptr[i] == 32)
 		i++;
 	if (nptr[i] != '\0')
-	{
-		*stack_a = first;
-		error(stack_a, boolean, argv);
-	}
+		error_atoi(first, stack_a, boolean, argv);
 	return (k * j);
 }
 

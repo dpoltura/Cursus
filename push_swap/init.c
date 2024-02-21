@@ -6,17 +6,30 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:11:58 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 18:39:34 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:48:50 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	atoi_argv(t_list *first, t_list **stack, char **argv, t_bool *boolean, int i)
+int	check_bool(t_bool *boolean)
+{
+	int	i;
+
+	if (boolean->boolean == 0)
+		i = 0;
+	else
+		i = 1;
+	return (i);
+}
+
+void	atoi_argv(t_list *first, t_list **stack, char **argv, t_bool *boolean)
 {
 	t_list	*prev;
+	int		i;
 
 	prev = NULL;
+	i = check_bool(boolean);
 	while (argv[i])
 	{
 		(*stack)->nbr = ft_atoi(argv[i], first, stack, boolean, argv);
@@ -42,7 +55,6 @@ void	atoi_argv(t_list *first, t_list **stack, char **argv, t_bool *boolean, int 
 void	init(t_list **stack, char **argv, t_bool *boolean)
 {
 	t_list	*first;
-	int		i;
 
 	if (*stack)
 		error(stack, boolean, argv);
@@ -52,11 +64,7 @@ void	init(t_list **stack, char **argv, t_bool *boolean)
 	if (!(*stack))
 		error(stack, boolean, argv);
 	first = *stack;
-	if (boolean->boolean == 0)
-		i = 0;
-	else
-		i = 1;
-	atoi_argv(first, stack, argv, boolean, i);
+	atoi_argv(first, stack, argv, boolean);
 	(*stack)->next = NULL;
 	*stack = first;
 }

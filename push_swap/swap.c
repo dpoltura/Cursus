@@ -6,11 +6,19 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:09:21 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 16:38:16 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 20:52:09 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	swap_print(int choice)
+{
+	if (choice == 1)
+		putstr("sa\n", 1);
+	else if (choice == 2)
+		putstr("sb\n", 1);
+}
 
 int	swap(t_list **stack, int choice)
 {
@@ -35,10 +43,7 @@ int	swap(t_list **stack, int choice)
 	first->prev = second;
 	second->next = first;
 	second->prev = NULL;
-	if (choice == 1)
-		putstr("sa\n", 1);
-	else if (choice == 2)
-		putstr("sb\n", 1);
+	swap_print(choice);
 	*stack = second;
 	return (1);
 }
