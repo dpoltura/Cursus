@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 22:20:43 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:45:44 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,38 +50,33 @@ void	error_atoi(t_list *first, t_list **stack_a, t_bool *boolean,
 	error(stack_a, boolean, argv);
 }
 
-long	ft_atoi(const char *nptr)
+long	ft_atoi(const char *nptr, t_bool *boolean)
 {
-	int		i;
-	int		j;
-	long	k;
-
-	i = 0;
-	j = 1;
-	k = 0;
-	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
-		i++;
-	if (nptr[i] == '+' || nptr[i] == '-')
+	while ((nptr[boolean->i] >= 9 && nptr[boolean->i] <= 13)
+		|| nptr[boolean->i] == 32)
+		boolean->i++;
+	if (nptr[boolean->i] == '+' || nptr[boolean->i] == '-')
 	{
-		if (nptr[i] == '-')
-			j = -1;
-		i++;
+		if (nptr[boolean->i] == '-')
+			boolean->j = -1;
+		boolean->i++;
 	}
-	if (nptr[i] == '\0')
+	if (nptr[boolean->i] == '\0')
 		return (LONG_MAX);
-	while (nptr[i] >= '0' && nptr[i] <= '9')
+	while (nptr[boolean->i] >= '0' && nptr[boolean->i] <= '9')
 	{
-		k = k * 10;
-		k += nptr[i] - '0';
-		if ((k * j) < INT_MIN || (k * j) > INT_MAX)
+		boolean->k = boolean->k * 10;
+		boolean->k += nptr[boolean->i] - '0';
+		if ((boolean->k * boolean->j) < INT_MIN || (boolean->k
+				* boolean->j) > INT_MAX)
 			return (LONG_MAX);
-		i++;
+		boolean->i++;
 	}
-	while (nptr[i] == 32)
-		i++;
-	if (nptr[i] != '\0')
+	while (nptr[boolean->i] == 32)
+		boolean->i++;
+	if (nptr[boolean->i] != '\0')
 		return (LONG_MAX);
-	return (k * j);
+	return (boolean->k * boolean->j);
 }
 
 void	free_list(t_list **stack)

@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 22:19:37 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:49:17 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 typedef struct s_bool
 {
 	int				boolean;
+	int				i;
+	int				j;
+	long			k;
 }					t_bool;
 
 typedef struct s_list
@@ -39,7 +42,7 @@ int					is_digit(char *argv);
 int					check(t_list **stack_a, char **argv, t_bool *boolean);
 void				putstr(char *str, int fd);
 void				putnbr(int nbr);
-long				ft_atoi(const char *nptr);
+long				ft_atoi(const char *nptr, t_bool *boolean);
 void				free_list(t_list **stack);
 void				init(t_list **stack, char **argv, t_bool *boolean);
 int					swap(t_list **stack, int choice);
@@ -64,5 +67,5 @@ void				check_double(t_list **stack_a, t_bool *boolean,
 size_t				ft_strlen(const char *s);
 char				**ft_split(char const *s, char c);
 void				free_argv(char **argv);
-
+void				reset(t_bool *boolean);
 #endif

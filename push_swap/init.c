@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:11:58 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 22:15:47 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:49:37 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	atoi_argv(t_list *first, t_list **stack, char **argv, t_bool *boolean)
 	i = check_bool(boolean);
 	while (argv[i])
 	{
-		(*stack)->nbr = ft_atoi(argv[i]);
+		reset(boolean);
+		(*stack)->nbr = ft_atoi(argv[i], boolean);
 		if ((*stack)->nbr > INT_MAX)
 			error_atoi(first, stack, boolean, argv);
 		(*stack)->index = 0;
@@ -66,4 +67,11 @@ void	init(t_list **stack, char **argv, t_bool *boolean)
 	atoi_argv(first, stack, argv, boolean);
 	(*stack)->next = NULL;
 	*stack = first;
+}
+
+void	reset(t_bool *boolean)
+{
+	boolean->i = 0;
+	boolean->j = 1;
+	boolean->k = 0;
 }
