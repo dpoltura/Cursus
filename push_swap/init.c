@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:11:58 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 17:36:23 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:39:34 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	atoi_argv(t_list *first, t_list **stack, char **argv, t_bool *boolean, int 
 		prev = *stack;
 		if (argv[i + 1])
 			*stack = (*stack)->next;
+		(*stack)->next = NULL;
 		i++;
 	}
 }
@@ -46,6 +47,8 @@ void	init(t_list **stack, char **argv, t_bool *boolean)
 	if (*stack)
 		error(stack, boolean, argv);
 	*stack = (t_list *)malloc(sizeof(t_list));
+	(*stack)->next = NULL;
+	(*stack)->prev = NULL;
 	if (!(*stack))
 		error(stack, boolean, argv);
 	first = *stack;

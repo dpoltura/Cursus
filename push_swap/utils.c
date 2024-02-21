@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 17:41:15 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:33:01 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,13 @@ int	ft_atoi(const char *nptr, t_list *first, t_list **stack_a, t_bool *boolean, 
 void	free_list(t_list **stack)
 {
 	t_list	*current;
+	t_list	*tmp;
 
 	current = *stack;
-	while (current)
+	while (current != NULL)
 	{
-		current = current->next;
-		free(*stack);
-		*stack = current;
+		tmp = current->next;
+		free(current);
+		current = tmp;
 	}
 }
