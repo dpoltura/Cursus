@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 17:56:12 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:45:20 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,16 @@ void	free_argv(char **argv)
 		i++;
 	}
 	free(argv);
+}
+
+void	error_no_msg(t_list **stack_a, t_bool *boolean, char **argv)
+{
+	if (stack_a)
+		free_list(stack_a);
+	if (boolean && boolean->boolean == 0)
+		free_argv(argv);
+	free(boolean);
+	exit(EXIT_FAILURE);
 }
 
 void	error(t_list **stack_a, t_bool *boolean, char **argv)

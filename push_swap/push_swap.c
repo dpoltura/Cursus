@@ -6,12 +6,11 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 18:04:25 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:53:31 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 #include <stdio.h>
 
 int	main(int argc, char **argv)
@@ -27,7 +26,7 @@ int	main(int argc, char **argv)
 		error(&stack_a, NULL, NULL);
 	boolean->boolean = 1;
 	if (argc < 2)
-		error(NULL, boolean, argv);
+		error_no_msg(NULL, boolean, argv);
 	if (argc == 2)
 	{
 		boolean->boolean = 0;

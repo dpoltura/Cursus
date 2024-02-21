@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 10:25:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 16:02:18 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:52:04 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,35 +24,13 @@ void	sort_two(t_list **stack, int choice)
 
 void	sort_three(t_list **stack_a)
 {
-	int	size;
-
-	size = list_size(stack_a);
-	if ((*stack_a)->nbr > (*stack_a)->next->nbr
-		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr)
+	while (check_if_sorted(stack_a) == 1)
 	{
-		swap(stack_a, 1);
-		reverse_rotate(stack_a, 1);
+		if ((*stack_a)->nbr > (*stack_a)->next->nbr)
+			swap(stack_a, 1);
+		else if ((*stack_a)->nbr < (*stack_a)->next->nbr)
+			reverse_rotate(stack_a, 1);
 	}
-	else if ((*stack_a)->nbr > (*stack_a)->next->nbr
-		&& (*stack_a)->next->nbr < (*stack_a)->next->next->nbr
-		&& (*stack_a)->next->next->nbr < (*stack_a)->nbr)
-		rotate(stack_a, 1);
-	else if ((*stack_a)->nbr > (*stack_a)->next->nbr
-		&& (*stack_a)->next->nbr < (*stack_a)->next->next->nbr
-		&& (*stack_a)->next->next->nbr > (*stack_a)->nbr)
-		swap(stack_a, 1);
-	else if ((*stack_a)->nbr < (*stack_a)->next->nbr
-		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr
-		&& (*stack_a)->next->next->nbr > (*stack_a)->nbr)
-	{
-		reverse_rotate(stack_a, 1);
-		swap(stack_a, 1);
-	}
-	else if ((*stack_a)->nbr < (*stack_a)->next->nbr
-		&& (*stack_a)->next->nbr > (*stack_a)->next->next->nbr)
-		reverse_rotate(stack_a, 1);
-	else
-		return ;
 }
 
 void	sort_five(t_list **stack_a, t_list **stack_b)
@@ -86,12 +64,7 @@ void	radix_sort(t_list **stack_a, t_list **stack_b)
 
 	max_nb = list_size(stack_a);
 	bit = 0;
-	i = 1;
-	while (i <= max_nb)
-	{
-		index_list(stack_a, i);
-		i++;
-	}
+	index_list_final(stack_a);
 	while (check_if_sorted(stack_a) == 1)
 	{
 		i = 0;

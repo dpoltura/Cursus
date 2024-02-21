@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 17:09:19 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 16:00:46 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 19:51:10 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,20 @@ void	index_list(t_list **stack, int index)
 	current->index = index;
 }
 
+void	index_list_final(t_list **stack_a)
+{
+	int	max_nb;
+	int	i;
+
+	max_nb = list_size(stack_a);
+	i = 1;
+	while (i <= max_nb)
+	{
+		index_list(stack_a, i);
+		i++;
+	}
+}
+
 int	check_if_sorted(t_list **stack)
 {
 	t_list	*first;
@@ -55,7 +69,7 @@ int	check_if_sorted(t_list **stack)
 	next = (*stack)->next;
 	while (next)
 	{
-		if (first->index > next->index)
+		if (first->nbr > next->nbr)
 			return (1);
 		first = first->next;
 		next = next->next;
