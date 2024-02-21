@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 16:37:27 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:44:57 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ void	error(t_list **stack_a, t_bool *boolean, char **argv)
 	if (boolean && boolean->boolean == 0)
 		free_argv(argv);
 	free(boolean);
-	if (argv[1])
-		putstr("Error\n", 2);
+	putstr("Error\n", 2);
 	exit(EXIT_FAILURE);
 }
 
@@ -47,7 +46,7 @@ int	check(t_list **stack_a, char **argv, t_bool *boolean)
 		i = 1;
 	while (argv[i])
 	{
-		ft_atoi(argv[i], stack_a, boolean, argv);
+		ft_atoi(argv[i], NULL, stack_a, boolean, argv);
 		i++;
 	}
 	return (1);
