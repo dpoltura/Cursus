@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 20:49:10 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:19:37 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 
 # include <limits.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -25,21 +24,22 @@ typedef struct s_bool
 
 typedef struct s_list
 {
-	int				nbr;
+	long			nbr;
 	int				index;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
 
 void				error(t_list **stack_a, t_bool *boolean, char **argv);
+void				error_atoi(t_list *first, t_list **stack_a, t_bool *boolean,
+						char **argv);
 void				error_no_msg(t_list **stack_a, t_bool *boolean,
 						char **argv);
 int					is_digit(char *argv);
 int					check(t_list **stack_a, char **argv, t_bool *boolean);
 void				putstr(char *str, int fd);
 void				putnbr(int nbr);
-int					ft_atoi(const char *nptr, t_list *first, t_list **stack_a,
-						t_bool *boolean, char **argv);
+long				ft_atoi(const char *nptr);
 void				free_list(t_list **stack);
 void				init(t_list **stack, char **argv, t_bool *boolean);
 int					swap(t_list **stack, int choice);

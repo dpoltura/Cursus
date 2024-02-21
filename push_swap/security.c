@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/21 19:45:20 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:58:43 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,8 @@ int	check(t_list **stack_a, char **argv, t_bool *boolean)
 		i = 1;
 	while (argv[i])
 	{
-		ft_atoi(argv[i], NULL, stack_a, boolean, argv);
+		if (ft_atoi(argv[i]) > INT_MAX)
+			error(stack_a, boolean, argv);
 		i++;
 	}
 	return (1);
