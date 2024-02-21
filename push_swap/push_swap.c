@@ -6,11 +6,13 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 16:10:02 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/20 18:25:54 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
@@ -24,13 +26,13 @@ int	main(int argc, char **argv)
 	if (!boolean)
 		error(&stack_a, NULL, NULL);
 	boolean->boolean = 1;
+	if (argc < 2)
+		error(NULL, boolean, argv);
 	if (argc == 2)
 	{
 		boolean->boolean = 0;
 		argv = ft_split(argv[1], ' ');
 	}
-	if (argc < 2 || !check(argv, boolean))
-		error(&stack_a, boolean, argv);
 	init(&stack_a, argv, boolean);
 	check_double(&stack_a, boolean, argv);
 	algo(&stack_a, &stack_b);

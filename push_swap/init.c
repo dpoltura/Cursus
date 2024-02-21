@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:11:58 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 16:06:47 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/20 15:18:21 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	atoi_argv(t_list **stack, char **argv, t_bool *boolean, int i)
 	prev = NULL;
 	while (argv[i])
 	{
-		(*stack)->nbr = ft_atoi(argv[i]);
+		(*stack)->nbr = ft_atoi(argv[i], stack, boolean, argv);
 		(*stack)->index = 0;
 		if (argv[i + 1])
 		{

@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 12:23:11 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 16:16:15 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:38:04 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ int	reverse_rotate(t_list **stack, int choice)
 	last->next = first;
 	*stack = last;
 	if (choice == 1)
-		putstr("rra\n");
+		putstr("rra\n", 1);
 	else if (choice == 2)
-		putstr("rrb\n");
+		putstr("rrb\n", 1);
 	return (1);
 }
 
@@ -56,9 +56,9 @@ int	rotate(t_list **stack, int choice)
 	last->next = first;
 	*stack = new_first;
 	if (choice == 1)
-		putstr("ra\n");
+		putstr("ra\n", 1);
 	else if (choice == 2)
-		putstr("rb\n");
+		putstr("rb\n", 1);
 	return (1);
 }
 
@@ -66,7 +66,7 @@ int	reverse_rotate_all(t_list **stack_a, t_list **stack_b)
 {
 	if (!reverse_rotate(stack_a, 0) && !reverse_rotate(stack_b, 0))
 		return (0);
-	putstr("rrr\n");
+	putstr("rrr\n", 1);
 	return (1);
 }
 
@@ -74,6 +74,6 @@ int	rotate_all(t_list **stack_a, t_list **stack_b)
 {
 	if (!rotate(stack_a, 0) && !rotate(stack_b, 0))
 		return (0);
-	putstr("rr\n");
+	putstr("rr\n", 1);
 	return (1);
 }

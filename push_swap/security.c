@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:15:34 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 16:16:53 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:37:27 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,17 @@ void	free_argv(char **argv)
 
 void	error(t_list **stack_a, t_bool *boolean, char **argv)
 {
-	free_list(stack_a);
-	if (boolean->boolean == 0)
+	if (stack_a)
+		free_list(stack_a);
+	if (boolean && boolean->boolean == 0)
 		free_argv(argv);
 	free(boolean);
-	putstr("Error\n");
+	if (argv[1])
+		putstr("Error\n", 2);
 	exit(EXIT_FAILURE);
 }
 
-int	is_digit(char *argv)
-{
-	int	nbr;
-
-	nbr = ft_atoi(argv);
-	if (nbr == (0))
-		return (0);
-	return (nbr);
-}
-
-int	check(char **argv, t_bool *boolean)
+int	check(t_list **stack_a, char **argv, t_bool *boolean)
 {
 	int	i;
 
@@ -55,8 +47,7 @@ int	check(char **argv, t_bool *boolean)
 		i = 1;
 	while (argv[i])
 	{
-		if (!is_digit(argv[i]))
-			return (0);
+		ft_atoi(argv[i], stack_a, boolean, argv);
 		i++;
 	}
 	return (1);

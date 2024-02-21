@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:09:21 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 16:19:24 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:38:16 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ int	swap(t_list **stack, int choice)
 	second->next = first;
 	second->prev = NULL;
 	if (choice == 1)
-		putstr("sa\n");
+		putstr("sa\n", 1);
 	else if (choice == 2)
-		putstr("sb\n");
+		putstr("sb\n", 1);
 	*stack = second;
 	return (1);
 }
@@ -47,6 +47,6 @@ int	swap_all(t_list **stack_a, t_list **stack_b)
 {
 	if (!swap(stack_a, 0) && !swap(stack_b, 0))
 		return (0);
-	putstr("ss\n");
+	putstr("ss\n", 1);
 	return (1);
 }

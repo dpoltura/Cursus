@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 10:02:28 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 16:10:18 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:38:34 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ typedef struct s_list
 
 void				error(t_list **stack_a, t_bool *boolean, char **argv);
 int					is_digit(char *argv);
-int					check(char **argv, t_bool *boolean);
-void				putstr(char *str);
+int					check(t_list **stack_a, char **argv, t_bool *boolean);
+void				putstr(char *str, int fd);
 void				putnbr(int nbr);
-int					ft_atoi(const char *nptr);
+int					ft_atoi(const char *nptr, t_list **stack_a, t_bool *boolean, char **argv);
 void				free_list(t_list **stack);
 void				init(t_list **stack, char **argv, t_bool *boolean);
 int					swap(t_list **stack, int choice);

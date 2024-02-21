@@ -6,20 +6,20 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 13:14:07 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/16 16:21:20 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:47:33 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	putstr(char *str)
+void	putstr(char *str, int fd)
 {
 	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		write(1, &str[i], 1);
+		write(fd, &str[i], 1);
 		i++;
 	}
 }
@@ -43,7 +43,7 @@ void	putnbr(int nbr)
 	}
 }
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(const char *nptr, t_list **stack_a, t_bool *boolean, char **argv)
 {
 	int		i;
 	int		j;
@@ -60,16 +60,20 @@ int	ft_atoi(const char *nptr)
 			j = -1;
 		i++;
 	}
+	if (nptr[i] == '\0')
+		error(stack_a, boolean, argv);
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		if (k < INT_MIN || k > INT_MAX)
-			return (0);
 		k = k * 10;
 		k += nptr[i] - '0';
+		if ((k * j) < INT_MIN || (k * j) > INT_MAX)
+			error(stack_a, boolean, argv);
 		i++;
 	}
+	while (nptr[i] == 32)
+		i++;
 	if (nptr[i] != '\0')
-		return (0);
+		error(stack_a, boolean, argv);
 	return (k * j);
 }
 
