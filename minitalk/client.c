@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:42:53 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/23 13:33:01 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:22:54 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,23 @@ int	ft_atoi(const char *nptr)
 void	send_char(char **argv)
 {
 	int	bit;
+	int	i;
 
 	bit = 7;
-	while (bit >= 0)
+	i = 0;
+	while (argv[2][i])
 	{
-		if (((argv[2][0] >> bit) & 1)== 1)
-			kill(ft_atoi(argv[1]), SIGUSR1);
-		else
-			kill(ft_atoi(argv[1]), SIGUSR2);
-		usleep(200);
-		bit--;
+		while (bit >= 0)
+		{
+			if (((argv[2][i] >> bit) & 1)== 1)
+				kill(ft_atoi(argv[1]), SIGUSR1);
+			else
+				kill(ft_atoi(argv[1]), SIGUSR2);
+			usleep(200);
+			bit--;
+		}
+		bit = 7;
+		i++;
 	}
 }
 
