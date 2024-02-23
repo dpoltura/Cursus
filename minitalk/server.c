@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:43:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/23 15:22:51 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/23 16:58:20 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	bin_to_char(char *bin)
 
 void	sig_action(int sig)
 {
-	char	bin[8];
+	char		bin[8];
 	static int	i = 0;
-	
+
 	if (sig == SIGUSR1)
 	{
 		bin[i] = '1';
