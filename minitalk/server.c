@@ -6,48 +6,46 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:43:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/26 09:13:54 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:04:11 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	*g_line = NULL;
+char *line = NULL;
 
-size_t	ft_strlen(const char *s)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	i;
+	size_t	i;
+	char	*p;
 
 	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin(const char *s1, const char *s2)
-{
-	char	*str;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	if (!s2)
-		return ((char *)s1);
-	if (!s1)
-		return ((char *)s2);
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (str == NULL)
-		return (NULL);
-	while (s1[i] != '\0')
+	p = (char *)s;
+	while (i < n)
 	{
-		str[i] = s1[i];
+		p[i] = c;
 		i++;
 	}
-	while (s2[j] != '\0')
-		str[i++] = s2[j++];
-	str[i] = '\0';
-	return (str);
+	return (s);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	char	*res;
+	size_t	total;
+
+	total = nmemb * size;
+	if (!total)
+		return (malloc(1));
+	if (nmemb > INT_MAX || size > INT_MAX)
+		return (NULL);
+	if (!nmemb || !size)
+		return (NULL);
+	res = (char *)malloc(total);
+	if (!res)
+		return (NULL);
+	ft_memset(res, 0, total);
+	return ((void *)res);
 }
 
 void	bin_to_char(char *bin)
@@ -60,26 +58,26 @@ void	bin_to_char(char *bin)
 	c[1] = '\0';
 	dec = 128;
 	i = 0;
-	if (!g_line)
-		g_line = malloc(1);
 	while (bin[i])
 	{
 		c[0] += (bin[i] - '0') * dec;
 		dec /= 2;
 		i++;
 	}
-	g_line = ft_strjoin(g_line, c);
+	if (!line)
+		line = ft_calloc(1, 1);
+	line = ft_strjoin_serv(line, c);
 	if (c[0] == '\n')
 	{
-		ft_printf("%s", g_line);
-		free(g_line);
-		g_line = NULL;
+		ft_printf("%s", line);
+		free(line);
+		line = NULL;
 	}
 }
 
 void	sig_action(int sig)
 {
-	char		bin[8];
+	static char		bin[8];
 	static int	i = 0;
 
 	if (sig == SIGUSR1)
