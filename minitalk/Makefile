@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 15:31:40 by dpoltura          #+#    #+#              #
-#    Updated: 2024/02/26 12:21:42 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/02/26 13:38:05 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 
 SERVER_SRC =	server.c \
-				ft_strjoin.c
+				ft_strjoin.c \
+				ft_calloc.c
 
 CLIENT_SRC =	client.c \
 				ft_strjoin.c

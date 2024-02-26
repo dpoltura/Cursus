@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:55:49 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/26 12:47:00 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/26 13:39:29 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strjoin_serv(char *s1, const char *s2);
 void	bin_to_char(char *bin);
 void	sig_action(int sig);
+void	*ft_calloc(size_t nmemb, size_t size);
+void	*ft_memset(void *s, int c, size_t n);
 
 #endif
