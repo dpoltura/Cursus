@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:55:49 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/26 14:53:05 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:04:45 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <signal.h>
 # include <stdlib.h>
 
+void	print_banner(void);
 size_t	ft_strlen(const char *s);
 int		ft_atoi(const char *nptr);
 void	send_char(char **argv);
