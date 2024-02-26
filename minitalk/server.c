@@ -6,15 +6,16 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:43:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/26 13:51:58 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:02:31 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
+char	*g_line = NULL;
+
 void	bin_to_char(char *bin)
 {
-	static char	*line = NULL;
 	char		c[2];
 	int			dec;
 	int			i;
@@ -29,14 +30,14 @@ void	bin_to_char(char *bin)
 		dec /= 2;
 		i++;
 	}
-	if (!line)
-		line = ft_calloc(1, 1);
-	line = ft_strjoin_serv(line, c);
+	if (!g_line)
+		g_line = ft_calloc(1, 1);
+	g_line = ft_strjoin_serv(g_line, c);
 	if (c[0] == '\0')
 	{
-		ft_printf("%s\n", line);
-		free(line);
-		line = NULL;
+		ft_printf("%s\n", g_line);
+		free(g_line);
+		g_line = NULL;
 	}
 }
 
