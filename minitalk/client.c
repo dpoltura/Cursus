@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:42:53 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/26 12:22:08 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/26 14:00:16 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,18 @@ int	ft_atoi(const char *nptr)
 	return (k * j);
 }
 
-void	send_char(char *line, char **argv)
+void	send_char(char **argv)
 {
 	int	bit;
 	int	i;
 
 	bit = 7;
 	i = 0;
-	while (line[i])
+	while (argv[2][i])
 	{
 		while (bit >= 0)
 		{
-			if (((line[i] >> bit) & 1) == 1)
+			if (((argv[2][i] >> bit) & 1) == 1)
 				kill(ft_atoi(argv[1]), SIGUSR1);
 			else
 				kill(ft_atoi(argv[1]), SIGUSR2);
@@ -58,17 +58,25 @@ void	send_char(char *line, char **argv)
 		}
 		bit = 7;
 		i++;
+		if (!argv[2][i])
+		{
+			while (bit >= 0)
+			{
+				if (((argv[2][i] >> bit) & 1) == 1)
+					kill(ft_atoi(argv[1]), SIGUSR1);
+				else
+					kill(ft_atoi(argv[1]), SIGUSR2);
+				usleep(200);
+				bit--;
+			}
+		}
 	}
 }
 
 int	main(int argc, char **argv)
 {
-	char	*line;
-
 	if (argc != 3)
 		return (0);
-	line = ft_strjoin(argv[2], "\n");
-	send_char(line, argv);
-	free(line);
+	send_char(argv);
 	return (0);
 }
