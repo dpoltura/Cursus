@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:42:53 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/26 14:52:30 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:19:38 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,15 @@ int	ft_atoi(const char *nptr)
 void	send_sig(char **argv, int bit, int i)
 {
 	if (((argv[2][i] >> bit) & 1) == 1)
-		kill(ft_atoi(argv[1]), SIGUSR1);
+	{
+		if (kill(ft_atoi(argv[1]), SIGUSR1))
+			exit(1);
+	}
 	else
-		kill(ft_atoi(argv[1]), SIGUSR2);
+	{
+		if (kill(ft_atoi(argv[1]), SIGUSR2))
+			exit(1);
+	}
 	usleep(200);
 }
 
@@ -74,10 +80,17 @@ void	send_char(char **argv)
 	}
 }
 
+int	check_pid(char **argv)
+{
+	if (ft_atoi(argv[1]) > 0)
+		return (1);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
-	if (argc != 3)
-		return (0);
+	if (argc != 3 || !check_pid(argv))
+		return (1);
 	send_char(argv);
 	return (0);
 }

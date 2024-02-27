@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:43:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 13:50:26 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:05:02 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	bin_to_char(char *bin)
 	}
 	if (!g_line)
 		g_line = ft_calloc(1, 1);
-	g_line = ft_strjoin_serv(g_line, c);
+	g_line = ft_strjoin(g_line, c);
 	if (c[0] == '\0')
 	{
 		ft_printf("%s\n", g_line);
