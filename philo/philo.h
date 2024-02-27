@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:40:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 10:43:47 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/27 12:31:01 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,32 +30,41 @@
 
 /*============= STRUCTS =============*/
 
-typedef struct s_data
+typedef struct s_philo
+{
+	size_t			time_to_die;
+	size_t			time_to_eat;
+	size_t			time_to_sleep;
+	int				num_of_philos;
+	int				num_times_to_eat;
+}					t_philo;
+
+typedef struct s_thread
 {
 	pthread_t		thread;
 	int				id;
 	int				eating;
 	int				meals_eaten;
 	size_t			last_meal;
-	size_t			time_to_die;
-	size_t			time_to_eat;
-	size_t			time_to_sleep;
 	size_t			start_time;
-	int				num_of_philos;
-	int				num_times_to_eat;
 	int				*dead;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
 	pthread_mutex_t	*write_lock;
 	pthread_mutex_t	*dead_lock;
 	pthread_mutex_t	*meal_lock;
-}					t_data;
+	struct s_thread	*prev;
+	struct s_thread	*next;
+}					t_thread;
 
 /*============= FUNCTIONS =============*/
 
 int	is_digit(char **argv);
 int	ft_atoi(const char *nptr);
-void	init_data(t_data *philo, char **argv);
-void	print_data(t_data *philo);
+void	init_philo(t_philo *philo, char **argv);
+void	print_philo(t_philo *philo);
+void	*init_thread(t_thread **thread, t_philo *philo);
+void	init_thread_values(t_thread *thread);
+void	free_thread(t_thread *thread);
 
 #endif
