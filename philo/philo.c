@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:46:49 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 12:31:36 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:32:46 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	init_philo(philo, argv);
 	print_philo(philo);
 	init_thread(&thread, philo);
+	create_thread(thread);
 	free(philo);
 	free_thread(thread);
 	return (0);
@@ -148,4 +149,29 @@ void	free_thread(t_thread *thread)
 		free(thread);
 		thread = current;
 	}
+}
+
+void	create_thread(t_thread *thread)
+{
+	t_thread	*current;
+
+	current = thread;
+	while (current)
+	{
+		pthread_create(&current->thread, NULL, &routine, NULL);
+		usleep(50);
+		current = current->next;
+	}
+	current = thread;
+	while (current)
+	{
+		pthread_join(current->thread, NULL);
+		current = current->next;
+	}
+}
+
+void	*routine()
+{
+	printf("thread test\n");
+	return (NULL);
 }

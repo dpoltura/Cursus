@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:40:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 12:31:01 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:17:09 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,7 @@ void	print_philo(t_philo *philo);
 void	*init_thread(t_thread **thread, t_philo *philo);
 void	init_thread_values(t_thread *thread);
 void	free_thread(t_thread *thread);
+void	create_thread(t_thread *thread);
+void	*routine();
 
 #endif
