@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:46:49 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 14:32:46 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:43:58 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	main(int argc, char **argv)
 {
-	t_philo	*philo;
+	t_philo		*philo;
 	t_thread	*thread;
-	
+
 	thread = NULL;
 	if (argc != 6 || !is_digit(argv))
 		return (1);
@@ -97,7 +97,7 @@ void	print_philo(t_philo *philo)
 
 void	*init_thread(t_thread **thread, t_philo *philo)
 {
-	int	i;
+	int			i;
 	t_thread	*first;
 
 	i = philo->num_of_philos;
@@ -118,7 +118,7 @@ void	*init_thread(t_thread **thread, t_philo *philo)
 		i--;
 	}
 	*thread = first;
-	return ((void*) 1);
+	return ((void *)1);
 }
 
 void	init_thread_values(t_thread *thread)
@@ -141,7 +141,7 @@ void	init_thread_values(t_thread *thread)
 void	free_thread(t_thread *thread)
 {
 	t_thread	*current;
-	
+
 	current = thread;
 	while (thread)
 	{
@@ -158,7 +158,7 @@ void	create_thread(t_thread *thread)
 	current = thread;
 	while (current)
 	{
-		pthread_create(&current->thread, NULL, &routine, NULL);
+		pthread_create(&current->thread, NULL, routine, NULL);
 		usleep(50);
 		current = current->next;
 	}
@@ -170,8 +170,12 @@ void	create_thread(t_thread *thread)
 	}
 }
 
-void	*routine()
+void	*routine(void *param)
 {
-	printf("thread test\n");
+	static int	i = 1;
+
+	(void)param;
+	printf("thread%d test\n", i);
+	i++;
 	return (NULL);
 }

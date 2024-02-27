@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:40:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 13:17:09 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:43:36 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 /*============= INCLUDES =============*/
 
-# include <unistd.h>
 # include <pthread.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 /*============= COLORS =============*/
 
@@ -59,14 +59,14 @@ typedef struct s_thread
 
 /*============= FUNCTIONS =============*/
 
-int	is_digit(char **argv);
-int	ft_atoi(const char *nptr);
-void	init_philo(t_philo *philo, char **argv);
-void	print_philo(t_philo *philo);
-void	*init_thread(t_thread **thread, t_philo *philo);
-void	init_thread_values(t_thread *thread);
-void	free_thread(t_thread *thread);
-void	create_thread(t_thread *thread);
-void	*routine();
+int					is_digit(char **argv);
+int					ft_atoi(const char *nptr);
+void				init_philo(t_philo *philo, char **argv);
+void				print_philo(t_philo *philo);
+void				*init_thread(t_thread **thread, t_philo *philo);
+void				init_thread_values(t_thread *thread);
+void				free_thread(t_thread *thread);
+void				create_thread(t_thread *thread);
+void				*routine(void *param);
 
 #endif
