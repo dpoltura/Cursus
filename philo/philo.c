@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:46:49 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 14:43:58 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:02:52 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -179,3 +179,5 @@ void	*routine(void *param)
 	i++;
 	return (NULL);
 }
+
+// MUTEX !!!
