@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:43:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/29 16:49:58 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/01 00:06:26 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	bin_to_char(char *bin, siginfo_t *info)
 	g_line = ft_strjoin(g_line, c);
 	if (c[0] == '\0')
 	{
-		ft_printf("%s\n", g_line);
+		ft_printf("Message > %s\n\n", g_line);
 		kill(info->si_pid, SIGUSR1);
 		free(g_line);
 		g_line = NULL;
@@ -69,7 +69,7 @@ void	sigaction_handler(int signum, siginfo_t *info, void *context)
 	static char	bin[8];
 	static int	i = 0;
 
-	context = NULL;
+	(void)context;
 	if (signum == SIGUSR1)
 	{
 		bin[i] = '1';
@@ -95,7 +95,7 @@ int	main(void)
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = sigaction_handler;
 	print_banner();
-	ft_printf("server PID: %d\n\n", getpid());
+	ft_printf("Server PID: %d\n\n", getpid());
 	while (1)
 	{
 		sigaction(SIGUSR1, &sa, NULL);
