@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:42:53 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/29 16:37:32 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:51:13 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,8 @@ void	send_sig(char **argv, int bit, int i)
 			exit(1);
 		}
 	}
-	usleep(100);
+	usleep(200);
 }
-
 
 void	send_char(char **argv)
 {
@@ -87,7 +86,6 @@ void	send_char(char **argv)
 	}
 }
 
-
 int	check_pid(char **argv)
 {
 	if (ft_atoi(argv[1]) > 0)
@@ -95,7 +93,7 @@ int	check_pid(char **argv)
 	return (0);
 }
 
-void sig_confirm(int sig)
+void	sig_confirm(int sig)
 {
 	if (sig == SIGUSR1)
 		ft_printf("Message Received\n");
@@ -105,7 +103,7 @@ int	main(int argc, char **argv)
 {
 	if (argc != 3 || !check_pid(argv))
 		return (1);
-	send_char(argv);
 	signal(SIGUSR1, sig_confirm);
+	send_char(argv);
 	return (0);
 }

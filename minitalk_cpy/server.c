@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:43:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/29 16:30:19 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:49:58 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ char	*g_line = NULL;
 
 void	bin_to_char(char *bin, siginfo_t *info)
 {
-	char		c[2];
-	int			dec;
-	int			i;
+	char	c[2];
+	int		dec;
+	int		i;
 
 	c[0] = 0;
 	c[1] = '\0';
@@ -64,7 +64,7 @@ void	print_banner(void)
 	ft_printf("\033[0m");
 }
 
-void sigaction_handler(int signum, siginfo_t *info, void *context)
+void	sigaction_handler(int signum, siginfo_t *info, void *context)
 {
 	static char	bin[8];
 	static int	i = 0;
@@ -91,9 +91,9 @@ void sigaction_handler(int signum, siginfo_t *info, void *context)
 int	main(void)
 {
 	struct sigaction	sa;
-	
+
 	sa.sa_flags = SA_SIGINFO;
-    sa.sa_sigaction = sigaction_handler;
+	sa.sa_sigaction = sigaction_handler;
 	print_banner();
 	ft_printf("server PID: %d\n\n", getpid());
 	while (1)
