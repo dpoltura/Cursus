@@ -6,11 +6,11 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:42:53 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/01 00:04:41 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/01 00:28:17 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	ft_atoi(const char *nptr)
 {

@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:43:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 16:05:02 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/01 00:14:58 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	bin_to_char(char *bin)
 	g_line = ft_strjoin(g_line, c);
 	if (c[0] == '\0')
 	{
-		ft_printf("%s\n", g_line);
+		ft_printf("Message > %s\n\n", g_line);
 		free(g_line);
 		g_line = NULL;
 	}
@@ -89,7 +89,7 @@ void	print_banner(void)
 int	main(void)
 {
 	print_banner();
-	ft_printf("server PID: %d\n\n", getpid());
+	ft_printf("Server PID: %d\n\n", getpid());
 	while (1)
 	{
 		signal(SIGUSR1, sig_action);
