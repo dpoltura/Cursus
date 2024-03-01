@@ -6,39 +6,38 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:43:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/01 00:14:58 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/01 10:28:46 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-char	*g_line = NULL;
+int	g_count = 0;
 
 void	bin_to_char(char *bin)
 {
-	char		c[2];
+	char		c;
 	int			dec;
 	int			i;
 
-	c[0] = 0;
-	c[1] = '\0';
+	c = 0;
 	dec = 128;
 	i = 0;
 	while (bin[i])
 	{
-		c[0] += (bin[i] - '0') * dec;
+		c += (bin[i] - '0') * dec;
 		dec /= 2;
 		i++;
 	}
-	if (!g_line)
-		g_line = ft_calloc(1, 1);
-	g_line = ft_strjoin(g_line, c);
-	if (c[0] == '\0')
+	if (c == '\0')
 	{
-		ft_printf("Message > %s\n\n", g_line);
-		free(g_line);
-		g_line = NULL;
+		ft_printf("\n\n");
+		g_count = 0;
 	}
+	if (g_count == 0)
+		ft_printf("\033[0;32mMessage > \033[0m");
+	ft_printf("%c", c);
+	g_count = 1;
 }
 
 void	sig_action(int sig)
@@ -89,7 +88,7 @@ void	print_banner(void)
 int	main(void)
 {
 	print_banner();
-	ft_printf("Server PID: %d\n\n", getpid());
+	ft_printf("\033[0;32mServer PID: \033[0m%d\n\n", getpid());
 	while (1)
 	{
 		signal(SIGUSR1, sig_action);

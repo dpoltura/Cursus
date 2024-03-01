@@ -6,24 +6,18 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/22 15:31:40 by dpoltura          #+#    #+#              #
-#    Updated: 2024/03/01 00:26:32 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/03/01 10:10:21 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g
 
-SERVER_SRC = 	server.c \
-				ft_strjoin.c \
-				ft_calloc.c
-SERVER_BONUS_SRC =	server_bonus.c \
-					ft_strjoin.c \
-					ft_calloc.c
+SERVER_SRC = 	server.c
+SERVER_BONUS_SRC =	bonus/server_bonus.c
 
-CLIENT_SRC =	client.c \
-				ft_strjoin.c
-CLIENT_BONUS_SRC =	client_bonus.c \
-					ft_strjoin.c
+CLIENT_SRC =	client.c
+CLIENT_BONUS_SRC =	bonus/client_bonus.c
 
 SERVER_OBJ = $(SERVER_SRC:%.c=%.o)
 SERVER_BONUS_OBJ = $(SERVER_BONUS_SRC:%.c=%.o)
@@ -35,10 +29,10 @@ INCLUDE = -L ft_printf -lftprintf
 FT_PRINTF = libftprintf.a
 
 SERVER = server
-SERVER_BONUS = server_bonus
+SERVER_BONUS = bonus/server_bonus
 
 CLIENT = client
-CLIENT_BONUS = client_bonus
+CLIENT_BONUS = bonus/client_bonus
 
 all: $(SERVER) $(CLIENT)
 
