@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:42:53 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/01 09:42:13 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/01 10:51:02 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	send_sig(char **argv, int bit, int i)
 	{
 		if (kill(ft_atoi(argv[1]), SIGUSR1))
 		{
-			ft_printf("\nMessage Not Received [\033[31m✗\033[0m]\n\n");
+			ft_printf("\nError: Message Not Received [\033[31m✗\033[0m]\n\n");
 			exit(1);
 		}
 	}
@@ -52,7 +52,7 @@ void	send_sig(char **argv, int bit, int i)
 	{
 		if (kill(ft_atoi(argv[1]), SIGUSR2))
 		{
-			ft_printf("\nMessage Not Received [\033[31m✗\033[0m]\n\n");
+			ft_printf("\nError: Message Not Received [\033[31m✗\033[0m]\n\n");
 			exit(1);
 		}
 	}
@@ -94,8 +94,17 @@ void	sig_confirm(int sig)
 
 int	main(int argc, char **argv)
 {
-	if (argc != 3 || ft_atoi(argv[1]) <= 0)
+	if (argc != 3)
+	{
+		ft_printf("\nError: Bad Args Number [\033[31m✗\033[0m]\n\n");
 		return (1);
+	}
+	if (ft_atoi(argv[1]) <= 0)
+	{
+		ft_printf("\nError: PID <= 0 ");
+		ft_printf("|| PID Not Contain Only Digits [\033[31m✗\033[0m]\n\n");
+		return (1);
+	}
 	signal(SIGUSR1, sig_confirm);
 	send_char(argv);
 	return (0);
