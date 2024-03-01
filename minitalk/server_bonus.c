@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 15:43:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/01 00:28:05 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/01 08:53:23 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ int	main(void)
 {
 	struct sigaction	sa;
 
+	sigemptyset(&sa.sa_mask);
 	sa.sa_flags = SA_SIGINFO;
 	sa.sa_sigaction = sigaction_handler;
 	print_banner();
