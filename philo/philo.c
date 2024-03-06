@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:46:49 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 15:02:52 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:36:06 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,8 @@ int	main(int argc, char **argv)
 	t_thread	*thread;
 
 	thread = NULL;
-	if (argc != 6 || !is_digit(argv))
-		return (1);
-	philo = malloc(sizeof(t_philo));
-	if (!philo)
-		return (1);
+	check_args(argc, argv);
+	philo = safe_malloc(sizeof(t_philo));
 	init_philo(philo, argv);
 	print_philo(philo);
 	init_thread(&thread, philo);
@@ -32,18 +29,34 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
-int	is_digit(char **argv)
+void	*safe_malloc(int bytes)
 {
-	int	i;
+	void	*ptr;
+	
+	ptr = malloc(bytes);
+	if (!ptr)
+		error_exit("MALLOC");
+	return (ptr);
+}
 
-	i = 1;
-	while (argv[i])
-	{
-		if (!ft_atoi(argv[i]) || ft_atoi(argv[i]) == 1)
-			return (0);
-		i++;
-	}
-	return (1);
+void	check_args(int argc, char **argv)
+{
+	if (argc != 5)
+		error_exit("ARGS != 5");
+	if (ft_atoi(argv[1]) < 2 || ft_atoi(argv[1]) > 200)
+		error_exit("argv[1] < 2 || > 200 || NOT DIGIT");
+	if (ft_atoi(argv[2]) < 60)
+		error_exit("argv[2] < 60 || NOT DIGIT");
+	if (ft_atoi(argv[3]) < 60)
+		error_exit("argv[3] < 60 || NOT DIGIT");
+	if (ft_atoi(argv[4]) < 60)
+		error_exit("argv[4] < 60 || NOT DIGIT");
+}
+
+void	error_exit(const char *s)
+{
+	printf(RED_COLOR"Error: "DEFAULT_COLOR"%s\n", s);
+	exit(EXIT_FAILURE);
 }
 
 int	ft_atoi(const char *nptr)
@@ -78,7 +91,6 @@ void	init_philo(t_philo *philo, char **argv)
 	philo->time_to_eat = ft_atoi(argv[3]);
 	philo->time_to_sleep = ft_atoi(argv[4]);
 	philo->num_of_philos = ft_atoi(argv[1]);
-	philo->num_times_to_eat = ft_atoi(argv[5]);
 }
 
 void	print_philo(t_philo *philo)
@@ -91,8 +103,6 @@ void	print_philo(t_philo *philo)
 	printf("[TIME_TO_EAT: %zu]\n", philo->time_to_eat);
 	printf(GREEN_COLOR);
 	printf("[TIME_TO_SLEEP: %zu]\n", philo->time_to_sleep);
-	printf(DEFAULT_COLOR);
-	printf("[NB_TIME_TO_EAT: %d]\n", philo->num_times_to_eat);
 }
 
 void	*init_thread(t_thread **thread, t_philo *philo)

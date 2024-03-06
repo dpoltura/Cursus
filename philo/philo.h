@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:40:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/02/27 14:43:36 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/06 11:36:13 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ typedef struct s_philo
 	size_t			time_to_eat;
 	size_t			time_to_sleep;
 	int				num_of_philos;
-	int				num_times_to_eat;
 }					t_philo;
 
 typedef struct s_thread
@@ -59,7 +58,9 @@ typedef struct s_thread
 
 /*============= FUNCTIONS =============*/
 
-int					is_digit(char **argv);
+void	*safe_malloc(int bytes);
+void	check_args(int argc, char **argv);
+void	error_exit(const char *s);
 int					ft_atoi(const char *nptr);
 void				init_philo(t_philo *philo, char **argv);
 void				print_philo(t_philo *philo);
