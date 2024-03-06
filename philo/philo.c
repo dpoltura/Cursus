@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:46:49 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/06 11:36:06 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/06 13:10:03 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,21 @@ void	*safe_malloc(int bytes)
 
 void	check_args(int argc, char **argv)
 {
-	if (argc != 5)
+	if (argc != 6)
 		error_exit("ARGS != 5");
-	if (ft_atoi(argv[1]) < 2 || ft_atoi(argv[1]) > 200)
+	else if (ft_atoi(argv[1]) < 2 || ft_atoi(argv[1]) > 200)
 		error_exit("argv[1] < 2 || > 200 || NOT DIGIT");
-	if (ft_atoi(argv[2]) < 60)
+	else if (ft_atoi(argv[2]) < 60)
 		error_exit("argv[2] < 60 || NOT DIGIT");
-	if (ft_atoi(argv[3]) < 60)
+	else if (ft_atoi(argv[3]) < 60)
 		error_exit("argv[3] < 60 || NOT DIGIT");
-	if (ft_atoi(argv[4]) < 60)
+	else if (ft_atoi(argv[4]) < 60)
 		error_exit("argv[4] < 60 || NOT DIGIT");
 }
 
-void	error_exit(const char *s)
+void	error_exit(const char *str)
 {
-	printf(RED_COLOR"Error: "DEFAULT_COLOR"%s\n", s);
+	printf(BOLD RED"Error: "RESET"%s\n", str);
 	exit(EXIT_FAILURE);
 }
 
@@ -87,22 +87,23 @@ int	ft_atoi(const char *nptr)
 
 void	init_philo(t_philo *philo, char **argv)
 {
+	philo->num_of_philos = ft_atoi(argv[1]);
 	philo->time_to_die = ft_atoi(argv[2]);
 	philo->time_to_eat = ft_atoi(argv[3]);
 	philo->time_to_sleep = ft_atoi(argv[4]);
-	philo->num_of_philos = ft_atoi(argv[1]);
+	philo->num_of_meals = ft_atoi(argv[5]);
 }
 
 void	print_philo(t_philo *philo)
 {
-	printf(BLUE_COLOR);
-	printf("[NB_OF_PHILO: %d]\n", philo->num_of_philos);
-	printf(RED_COLOR);
-	printf("[TIME_TO_DIE: %zu]\n", philo->time_to_die);
-	printf(YELLOW_COLOR);
-	printf("[TIME_TO_EAT: %zu]\n", philo->time_to_eat);
-	printf(GREEN_COLOR);
-	printf("[TIME_TO_SLEEP: %zu]\n", philo->time_to_sleep);
+	printf(BOLD);
+	printf(BLUE"[NB_OF_PHILOS: %d]\n", philo->num_of_philos);
+	printf(RED"[TIME_TO_DIE: %zu]\n", philo->time_to_die);
+	printf(YELLOW"[TIME_TO_EAT: %zu]\n", philo->time_to_eat);
+	printf(GREEN"[TIME_TO_SLEEP: %zu]\n", philo->time_to_sleep);
+	printf(RESET);
+	if (philo->num_of_meals)
+		printf("[NB_OF_MEALS: %d]\n", philo->num_of_meals);
 }
 
 void	*init_thread(t_thread **thread, t_philo *philo)

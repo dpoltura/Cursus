@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:40:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/06 11:36:13 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/06 13:08:53 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@
 
 /*============= COLORS =============*/
 
-# define DEFAULT_COLOR "\x1b[37m"
-# define RED_COLOR "\x1b[31m"
-# define GREEN_COLOR "\x1b[32m"
-# define YELLOW_COLOR "\x1b[33m"
-# define BLUE_COLOR "\x1b[34m"
+# define BOLD "\033[1m"
+# define RESET "\033[38;5;15m"
+# define RED "\033[38;5;196m"
+# define GREEN "\033[38;5;46m"
+# define YELLOW "\033[38;5;226m"
+# define BLUE "\033[38;5;21m"
 
 /*============= STRUCTS =============*/
 
@@ -36,6 +37,7 @@ typedef struct s_philo
 	size_t			time_to_eat;
 	size_t			time_to_sleep;
 	int				num_of_philos;
+	int				num_of_meals;
 }					t_philo;
 
 typedef struct s_thread
@@ -60,7 +62,7 @@ typedef struct s_thread
 
 void	*safe_malloc(int bytes);
 void	check_args(int argc, char **argv);
-void	error_exit(const char *s);
+void	error_exit(const char *str);
 int					ft_atoi(const char *nptr);
 void				init_philo(t_philo *philo, char **argv);
 void				print_philo(t_philo *philo);
