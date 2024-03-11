@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:46:49 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/06 13:20:56 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/08 10:26:37 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	main(int argc, char **argv)
 
 	thread = NULL;
 	check_args(argc, argv);
-	philo = safe_malloc(sizeof(t_philo));
 	init_philo(philo, argv);
 	print_philo(philo);
 	init_thread(&thread, philo);
@@ -87,6 +86,7 @@ int	ft_atoi(const char *nptr)
 
 void	init_philo(t_philo *philo, char **argv)
 {
+	philo = safe_malloc(sizeof(t_philo));
 	philo->num_of_philos = ft_atoi(argv[1]);
 	philo->time_to_die = ft_atoi(argv[2]);
 	philo->time_to_eat = ft_atoi(argv[3]);
