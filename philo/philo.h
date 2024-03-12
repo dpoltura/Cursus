@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 09:40:56 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/06 13:08:53 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/12 09:42:59 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ typedef struct s_thread
 
 void	*safe_malloc(int bytes);
 void	check_args(int argc, char **argv);
-void	error_exit(const char *str);
+void	error_exit(const char *str);ex
 int					ft_atoi(const char *nptr);
 void				init_philo(t_philo *philo, char **argv);
 void				print_philo(t_philo *philo);
