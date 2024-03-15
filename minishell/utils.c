@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:11:16 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/14 12:26:15 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/15 08:59:09 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char    *ft_strjoin(const char *s1, const char *s2)
         while (s2[j] != '\0')
                 str[i++] = s2[j++];
         str[i] = '\0';
+        free((char *)s1);
         return (str);
 }
 
@@ -69,7 +70,8 @@ char	*check_path(char **split_path, char *input)
 	i = 0;
 	while (split_path[i])
 	{
-		full_path = ft_strjoin(split_path[i], "/");
+                full_path = ft_strdup(split_path[i]);
+		full_path = ft_strjoin(full_path, "/");
 		full_path = ft_strjoin(full_path, input);
 		if (access(full_path, F_OK) == -1)
 			free(full_path);
@@ -78,4 +80,22 @@ char	*check_path(char **split_path, char *input)
 		i++;
 	}
 	return (NULL);
+}
+
+char    *ft_strdup(const char *s)
+{
+        int             i;
+        char    *str;
+
+        i = 0;
+        str = malloc(sizeof(char) * (ft_strlen(s) + 1));
+        if (str == NULL)
+                return (NULL);
+        while (s[i] != '\0')
+        {
+                str[i] = s[i];
+                i++;
+        }
+        str[i] = '\0';
+        return (str);
 }
