@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 09:53:05 by dpoltura          #+#    #+#              #
-#    Updated: 2024/03/14 11:46:32 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/03/15 10:58:54 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ CFLAGS = -Wextra -Wall -Werror -g -Wno-unused-command-line-argument -lreadline
 
 SRCS = 	minishell.c \
 		ft_split.c \
-		utils.c
+		utils.c \
+		utils_2.c \
+		directory.c
 
 OBJS = $(SRCS:%.c=%.o)
 
