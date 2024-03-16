@@ -6,16 +6,14 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/15 13:32:17 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:34:05 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	main(int argc, char **argv, char **env)
-{
-	argv = NULL;
-	
+{	
 	char	*input;
 	char	**split_input;
 	char	*path;
@@ -23,7 +21,7 @@ int	main(int argc, char **argv, char **env)
 	char	*full_path;
 	pid_t	pid;
 
-	if (argc != 1)
+	if (argc != 1 || !argv)
 		return (1);
 	path = getenv("PATH");
 	split_path = ft_split(path, ':');
@@ -31,7 +29,7 @@ int	main(int argc, char **argv, char **env)
 		perror("split");
 	while (1)
 	{
-		input = readline("$ ");
+		input = readline(BOLD GREEN"MINISHELL "RESET"$ ");
 		if (!input)
 			return (1);
 		split_input = ft_split(input, ' ');

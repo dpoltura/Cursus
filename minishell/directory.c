@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/15 10:58:46 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/15 13:24:33 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:27:39 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,12 @@ int	if_back_directory(char **split_input)
 	while (split_input[i])
 	{
 		if (ft_strcmp(split_input[i], ".."))
+		{
 			chdir("..");
-		getcwd(dir, sizeof(dir));
-		setenv("PWD", dir, 1);
+			getcwd(dir, sizeof(dir));
+			setenv("PWD", dir, 1);
+			i++;
+		}
 		if (split_input[i] && ft_strcmp(split_input[i], "/"))
 			i++;
 		if (!split_input[i])
@@ -37,6 +40,7 @@ int	if_directory(char **split_input)
 {
 	int	i;
 	char	*dir;
+	char	cwd[1024];
 
 	i = 1;
 	if (ft_strcmp(split_input[0], "cd"))
@@ -50,6 +54,8 @@ int	if_directory(char **split_input)
 				dir = ft_strjoin(dir, split_input[1]);
 				chdir(dir);
 				free(dir);
+				getcwd(cwd, sizeof(cwd));
+				setenv("PWD", cwd, 1);
 			}
 		}
 		return (1);
