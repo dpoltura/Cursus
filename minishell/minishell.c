@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/16 11:34:05 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/16 11:39:40 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv, char **env)
 		perror("split");
 	while (1)
 	{
-		input = readline(BOLD GREEN"MINISHELL "RESET"$ ");
+		input = readline(BOLD GREEN"MINISHELL"RESET"$ ");
 		if (!input)
 			return (1);
 		split_input = ft_split(input, ' ');
