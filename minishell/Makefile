@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 09:53:05 by dpoltura          #+#    #+#              #
-#    Updated: 2024/03/16 11:16:25 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/03/16 12:04:22 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,8 @@ SRCS = 	minishell.c \
 		ft_split.c \
 		utils.c \
 		utils_2.c \
-		directory.c
-
+		directory.c \
+		parse.c
 OBJS = $(SRCS:%.c=%.o)
 
 NAME = minishell

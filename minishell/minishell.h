@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/16 11:35:25 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/16 12:07:41 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ char	*check_path(char **split_path, char *input);
 char    *ft_strdup(const char *s);
 int	ft_strcmp(char *s1, char *s2);
 int	if_directory(char **split_input);
+char    *ft_substr(const char *s, unsigned int start, size_t len);
 
 #endif

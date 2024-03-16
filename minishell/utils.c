@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:11:16 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/15 08:59:09 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/16 12:03:35 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,24 +62,18 @@ char    *ft_strjoin(const char *s1, const char *s2)
         return (str);
 }
 
-char	*check_path(char **split_path, char *input)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
-	char	*full_path;
 
 	i = 0;
-	while (split_path[i])
+	while (s1[i] == s2[i])
 	{
-                full_path = ft_strdup(split_path[i]);
-		full_path = ft_strjoin(full_path, "/");
-		full_path = ft_strjoin(full_path, input);
-		if (access(full_path, F_OK) == -1)
-			free(full_path);
-		else if (access(full_path, F_OK) == 0)
-			return (full_path);
+		if (!s1[i] && !s2[i])
+			return (1);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
 char    *ft_strdup(const char *s)
