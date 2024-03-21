@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:56:51 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 13:49:36 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:56:45 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static void	get_env_vars(char *var, t_data **data)
 
 void	ft_getenv(t_data **data)
 {
+	get_env_vars("USER", data);
 	get_env_vars("HOME", data);
 	get_env_vars("PATH", data);
 	get_env_vars("PWD", data);

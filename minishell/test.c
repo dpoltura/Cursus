@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:46:44 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 14:49:39 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:11:59 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	print_split_input(t_data **data)
 	t_split	*cursor;
 
 	cursor = (*data)->split_input;
-	printf(BOLD GREEN "\n\nINPUT:\n" RESET);
+	printf(BOLD GREEN "INPUT:\n" RESET);
 	while (cursor)
 	{
 		printf("%s\n", cursor->content);
 		cursor = cursor->next;
 	}
-	printf("\n\n");
+	printf("\n");
 }
 
 void	print_env_split_var(t_data **data)
@@ -44,7 +44,7 @@ void	print_env_split_var(t_data **data)
 			printf("%s\n", var_split_content->content);
 			var_split_content = var_split_content->next;
 		}
-		printf("\n\n");
+		printf("\n");
 		env_vars = env_vars->next;
 		if (env_vars)
 			var_split_content = env_vars->var_split_content;

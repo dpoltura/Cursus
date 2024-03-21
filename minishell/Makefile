@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 09:53:05 by dpoltura          #+#    #+#              #
-#    Updated: 2024/03/18 14:40:25 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/03/21 15:04:14 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS = 	minishell.c \
 		input.c \
 		utils.c \
 		test.c \
-		ft_getenv.c
+		ft_getenv.c \
+		ft_readline.c
 OBJS = $(SRCS:%.c=%.o)
 
 NAME = minishell

@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:47:18 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/18 14:36:12 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:11:01 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	ft_strcmp(char *s1, char *s2)
 	int	i;
 
 	i = 0;
-	while (s1[i] == s2[i])
+	while (s1[i] && s2[i] && s1[i] == s2[i])
 		i++;
 	if (!s1[i] && !s2[i])
 		return (1);
