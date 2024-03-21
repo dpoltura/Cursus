@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 12:47:18 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 17:11:01 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:20:00 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,13 @@ int	ft_strcmp(char *s1, char *s2)
 	if (!s1[i] && !s2[i])
 		return (1);
 	return (0);
+}
+t_env	*get_var(char *var, t_data **data)
+{
+	t_env	*cursor;
+
+	cursor = (*data)->env_vars;
+	while (!ft_strcmp(cursor->var, var))
+		cursor = cursor->next;
+	return (cursor);
 }

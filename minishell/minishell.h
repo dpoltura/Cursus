@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 16:53:02 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:13:09 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include "colors.h"
 # include <readline/readline.h>
+# include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
@@ -66,8 +67,11 @@ void	ft_getenv(t_data **data);
 int	ft_strcmp(char *s1, char *s2);
 void	free_split(char **split);
 void	ft_readline(t_data **data);
+t_env	*get_var(char *var, t_data **data);
+char	*check_path(t_data **data);
+char	*ft_strjoin(char const *s1, char const *s2);
 
-void	print_split_input(t_data **data);
+void	print_input(t_data **data);
 void	print_env_split_var(t_data **data);
 
 #endif
