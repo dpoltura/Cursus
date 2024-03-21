@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 11:00:00 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:48:42 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ char				**ft_split(char const *s, char c);
 void	split_input(t_data **data);
 size_t	ft_strlen(const char *str);
 char	*ft_strdup(const char *src);
-void	ft_getenv(char *var, t_data **data);
+void	ft_getenv(t_data **data);
 int	ft_strcmp(char *s1, char *s2);
 void	free_split(char **split);
 

@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 13:41:10 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:49:15 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ int	main(int argc, char **argv, char **env)
 	data->input = readline("test > ");
 	split_input(&data);
 	print_split_input(&data);
-	ft_getenv("PATH", &data);
-	ft_getenv("USER", &data);
-	ft_getenv("PAGER", &data);
+	ft_getenv(&data);
 	print_env_split_var(&data);
 	free_data(&data);
 	return (0);
