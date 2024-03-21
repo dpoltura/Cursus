@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 18:31:15 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:59:01 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,17 @@ int	main(int argc, char **argv, char **env)
 		return (1);
 	init_data(&data);
 	ft_getenv(&data);
-	ft_readline(&data);
-	split_input(&data);
-	check_path(&data);
+	while (1)
+	{
+		ft_readline(&data);
+		split_input(&data);
+		check_path(&data);
 
 	// ============= TESTS =============
 	
-	print_input(&data);
-	print_env_split_var(&data);
+		print_input(&data);
+		print_env_split_var(&data);
+	}
 	free_data(&data);
 	return (0);
 }

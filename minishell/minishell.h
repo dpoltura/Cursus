@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 18:31:28 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:34:49 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
-
-// ============= COLORS =============
-
-# define BOLD "\033[1m"
-# define RESET "\033[38;5;15m"
-# define RED "\033[38;5;196m"
-# define GREEN "\033[38;5;46m"
-# define YELLOW "\033[38;5;226m"
-# define BLUE "\033[38;5;21m"
 
 // ============= STRUCT & LIST =============
 
@@ -70,6 +61,8 @@ void	ft_readline(t_data **data);
 t_env	*get_var(char *var, t_data **data);
 void	check_path(t_data **data);
 char	*ft_strjoin(char const *s1, char const *s2);
+
+// ============= TESTS FUNCTIONS =============
 
 void	print_input(t_data **data);
 void	print_env_split_var(t_data **data);

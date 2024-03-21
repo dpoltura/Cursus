@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:15:51 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 18:30:33 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:54:20 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,18 @@ void	check_path(t_data **data)
 	var = get_var("PATH", data);
 	var_path = var->var_split_content;
 	input = (*data)->split_input;
-	while (var_path && !full_path)
+	while (var_path && input)
 	{
 		full_path = var_path->content;
 		full_path = ft_strjoin(full_path, "/");
 		full_path = ft_strjoin(full_path, input->content);
 		if (access(full_path, R_OK))
-		{
 			var_path = var_path->next;
-			free(full_path);
-			full_path = NULL;
+		else
+		{
+			input->content = full_path;
+			input = input->next;
+			var_path = var->var_split_content;
 		}
 	}
-	input->content = full_path;
 }
