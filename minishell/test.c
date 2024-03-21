@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:46:44 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 18:18:23 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:32:46 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	print_input(t_data **data)
 	t_split	*cursor;
 
 	cursor = (*data)->split_input;
-	printf(ANSI_BOLDRED "SPLIT INPUT:\n" ANSI_RESET);
+	printf(ANSI_BOLDGREEN "INPUT PATH:\n" ANSI_RESET);
 	while (cursor)
 	{
 		printf("%s", cursor->content);

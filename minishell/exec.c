@@ -6,13 +6,13 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:15:51 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 18:26:55 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:30:33 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*check_path(t_data **data)
+void	check_path(t_data **data)
 {
 	char	*full_path;
 	t_env	*var;
@@ -35,5 +35,5 @@ char	*check_path(t_data **data)
 			full_path = NULL;
 		}
 	}
-	return (full_path);
+	input->content = full_path;
 }
