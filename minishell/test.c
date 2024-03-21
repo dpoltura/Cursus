@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 13:46:44 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 13:57:25 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 14:49:39 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ void	print_split_input(t_data **data)
 	t_split	*cursor;
 
 	cursor = (*data)->split_input;
-	printf("\n\n");
+	printf(BOLD GREEN "\n\nINPUT:\n" RESET);
 	while (cursor)
 	{
-		printf("input = %s\n", cursor->content);
+		printf("%s\n", cursor->content);
 		cursor = cursor->next;
 	}
 	printf("\n\n");
@@ -35,12 +35,13 @@ void	print_env_split_var(t_data **data)
 	var_split_content = (*data)->env_vars->var_split_content;
 	while (env_vars)
 	{
-		printf("var = %s\n", env_vars->var);
+		printf(BOLD GREEN "VAR:\n" RESET "%s\n", env_vars->var);
 		if (env_vars->var_content)
-			printf("content = %s\n", env_vars->var_content);
+			printf(BOLD YELLOW "CONTENT:\n" RESET "%s\n", env_vars->var_content);
+		printf(BOLD RED "SPLIT CONTENT:\n" RESET);
 		while (var_split_content)
 		{
-			printf("split_content = %s\n", var_split_content->content);
+			printf("%s\n", var_split_content->content);
 			var_split_content = var_split_content->next;
 		}
 		printf("\n\n");

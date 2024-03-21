@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/21 13:48:42 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 13:59:50 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
+
+// ============= COLORS =============
+
+# define BOLD "\033[1m"
+# define RESET "\033[38;5;15m"
+# define RED "\033[38;5;196m"
+# define GREEN "\033[38;5;46m"
+# define YELLOW "\033[38;5;226m"
+# define BLUE "\033[38;5;21m"
 
 // ============= STRUCT & LIST =============
 
