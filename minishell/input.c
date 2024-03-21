@@ -1,33 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse.c                                            :+:      :+:    :+:   */
+/*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/16 12:03:50 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/16 12:27:51 by dpoltura         ###   ########.fr       */
+/*   Created: 2024/03/18 12:41:31 by dpoltura          #+#    #+#             */
+/*   Updated: 2024/03/21 10:53:34 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-char	*check_path(char **split_path, char *input)
+void	split_input(t_data **data)
 {
+	char	**split;
+	t_split *cursor;
 	int	i;
-	char	*full_path;
 
+	split = ft_split((*data)->input, ' ');
+	cursor = (*data)->split_input;
 	i = 0;
-	while (split_path[i])
+	while (split[i])
 	{
-        full_path = ft_strdup(split_path[i]);
-		full_path = ft_strjoin(full_path, "/");
-		full_path = ft_strjoin(full_path, input);
-		if (access(full_path, F_OK) == -1)
-			free(full_path);
-		else if (access(full_path, F_OK) == 0)
-			return (full_path);
+		cursor->content = ft_strdup(split[i]);
+		if (split[i + 1])
+		{
+			cursor->next = malloc(sizeof(t_split));
+			cursor = cursor->next;
+		}
+		cursor->next = NULL;
 		i++;
 	}
-	return (NULL);
+	free_split(split);
 }

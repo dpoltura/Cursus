@@ -6,7 +6,7 @@
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 09:53:05 by dpoltura          #+#    #+#              #
-#    Updated: 2024/03/16 12:04:22 by dpoltura         ###   ########.fr        #
+#    Updated: 2024/03/18 14:40:25 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,11 +14,13 @@ CC = cc
 CFLAGS = -Wextra -Wall -Werror -g -Wno-unused-command-line-argument
 
 SRCS = 	minishell.c \
+		init.c \
+		free.c \
 		ft_split.c \
+		input.c \
 		utils.c \
-		utils_2.c \
-		directory.c \
-		parse.c
+		test.c \
+		ft_getenv.c
 OBJS = $(SRCS:%.c=%.o)
 
 NAME = minishell

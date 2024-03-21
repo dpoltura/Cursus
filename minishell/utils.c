@@ -5,61 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 11:11:16 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/16 12:03:35 by dpoltura         ###   ########.fr       */
+/*   Created: 2024/03/18 12:47:18 by dpoltura          #+#    #+#             */
+/*   Updated: 2024/03/18 14:36:12 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-size_t  ft_strlen(const char *s)
+size_t	ft_strlen(const char *str)
 {
-        int     i;
-
-        i = 0;
-        while (s[i] != '\0')
-                i++;
-        return (i);
-}
-
-void	free_split(char **split)
-{
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
+	if (!str)
+		return (0);
+	while (str[i] != 0)
 		i++;
-	}
-	free(split);
+	return (i);
 }
 
-char    *ft_strjoin(const char *s1, const char *s2)
+char	*ft_strdup(const char *src)
 {
-        char    *str;
-        int             i;
-        int             j;
+	int		s;
+	int		len;
+	char	*dest;
 
-        i = 0;
-        j = 0;
-        if (!s2)
-                return ((char *)s1);
-        if (!s1)
-                return ((char *)s2);
-        str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-        if (str == NULL)
-                return (NULL);
-        while (s1[i] != '\0')
-        {
-                str[i] = s1[i];
-                i++;
-        }
-        while (s2[j] != '\0')
-                str[i++] = s2[j++];
-        str[i] = '\0';
-        free((char *)s1);
-        return (str);
+	s = 0;
+	len = ft_strlen(src);
+	dest = malloc(sizeof(char) * (len + 1));
+	if (dest == 0)
+		return (0);
+	while (src[s] != '\0')
+	{
+		dest[s] = src[s];
+		s++;
+	}
+	dest[s] = '\0';
+	return (dest);
 }
 
 int	ft_strcmp(char *s1, char *s2)
@@ -68,28 +50,8 @@ int	ft_strcmp(char *s1, char *s2)
 
 	i = 0;
 	while (s1[i] == s2[i])
-	{
-		if (!s1[i] && !s2[i])
-			return (1);
 		i++;
-	}
+	if (!s1[i] && !s2[i])
+		return (1);
 	return (0);
-}
-
-char    *ft_strdup(const char *s)
-{
-        int             i;
-        char    *str;
-
-        i = 0;
-        str = malloc(sizeof(char) * (ft_strlen(s) + 1));
-        if (str == NULL)
-                return (NULL);
-        while (s[i] != '\0')
-        {
-                str[i] = s[i];
-                i++;
-        }
-        str[i] = '\0';
-        return (str);
 }

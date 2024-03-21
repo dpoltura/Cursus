@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/16 12:07:41 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/21 11:00:00 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,36 +16,47 @@
 // ============= LIBRAIRIES =============
 
 # include <readline/readline.h>
-# include <readline/history.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
-# include <signal.h>
-# include <dirent.h>
-# include <string.h>
-# include <termios.h>
-# include <term.h>
-# include <sys/wait.h>
+# include <sys/types.h>
 
-// ============= COLORS =============
+// ============= STRUCT & LIST =============
 
-# define BOLD "\033[1m"
-# define RESET "\033[0m"
-# define RED "\033[38;5;196m"
-# define GREEN "\033[38;5;46m"
-# define YELLOW "\033[38;5;226m"
-# define BLUE "\033[38;5;21m"
+typedef struct s_split
+{
+	char			*content;
+	struct s_split	*next;
+}					t_split;
+
+typedef struct s_env
+{
+	char			*var;
+	char			*var_content;
+	t_split			*var_split_content;
+	struct s_env	*next;
+}					t_env;
+
+typedef struct s_data
+{
+	char			*input;
+	t_split			*split_input;
+	t_env			*env_vars;
+	pid_t			pid;
+}					t_data;
 
 // ============= FUNCTIONS =============
 
-char    **ft_split(char const *s, char c);
-size_t  ft_strlen(const char *s);
-void	free_split(char **split);
-char    *ft_strjoin(const char *s1, const char *s2);
-char	*check_path(char **split_path, char *input);
-char    *ft_strdup(const char *s);
+void				init_data(t_data **data);
+void				free_data(t_data **data);
+char				**ft_split(char const *s, char c);
+void	split_input(t_data **data);
+size_t	ft_strlen(const char *str);
+char	*ft_strdup(const char *src);
+void	ft_getenv(char *var, t_data **data);
 int	ft_strcmp(char *s1, char *s2);
-int	if_directory(char **split_input);
-char    *ft_substr(const char *s, unsigned int start, size_t len);
+void	free_split(char **split);
+
+void	print_split_input(t_data **data);
+void	print_env_split_var(t_data **data);
 
 #endif
