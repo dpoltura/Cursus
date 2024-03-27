@@ -6,13 +6,13 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 17:15:51 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/22 14:30:51 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/25 10:47:30 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-static void	check_path(t_data **data)
+static void	check_path(t_data **data, char ***argv)
 {
 	char	*full_path;
 	t_env	*var;
@@ -28,6 +28,7 @@ static void	check_path(t_data **data)
 		full_path = var_path->content;
 		full_path = ft_strjoin(full_path, "/");
 		full_path = ft_strjoin(full_path, input->content);
+		*argv = get_args((*data)->split_input, *argv);
 		if (access(full_path, R_OK))
 			var_path = var_path->next;
 		else
@@ -41,7 +42,7 @@ static void	check_path(t_data **data)
 
 void	ft_execve(t_data **data, char **argv, char **env)
 {
-	check_path(data);
+	check_path(data, &argv);
 	(*data)->pid = fork();
 	if ((*data)->pid == 0)
 		execve((*data)->split_input->content, argv, env);

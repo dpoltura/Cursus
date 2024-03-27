@@ -5,42 +5,31 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/03/14 09:53:05 by dpoltura          #+#    #+#              #
-#    Updated: 2024/03/21 17:57:06 by dpoltura         ###   ########.fr        #
+#    Created: 2024/03/27 11:21:23 by dpoltura          #+#    #+#              #
+#    Updated: 2024/03/27 15:51:32 by dpoltura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
-CFLAGS = -Wextra -Wall -Werror -g -Wno-unused-command-line-argument
+CC = cc -Wall -Wextra -Werror -g -lreadline -Wno-unused-command-line-argument
 
-SRCS = 	minishell.c \
-		init.c \
-		free.c \
-		ft_split.c \
-		input.c \
-		utils.c \
-		test.c \
-		ft_getenv.c \
-		ft_readline.c \
-		exec.c \
-		ft_strjoin.c
+SRCS =	minishell.c \
+		ft_strjoin.c \
+		split_line.c \
+		utils.c
+
 OBJS = $(SRCS:%.c=%.o)
 
 NAME = minishell
 
-INCLUDES = -lreadline
-
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) $(INCLUDES)
+	$(CC) $(OBJS) -o $(NAME)
 
 clean:
-	rm -rf $(OBJS)
+	rm $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	rm $(NAME)
 
 re: fclean all
-
-.PHONY: all clean fclean re

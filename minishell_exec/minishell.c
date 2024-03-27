@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:43 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/22 14:25:34 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/25 10:37:49 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	main(int argc, char **argv, char **env)
 
 	if (argc != 1 || !argv || !env)
 		return (1);
-	init_data(&data);
-	ft_getenv(&data);
 	while (1)
 	{
+		init_data(&data);
+		ft_getenv(&data);
 		ft_readline(&data);
 		split_input(&data);
 		/* ============= TESTS FUNCTIONS ============= */
@@ -29,7 +29,7 @@ int	main(int argc, char **argv, char **env)
 		print_env_split_var(&data);
 		// ===========================================
 		ft_execve(&data, argv, env);
+		free_data(&data);
 	}
-	free_data(&data);
 	return (0);
 }

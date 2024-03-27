@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 09:52:15 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/22 14:24:39 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/25 10:37:08 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	ft_readline(t_data **data);
 t_env	*get_var(char *var, t_data **data);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	ft_execve(t_data **data, char **argv, char **env);
+char	**get_args(t_split *split_input, char **argv);
 
 // ============= TESTS FUNCTIONS =============
 
