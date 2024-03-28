@@ -1,45 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/27 15:51:45 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/28 13:13:54 by dpoltura         ###   ########.fr       */
+/*   Created: 2024/03/28 12:52:09 by dpoltura          #+#    #+#             */
+/*   Updated: 2024/03/28 13:02:16 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-size_t	ft_strlen(const char *str)
+void	free_split(t_split *split)
 {
-	size_t	i;
+	t_split	*tmp;
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] != 0)
-		i++;
-	return (i);
-}
-
-char	*ft_strdup(const char *src)
-{
-	int		s;
-	int		len;
-	char	*dest;
-
-	s = 0;
-	len = ft_strlen(src);
-	dest = malloc(sizeof(char) * (len + 1));
-	if (dest == 0)
-		return (0);
-	while (src[s] != '\0')
+	while (split)
 	{
-		dest[s] = src[s];
-		s++;
+		tmp = split;
+		split = split->next;
+		free(tmp->content);
+		free(tmp);
 	}
-	dest[s] = '\0';
-	return (dest);
+	free(split);
 }

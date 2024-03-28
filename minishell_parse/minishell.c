@@ -6,11 +6,23 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 11:20:24 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/27 15:49:08 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/28 13:31:43 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
+
+static void	print_split(t_split *split)
+{
+	t_split	*cursor;
+
+	cursor = split;
+	while (cursor)
+	{
+		printf("%s\n", cursor->content);
+		cursor = cursor->next;
+	}
+}
 
 int	main(int argc, char **argv, char **env)
 {
@@ -26,10 +38,9 @@ int	main(int argc, char **argv, char **env)
 	split->next = NULL;
 	line = readline("> ");
 	split_line(split, line);
-	while (split)
-	{
-		printf("%s\n", split->content);
-		split = split->next;
-	}
+	check_pipe(split, line);
+	print_split(split);
+	free_split(split);
+	free(line);
 	return (0);
 }

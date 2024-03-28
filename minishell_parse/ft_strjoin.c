@@ -6,7 +6,7 @@
 /*   By: dpoltura <dpoltura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 12:07:42 by dpoltura          #+#    #+#             */
-/*   Updated: 2024/03/27 15:51:11 by dpoltura         ###   ########.fr       */
+/*   Updated: 2024/03/28 12:59:57 by dpoltura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	src1 = (char *)s1;
 	src2 = (char *)s2;
 	result = (get_str(src1, src2));
+	free(src1);
 	return (result);
 }
